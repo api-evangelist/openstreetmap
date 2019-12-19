@@ -1,0 +1,71 @@
+{
+    "name": "OpenStreetMap",
+    "description": "OpenStreetMap is the free wiki world map.",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/2017-openstreetmap.jpg",
+    "tags": [
+        "geo",
+        "have api",
+        "maps",
+        "meta",
+        "tags"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/openstreetmap\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Open Street Map (OSM)",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/2017-openstreetmap.jpg",
+            "humanURL": "http:\/\/www.openstreetmap.org\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/open-street-map-osm.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/open-street-map-osm-postman-collection.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Base",
+            "url": "http:\/\/api.openstreetmap.org\/"
+        },
+        {
+            "type": "Blog",
+            "url": "http:\/\/blog.osmfoundation.org\/"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "https:\/\/blog.openstreetmap.org\/feed\/"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/openstreetmap-3"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "http:\/\/www.crunchbase.com\/company\/openstreetmap"
+        },
+        {
+            "type": "Developers",
+            "url": "http:\/\/wiki.openstreetmap.org\/wiki\/API"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/openstreetmap"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/www.openstreetmap.org\/"
+        }
+    ]
+}
