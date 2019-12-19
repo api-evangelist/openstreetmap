@@ -1,0 +1,82 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "Open Street Map (OSM)",
+        "description": "TODO: Add Description",
+        "termsOfService": ""
+    },
+    "servers": [
+        "https http:\/\/nominatim.openstreetmap.org"
+    ],
+    "paths": {
+        "\/lookup": {
+            "get": {
+                "summary": "OSM - Address lookup",
+                "description": "[Full description of the service:](http:\/\/wiki.openstreetmap.org\/wiki\/Nominatim#Address_lookup)",
+                "operationId": "LookupGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "osm_ids",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/reverse": {
+            "get": {
+                "summary": "OSM - Reverse",
+                "description": "[Full description of the service:](http:\/\/wiki.openstreetmap.org\/wiki\/Nominatim#Reverse_Geocoding)",
+                "operationId": "ReverseGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "lat",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "lon",
+                        "in": "query",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/search": {
+            "get": {
+                "summary": "OSM - Search",
+                "description": "[Full documentation](http:\/\/wiki.openstreetmap.org\/wiki\/Nominatim#Search)",
+                "operationId": "SearchGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "description": ""
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": []
+    }
+}
