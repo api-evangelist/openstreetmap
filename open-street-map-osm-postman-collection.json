@@ -1,0 +1,134 @@
+{
+    "id": "0a1bc4930f07d73d560b7f12864ac5cd",
+    "name": "Open Street Map (OSM)",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "a530b0174e9d797d71977f10184c8d13",
+            "name": "OSM - Address lookup",
+            "url": "https http:\/\/nominatim.openstreetmap.org\/lookup",
+            "description": "[Full description of the service:](http:\/\/wiki.openstreetmap.org\/wiki\/Nominatim#Address_lookup)",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "osm_ids",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "format",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0a1bc4930f07d73d560b7f12864ac5cd",
+            "rawModeData": ""
+        },
+        {
+            "id": "762d8adc33f85068302cf8fa71569a23",
+            "name": "OSM - Reverse",
+            "url": "https http:\/\/nominatim.openstreetmap.org\/reverse",
+            "description": "[Full description of the service:](http:\/\/wiki.openstreetmap.org\/wiki\/Nominatim#Reverse_Geocoding)",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "format",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "lat",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "lon",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0a1bc4930f07d73d560b7f12864ac5cd",
+            "rawModeData": ""
+        },
+        {
+            "id": "eb6b3aefeee46379e0246c708c496993",
+            "name": "OSM - Search",
+            "url": "https http:\/\/nominatim.openstreetmap.org\/search",
+            "description": "[Full documentation](http:\/\/wiki.openstreetmap.org\/wiki\/Nominatim#Search)",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "format",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "q",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0a1bc4930f07d73d560b7f12864ac5cd",
+            "rawModeData": ""
+        }
+    ]
+}
