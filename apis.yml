@@ -1,0 +1,19 @@
+aid: openstreetmap
+url: https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/apis.yml
+apis:
+- aid: openstreetmap:openstreetmap-api
+  name: OpenStreetMap Overpass API
+  tags:
+  - Geospatial
+  - Mapping
+  - Open Data
+  - XML
+  - Overpass
+  image: https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/image.png
+  humanURL: https://wiki.openstreetmap.org/wiki/Overpass_API
+  baseURL: https://overpass-api.de/api
+  properties:
+  - url: https://wiki.openstreetmap.org/wiki/Overpass_API
+    type: Documentation
+  description: >-
+    OpenStreetMap provides the Overpass API for complex geospatial queries against the OSM database. The API accepts Overpass QL queries and returns XML or JSON results for building footprints, road networks, POIs, and administrative boundaries.
