@@ -1,0 +1,831 @@
+openapi: 3.1.0
+info:
+  title: OpenStreetMap API v0.6
+  description: >-
+    The OpenStreetMap main API v0.6 provides CRUD operations for map data editing
+    including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0
+    authentication for write operations. Maximum bounding box query area is 0.25
+    square degrees. Returns XML or JSON. Intended for editing, not high-volume
+    read access.
+  version: 0.6.0
+  contact:
+    name: OpenStreetMap Foundation
+    url: https://osmfoundation.org/
+  license:
+    name: ODbL 1.0 (map data) / CC BY-SA 2.0 (tiles)
+    url: https://www.openstreetmap.org/copyright
+externalDocs:
+  description: OSM API v0.6 Wiki
+  url: https://wiki.openstreetmap.org/wiki/API_v0.6
+servers:
+  - url: https://api.openstreetmap.org/api/0.6
+    description: OpenStreetMap production API
+  - url: https://master.apis.dev.openstreetmap.org/api/0.6
+    description: OSM development/sandbox API
+security:
+  - {}
+  - OAuth2: [read_prefs, write_api, write_notes]
+paths:
+  /map:
+    get:
+      operationId: getMapData
+      summary: Get map data for a bounding box
+      description: >-
+        Retrieve all OSM nodes, ways, and relations within a bounding box.
+        Maximum area: 0.25 square degrees. Returns all objects with their
+        current attributes and tags. High-volume use should use Overpass API instead.
+      tags:
+        - Map Data
+      parameters:
+        - name: bbox
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Bounding box as min_lon,min_lat,max_lon,max_lat (e.g., -0.489,51.28,0.236,51.686)
+      responses:
+        '200':
+          description: OSM map data
+          content:
+            application/xml:
+              schema:
+                type: string
+                description: OSM XML document
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OSMData'
+        '400':
+          description: Area too large or invalid bounding box
+          content:
+            text/plain:
+              schema:
+                type: string
+        '509':
+          description: User throttled for excessive use
+  /node/{id}:
+    get:
+      operationId: getNode
+      summary: Get node by ID
+      description: Retrieve the current version of a node.
+      tags:
+        - Nodes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Node data
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Node'
+        '404':
+          description: Node not found (or deleted)
+        '410':
+          description: Node was deleted
+    put:
+      operationId: updateNode
+      summary: Update a node
+      description: Modify an existing node. Requires authentication and an open changeset.
+      tags:
+        - Nodes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+              description: OSM XML document with updated node
+      responses:
+        '200':
+          description: New version number of the node
+          content:
+            text/plain:
+              schema:
+                type: integer
+        '409':
+          description: Changeset conflict or node version mismatch
+        '412':
+          description: Precondition failed (node is still in use by a way/relation)
+    delete:
+      operationId: deleteNode
+      summary: Delete a node
+      description: Mark a node as deleted in an open changeset.
+      tags:
+        - Nodes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: New version number after deletion
+          content:
+            text/plain:
+              schema:
+                type: integer
+  /node/create:
+    put:
+      operationId: createNode
+      summary: Create a new node
+      description: Create a new node within an open changeset.
+      tags:
+        - Nodes
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+              description: OSM XML with the new node (use id=-1 for new)
+      responses:
+        '200':
+          description: ID of the created node
+          content:
+            text/plain:
+              schema:
+                type: integer
+        '400':
+          description: Missing required fields or invalid geometry
+        '405':
+          description: The node is not inside the bounding box of the changeset
+  /node/{id}/{version}:
+    get:
+      operationId: getNodeVersion
+      summary: Get a specific version of a node
+      description: Retrieve a historical version of a node.
+      tags:
+        - Nodes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Historical node version
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Node'
+  /way/{id}:
+    get:
+      operationId: getWay
+      summary: Get way by ID
+      description: Retrieve the current version of a way and its node references.
+      tags:
+        - Ways
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Way data
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Way'
+        '404':
+          description: Way not found
+  /relation/{id}:
+    get:
+      operationId: getRelation
+      summary: Get relation by ID
+      description: Retrieve the current version of a relation with its members.
+      tags:
+        - Relations
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Relation data
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Relation'
+  /changeset/create:
+    put:
+      operationId: createChangeset
+      summary: Create a changeset
+      description: Create a new changeset to group editing operations.
+      tags:
+        - Changesets
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+              description: OSM XML with changeset tags (must include created_by and comment)
+      responses:
+        '200':
+          description: ID of the created changeset
+          content:
+            text/plain:
+              schema:
+                type: integer
+  /changeset/{id}:
+    get:
+      operationId: getChangeset
+      summary: Get changeset details
+      description: Retrieve metadata for a changeset including tags, timestamps, and bounding box.
+      tags:
+        - Changesets
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: include_discussion
+          in: query
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: Changeset details
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Changeset'
+    put:
+      operationId: updateChangeset
+      summary: Update changeset tags
+      description: Modify the tags of an open changeset (must be the owner).
+      tags:
+        - Changesets
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: Updated changeset
+  /changeset/{id}/close:
+    put:
+      operationId: closeChangeset
+      summary: Close a changeset
+      description: Close an open changeset (no more edits may be added after this).
+      tags:
+        - Changesets
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Empty response on success
+        '409':
+          description: Changeset already closed or owned by another user
+  /changeset/{id}/upload:
+    post:
+      operationId: uploadChangeset
+      summary: Upload an OsmChange document
+      description: >-
+        Upload a batch of creates, modifies, and deletes as an OsmChange XML
+        document. Atomic: either all operations succeed or none are applied.
+      tags:
+        - Changesets
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+              description: OsmChange XML document with create/modify/delete sections
+      responses:
+        '200':
+          description: diffResult XML showing old and new IDs for all objects
+          content:
+            application/xml:
+              schema:
+                type: string
+  /notes:
+    get:
+      operationId: searchNotes
+      summary: Search notes
+      description: Search OSM notes by bounding box, text, status, or user.
+      tags:
+        - Notes
+      parameters:
+        - name: bbox
+          in: query
+          schema:
+            type: string
+          description: Bounding box (min_lon,min_lat,max_lon,max_lat)
+        - name: q
+          in: query
+          schema:
+            type: string
+          description: Free text search
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [open, closed, all]
+            default: open
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+            maximum: 10000
+        - name: closed
+          in: query
+          schema:
+            type: integer
+            default: 7
+            description: Number of days a note must be closed to be excluded (-1 = include all closed)
+      responses:
+        '200':
+          description: Notes matching the query
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NoteCollection'
+    post:
+      operationId: createNote
+      summary: Create a note
+      description: Create a new map note at a geographic location.
+      tags:
+        - Notes
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - lat
+                - lon
+                - text
+              properties:
+                lat:
+                  type: number
+                  format: double
+                  minimum: -90
+                  maximum: 90
+                lon:
+                  type: number
+                  format: double
+                  minimum: -180
+                  maximum: 180
+                text:
+                  type: string
+                  minLength: 1
+                  maxLength: 2000
+      responses:
+        '200':
+          description: Created note
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Note'
+  /notes/{id}:
+    get:
+      operationId: getNote
+      summary: Get a note
+      description: Retrieve a specific note by its ID.
+      tags:
+        - Notes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Note details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Note'
+        '404':
+          description: Note not found
+  /user/details:
+    get:
+      operationId: getUserDetails
+      summary: Get authenticated user details
+      description: Returns details of the authenticated user.
+      tags:
+        - Users
+      responses:
+        '200':
+          description: User details
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Authentication required
+  /capabilities:
+    get:
+      operationId: getCapabilities
+      summary: Get API capabilities and limits
+      description: >-
+        Returns current API capabilities including version, rate limits,
+        and maximum area limits. No authentication required.
+      tags:
+        - Capabilities
+      security: []
+      responses:
+        '200':
+          description: API capabilities
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Capabilities'
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 — required for write operations
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.openstreetmap.org/oauth2/authorize
+          tokenUrl: https://www.openstreetmap.org/oauth2/token
+          scopes:
+            read_prefs: Read user preferences
+            write_prefs: Modify user preferences
+            write_diary: Create diary entries
+            write_api: Modify the map (nodes, ways, relations, changesets)
+            read_gpx: Read private GPS traces
+            write_gpx: Upload GPS traces
+            write_notes: Create, comment on, and close notes
+  schemas:
+    Node:
+      type: object
+      description: An OSM node (a single geographic point)
+      properties:
+        type:
+          type: string
+          enum: [node]
+        id:
+          type: integer
+          format: int64
+        lat:
+          type: number
+          format: double
+          minimum: -90
+          maximum: 90
+        lon:
+          type: number
+          format: double
+          minimum: -180
+          maximum: 180
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Key-value metadata tags
+        version:
+          type: integer
+        changeset:
+          type: integer
+          format: int64
+        timestamp:
+          type: string
+          format: date-time
+        user:
+          type: string
+        uid:
+          type: integer
+        visible:
+          type: boolean
+    Way:
+      type: object
+      description: An OSM way (an ordered list of nodes forming a line or polygon)
+      properties:
+        type:
+          type: string
+          enum: [way]
+        id:
+          type: integer
+          format: int64
+        nodes:
+          type: array
+          items:
+            type: integer
+            format: int64
+          description: Ordered list of node IDs
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        version:
+          type: integer
+        changeset:
+          type: integer
+          format: int64
+        timestamp:
+          type: string
+          format: date-time
+        user:
+          type: string
+        uid:
+          type: integer
+        visible:
+          type: boolean
+    Relation:
+      type: object
+      description: An OSM relation (groups nodes, ways, or other relations)
+      properties:
+        type:
+          type: string
+          enum: [relation]
+        id:
+          type: integer
+          format: int64
+        members:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum: [node, way, relation]
+              ref:
+                type: integer
+                format: int64
+              role:
+                type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        version:
+          type: integer
+        changeset:
+          type: integer
+          format: int64
+        timestamp:
+          type: string
+          format: date-time
+    OSMData:
+      type: object
+      description: OSM data response containing nodes, ways, and relations
+      properties:
+        version:
+          type: string
+        generator:
+          type: string
+        copyright:
+          type: string
+        attribution:
+          type: string
+        license:
+          type: string
+        bounds:
+          type: object
+          properties:
+            minlat: { type: number }
+            minlon: { type: number }
+            maxlat: { type: number }
+            maxlon: { type: number }
+        nodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Node'
+        ways:
+          type: array
+          items:
+            $ref: '#/components/schemas/Way'
+        relations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Relation'
+    Changeset:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        created_at:
+          type: string
+          format: date-time
+        closed_at:
+          type: string
+          format: date-time
+        open:
+          type: boolean
+        user:
+          type: string
+        uid:
+          type: integer
+        min_lat:
+          type: number
+        min_lon:
+          type: number
+        max_lat:
+          type: number
+        max_lon:
+          type: number
+        changes_count:
+          type: integer
+        comments_count:
+          type: integer
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+    Note:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [Feature]
+        geometry:
+          type: object
+          properties:
+            type: { type: string, enum: [Point] }
+            coordinates:
+              type: array
+              items: { type: number }
+              minItems: 2
+              maxItems: 2
+        properties:
+          type: object
+          properties:
+            id: { type: integer, format: int64 }
+            url: { type: string, format: uri }
+            status: { type: string, enum: [open, closed] }
+            date_created: { type: string, format: date-time }
+            date_closed: { type: string, format: date-time }
+            comments:
+              type: array
+              items:
+                type: object
+                properties:
+                  date: { type: string, format: date-time }
+                  user: { type: string }
+                  user_url: { type: string, format: uri }
+                  action: { type: string, enum: [opened, commented, closed, reopened] }
+                  text: { type: string }
+                  html: { type: string }
+    NoteCollection:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [FeatureCollection]
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/Note'
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        display_name:
+          type: string
+        account_created:
+          type: string
+          format: date-time
+        description:
+          type: string
+        img:
+          type: object
+          properties:
+            href: { type: string, format: uri }
+        changesets:
+          type: object
+          properties:
+            count: { type: integer }
+        traces:
+          type: object
+          properties:
+            count: { type: integer }
+        contributor_terms:
+          type: object
+          properties:
+            agreed: { type: boolean }
+    Capabilities:
+      type: object
+      properties:
+        version:
+          type: object
+          properties:
+            minimum: { type: string }
+            maximum: { type: string }
+        area:
+          type: object
+          properties:
+            maximum: { type: number, description: Max area in sq degrees }
+        tracepoints:
+          type: object
+          properties:
+            per_page: { type: integer }
+        waynodes:
+          type: object
+          properties:
+            maximum: { type: integer }
+        changesets:
+          type: object
+          properties:
+            maximum_elements: { type: integer }
+        notes:
+          type: object
+          properties:
+            default_query_limit: { type: integer }
+            hard_query_limit: { type: integer }
+tags:
+  - name: Capabilities
+    description: API version and limits
+  - name: Map Data
+    description: Bulk map data retrieval by bounding box
+  - name: Nodes
+    description: OSM node (point) operations
+  - name: Ways
+    description: OSM way (line/polygon) operations
+  - name: Relations
+    description: OSM relation operations
+  - name: Changesets
+    description: Changeset management for grouped edits
+  - name: Notes
+    description: Community map notes
+  - name: Users
+    description: User account information

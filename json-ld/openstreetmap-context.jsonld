@@ -1,0 +1,83 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+    "osm": "https://www.openstreetmap.org/ontology/",
+    "geojson": "https://purl.org/geojson/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Node": "schema:Place",
+    "id": "schema:identifier",
+    "lat": {
+      "@id": "geo:lat",
+      "@type": "xsd:decimal"
+    },
+    "lon": {
+      "@id": "geo:long",
+      "@type": "xsd:decimal"
+    },
+    "tags": {
+      "@id": "schema:additionalProperty",
+      "@container": "@index"
+    },
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:integer"
+    },
+    "changeset": {
+      "@id": "osm:changeset",
+      "@type": "xsd:integer"
+    },
+    "timestamp": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "user": "schema:author",
+    "uid": {
+      "@id": "osm:userId",
+      "@type": "xsd:integer"
+    },
+    "visible": {
+      "@id": "schema:activeStatus",
+      "@type": "xsd:boolean"
+    },
+    "Way": "schema:GeoShape",
+    "nodes": {
+      "@id": "osm:nodeRefs",
+      "@container": "@list"
+    },
+    "Relation": "schema:Collection",
+    "members": {
+      "@id": "schema:hasPart",
+      "@container": "@set"
+    },
+    "role": "schema:roleName",
+    "Changeset": "schema:UpdateAction",
+    "Nominatim": {
+      "@id": "schema:SearchResultsPage"
+    },
+    "display_name": "schema:name",
+    "osm_type": "osm:elementType",
+    "osm_id": "osm:elementId",
+    "class": "osm:osmClass",
+    "importance": {
+      "@id": "schema:ratingValue",
+      "@type": "xsd:decimal"
+    },
+    "Address": "schema:PostalAddress",
+    "house_number": "schema:streetAddress",
+    "road": "schema:streetAddress",
+    "city": "schema:addressLocality",
+    "state": "schema:addressRegion",
+    "postcode": "schema:postalCode",
+    "country": "schema:addressCountry",
+    "country_code": "schema:addressCountry",
+    "Note": "schema:Comment",
+    "place_id": "schema:identifier",
+    "boundingbox": {
+      "@id": "schema:geo",
+      "@type": "schema:GeoShape"
+    }
+  }
+}

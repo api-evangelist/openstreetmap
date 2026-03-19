@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-schema/openstreetmap-node-schema.json",
+  "title": "OpenStreetMap Node",
+  "description": "An OSM node — the fundamental building block of OSM map data, representing a geographic point",
+  "type": "object",
+  "required": ["type", "id", "lat", "lon"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "node"
+    },
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "minimum": 1,
+      "description": "OSM node ID (positive integer)"
+    },
+    "lat": {
+      "type": "number",
+      "format": "double",
+      "minimum": -90,
+      "maximum": 90,
+      "description": "Latitude in decimal degrees (WGS84)"
+    },
+    "lon": {
+      "type": "number",
+      "format": "double",
+      "minimum": -180,
+      "maximum": 180,
+      "description": "Longitude in decimal degrees (WGS84)"
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Key-value metadata tags (e.g., name, amenity, highway)"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Edit version number (incremented on each modification)"
+    },
+    "changeset": {
+      "type": "integer",
+      "format": "int64",
+      "description": "ID of the changeset that last modified this node"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC timestamp of the last modification"
+    },
+    "user": {
+      "type": "string",
+      "description": "Username of the last editor"
+    },
+    "uid": {
+      "type": "integer",
+      "description": "User ID of the last editor"
+    },
+    "visible": {
+      "type": "boolean",
+      "description": "False if the node was deleted in this version"
+    }
+  },
+  "$defs": {
+    "Way": {
+      "title": "OSM Way",
+      "description": "An OSM way — an ordered list of nodes forming a line or closed polygon",
+      "type": "object",
+      "required": ["type", "id", "nodes"],
+      "properties": {
+        "type": { "type": "string", "const": "way" },
+        "id": { "type": "integer", "format": "int64" },
+        "nodes": {
+          "type": "array",
+          "items": { "type": "integer", "format": "int64" },
+          "minItems": 2,
+          "maxItems": 2000,
+          "description": "Ordered list of node IDs forming the way"
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "version": { "type": "integer" },
+        "changeset": { "type": "integer", "format": "int64" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "user": { "type": "string" },
+        "uid": { "type": "integer" },
+        "visible": { "type": "boolean" }
+      }
+    },
+    "Relation": {
+      "title": "OSM Relation",
+      "description": "An OSM relation — groups nodes, ways, and other relations with typed membership roles",
+      "type": "object",
+      "required": ["type", "id", "members"],
+      "properties": {
+        "type": { "type": "string", "const": "relation" },
+        "id": { "type": "integer", "format": "int64" },
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type", "ref"],
+            "properties": {
+              "type": { "type": "string", "enum": ["node", "way", "relation"] },
+              "ref": { "type": "integer", "format": "int64" },
+              "role": { "type": "string", "description": "Semantic role (e.g., outer, inner, stop, platform)" }
+            }
+          }
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "version": { "type": "integer" },
+        "changeset": { "type": "integer", "format": "int64" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}

@@ -17,6 +17,12 @@ apis:
     type: Documentation
   - url: https://operations.osmfoundation.org/policies/api/
     type: RateLimits
+  - url: https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/openapi/openstreetmap-main-openapi.yml
+    type: OpenAPI
+  - url: https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-schema/openstreetmap-node-schema.json
+    type: JSONSchema
+  - url: https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-ld/openstreetmap-context.jsonld
+    type: JSONLDContext
   description: >-
     The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.
 - aid: openstreetmap:openstreetmap-overpass-api
@@ -54,6 +60,8 @@ apis:
     type: Documentation
   - url: https://operations.osmfoundation.org/policies/nominatim/
     type: RateLimits
+  - url: https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/openapi/openstreetmap-nominatim-openapi.yml
+    type: OpenAPI
   description: >-
     Nominatim is the OpenStreetMap geocoding API providing search (forward geocoding), reverse geocoding, and address lookup for OSM objects. Rate limit is 1 request/second for the public instance. Requires valid User-Agent header. Open source under GNU GPL v3; self-hosted deployment available for higher volume needs.
 - aid: openstreetmap:openstreetmap-api
@@ -93,6 +101,14 @@ common:
   type: GitHubOrganization
 - url: https://openstreetmap.org/copyright
   type: Authentication
+- url: https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/openapi/openstreetmap-main-openapi.yml
+  type: OpenAPI
+- url: https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/openapi/openstreetmap-nominatim-openapi.yml
+  type: OpenAPI
+- url: https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-schema/openstreetmap-node-schema.json
+  type: JSONSchema
+- url: https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-ld/openstreetmap-context.jsonld
+  type: JSONLDContext
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com
