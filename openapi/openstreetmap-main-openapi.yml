@@ -661,10 +661,10 @@ components:
         bounds:
           type: object
           properties:
-            minlat: { type: number }
-            minlon: { type: number }
-            maxlat: { type: number }
-            maxlon: { type: number }
+            minlat: {type: number}
+            minlon: {type: number}
+            maxlat: {type: number}
+            maxlon: {type: number}
         nodes:
           type: array
           items:
@@ -720,31 +720,31 @@ components:
         geometry:
           type: object
           properties:
-            type: { type: string, enum: [Point] }
+            type: {type: string, enum: [Point]}
             coordinates:
               type: array
-              items: { type: number }
+              items: {type: number}
               minItems: 2
               maxItems: 2
         properties:
           type: object
           properties:
-            id: { type: integer, format: int64 }
-            url: { type: string, format: uri }
-            status: { type: string, enum: [open, closed] }
-            date_created: { type: string, format: date-time }
-            date_closed: { type: string, format: date-time }
+            id: {type: integer, format: int64}
+            url: {type: string, format: uri}
+            status: {type: string, enum: [open, closed]}
+            date_created: {type: string, format: date-time}
+            date_closed: {type: string, format: date-time}
             comments:
               type: array
               items:
                 type: object
                 properties:
-                  date: { type: string, format: date-time }
-                  user: { type: string }
-                  user_url: { type: string, format: uri }
-                  action: { type: string, enum: [opened, commented, closed, reopened] }
-                  text: { type: string }
-                  html: { type: string }
+                  date: {type: string, format: date-time}
+                  user: {type: string}
+                  user_url: {type: string, format: uri}
+                  action: {type: string, enum: [opened, commented, closed, reopened]}
+                  text: {type: string}
+                  html: {type: string}
     NoteCollection:
       type: object
       properties:
@@ -770,62 +770,62 @@ components:
         img:
           type: object
           properties:
-            href: { type: string, format: uri }
+            href: {type: string, format: uri}
         changesets:
           type: object
           properties:
-            count: { type: integer }
+            count: {type: integer}
         traces:
           type: object
           properties:
-            count: { type: integer }
+            count: {type: integer}
         contributor_terms:
           type: object
           properties:
-            agreed: { type: boolean }
+            agreed: {type: boolean}
     Capabilities:
       type: object
       properties:
         version:
           type: object
           properties:
-            minimum: { type: string }
-            maximum: { type: string }
+            minimum: {type: string}
+            maximum: {type: string}
         area:
           type: object
           properties:
-            maximum: { type: number, description: Max area in sq degrees }
+            maximum: {type: number, description: Max area in sq degrees}
         tracepoints:
           type: object
           properties:
-            per_page: { type: integer }
+            per_page: {type: integer}
         waynodes:
           type: object
           properties:
-            maximum: { type: integer }
+            maximum: {type: integer}
         changesets:
           type: object
           properties:
-            maximum_elements: { type: integer }
+            maximum_elements: {type: integer}
         notes:
           type: object
           properties:
-            default_query_limit: { type: integer }
-            hard_query_limit: { type: integer }
+            default_query_limit: {type: integer}
+            hard_query_limit: {type: integer}
 tags:
   - name: Capabilities
     description: API version and limits
+  - name: Changesets
+    description: Changeset management for grouped edits
   - name: Map Data
     description: Bulk map data retrieval by bounding box
   - name: Nodes
     description: OSM node (point) operations
-  - name: Ways
-    description: OSM way (line/polygon) operations
-  - name: Relations
-    description: OSM relation operations
-  - name: Changesets
-    description: Changeset management for grouped edits
   - name: Notes
     description: Community map notes
+  - name: Relations
+    description: OSM relation operations
   - name: Users
     description: User account information
+  - name: Ways
+    description: OSM way (line/polygon) operations
