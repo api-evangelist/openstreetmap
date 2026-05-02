@@ -1,10 +1,23 @@
-# Unknown (openstreetmap)
+# OpenStreetMap (openstreetmap)
+
+OpenStreetMap (OSM) is a collaborative project to create a free, editable map of the world. The OSM ecosystem exposes a family of public REST APIs: the main editing API (v0.6) for CRUD operations on map data, the Overpass API for complex read-only geospatial queries, and the Nominatim API for forward and reverse geocoding. Map data is licensed under the Open Database License (ODbL) 1.0 and tile imagery under CC BY-SA 2.0.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/apis.yml)
 
+## Scope
+
+- **Type:** Index
+- **Position:** Consumer
+- **Access:** 3rd-Party
+
+## Tags
+
+- Geospatial, Mapping, Open Data, Geocoding, Editing
+
 ## Timestamps
 
-- **Modified:** 2026-03-18 
+- **Created:** 2026-03-18
+- **Modified:** 2026-04-28
 
 ## APIs
 
@@ -13,10 +26,11 @@ The OpenStreetMap main API v0.6 provides CRUD operations for map data editing in
 
 **Human URL:** [https://wiki.openstreetmap.org/wiki/API_v0.6](https://wiki.openstreetmap.org/wiki/API_v0.6)
 
+**Base URL:** https://api.openstreetmap.org/api/0.6
 
-#### Tags:
+#### Tags
 
- - Geospatial, Mapping, Open Data, REST, Editing
+- Geospatial, Mapping, Open Data, REST, Editing
 
 #### Properties
 
@@ -31,10 +45,11 @@ The Overpass API is a read-only database engine for complex geospatial queries a
 
 **Human URL:** [https://wiki.openstreetmap.org/wiki/Overpass_API](https://wiki.openstreetmap.org/wiki/Overpass_API)
 
+**Base URL:** https://overpass-api.de/api
 
-#### Tags:
+#### Tags
 
- - Geospatial, Mapping, Open Data, XML, Overpass
+- Geospatial, Mapping, Open Data, XML, Overpass
 
 #### Properties
 
@@ -47,10 +62,11 @@ Nominatim is the OpenStreetMap geocoding API providing search (forward geocoding
 
 **Human URL:** [https://nominatim.org/release-docs/latest/api/Overview/](https://nominatim.org/release-docs/latest/api/Overview/)
 
+**Base URL:** https://nominatim.openstreetmap.org
 
-#### Tags:
+#### Tags
 
- - Geospatial, Mapping, Geocoding, Open Data
+- Geospatial, Mapping, Geocoding, Open Data
 
 #### Properties
 
@@ -58,23 +74,8 @@ Nominatim is the OpenStreetMap geocoding API providing search (forward geocoding
 - [RateLimits](https://operations.osmfoundation.org/policies/nominatim/)
 - [OpenAPI](https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/openapi/openstreetmap-nominatim-openapi.yml)
 
-### OpenStreetMap Overpass API
-OpenStreetMap provides the Overpass API for complex geospatial queries against the OSM database. The API accepts Overpass QL queries and returns XML or JSON results for building footprints, road networks, POIs, and administrative boundaries.
-
-**Human URL:** [https://wiki.openstreetmap.org/wiki/Overpass_API](https://wiki.openstreetmap.org/wiki/Overpass_API)
-
-
-#### Tags:
-
- - Geospatial, Mapping, Open Data, XML, Overpass
-
-#### Properties
-
-- [Documentation](https://wiki.openstreetmap.org/wiki/Overpass_API)
-
 ## Common Properties
 
-- [Portal](https://www.openstreetmap.org/)
 - [Website](https://www.openstreetmap.org/)
 - [Documentation](https://wiki.openstreetmap.org/wiki/API)
 - [Reference](https://wiki.openstreetmap.org/wiki/API_v0.6)
@@ -83,8 +84,19 @@ OpenStreetMap provides the Overpass API for complex geospatial queries against t
 - [PrivacyPolicy](https://osmfoundation.org/wiki/Privacy_Policy)
 - [Blog](https://blog.openstreetmap.org/)
 - [GitHubOrganization](https://github.com/openstreetmap)
-- [Authentication](https://openstreetmap.org/copyright)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/openapi/openstreetmap-main-openapi.yml)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/openapi/openstreetmap-nominatim-openapi.yml)
+- [License - Copyright](https://www.openstreetmap.org/copyright)
+- [License - ODbL 1.0](https://opendatacommons.org/licenses/odbl/)
+- [Wiki](https://wiki.openstreetmap.org/wiki/Main_Page)
+- [Forum](https://community.openstreetmap.org/)
+- [Support](https://help.openstreetmap.org/)
+- [Authentication](https://www.openstreetmap.org/copyright)
+- [OpenAPI - Main](https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/openapi/openstreetmap-main-openapi.yml)
+- [OpenAPI - Nominatim](https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/openapi/openstreetmap-nominatim-openapi.yml)
 - [JSONSchema](https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-schema/openstreetmap-node-schema.json)
 - [JSONLDContext](https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-ld/openstreetmap-context.jsonld)
+
+## Maintainers
+
+**FN:** Kin Lane
+
+**Email:** kin@apievangelist.com
