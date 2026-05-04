@@ -1,0 +1,79 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: OpenStreetMap
+providerId: openstreetmap
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Maps
+  - Open Data
+  - Geospatial
+description: OpenStreetMap is free open data; main API and tile servers governed by the OSMF acceptable
+  use policy. Commercial use should self-host or use third-party tile providers.
+sources:
+  - https://www.openstreetmap.org/
+  - https://operations.osmfoundation.org/policies/api/
+plans:
+  - id: osm-public-api
+    name: Public API (Acceptable Use)
+    type: freemium
+    description: Free for personal, educational, and small-scale use under OSMF Acceptable Use Policy.
+    entries:
+      - label: Per request
+        name: request
+        type: subscription
+        metric: request
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Free
+      - name: ODbL license
+      - name: Subject to OSMF AUP
+      - name: Heavy usage MUST self-host or use 3rd-party providers
+  - id: osm-self-hosted
+    name: Self-Hosted (Recommended for Production)
+    type: freemium
+    description: Free OSM data + your own tile server (running osm2pgsql + Nominatim + tile renderer on
+      your hosting).
+    entries:
+      - label: Hosting (your cost)
+        name: self_host
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: varies
+        userMultiplied: false
+    elements:
+      - name: Free OSM data download
+      - name: Run your own tile server
+      - name: Run your own Nominatim geocoder
+      - name: No usage limits beyond your hardware
+  - id: osm-third-party
+    name: Third-Party Providers
+    type: paid
+    description: Use commercial tile/geocoding providers built on OSM (Mapbox, MapTiler, Geoapify, Stadia
+      Maps, TomTom).
+    entries:
+      - label: Provider rates vary
+        name: third_party
+        type: metered
+        metric: request
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: varies
+        userMultiplied: false
+    elements:
+      - name: Mapbox / MapTiler / Geoapify / Stadia Maps / TomTom
+      - name: SLAs and commercial support
+      - name: Pay per request or subscription

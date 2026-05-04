@@ -1,0 +1,53 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: OpenStreetMap
+providerId: openstreetmap
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+  - Open Geospatial Data
+description: FOCUS-aligned FinOps for OpenStreetMap.
+sources:
+  - https://www.openstreetmap.org/
+  - https://operations.osmfoundation.org/policies/api/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: OpenStreetMap
+serviceCategory: Open Geospatial Data
+billingModel:
+  pricingCategory: Free (Donation-Funded) / Self-Host / 3rd-Party Provider
+  billingFrequency: Monthly
+  billingCurrency: USD
+focusColumns:
+  ServiceName: OpenStreetMap
+  ServiceCategory: Open Geospatial Data
+  ProviderName: OpenStreetMap
+  PublisherName: OpenStreetMap
+  BillingCurrency: USD
+meters:
+  - name: tile_requests
+    unit: request
+    aggregation: sum
+  - name: geocoding_requests
+    unit: request
+    aggregation: sum
+  - name: data_downloads
+    unit: GB
+    aggregation: sum
+principles:
+  - name: Visibility
+    description: Track OpenStreetMap consumption monthly.
+  - name: Allocation
+    description: Tag usage to teams/cost centers.
+  - name: Optimization
+    description: Right-size; reclaim unused entitlements.
+  - name: Accountability
+    description: Set spend alerts; quarterly review.

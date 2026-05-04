@@ -1,0 +1,43 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: OpenStreetMap
+providerId: openstreetmap
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Rate Limiting
+  - Open Data
+description: OSMF API tile servers rate-limited per IP under AUP. Production must self-host or use third-party
+  providers.
+sources:
+  - https://www.openstreetmap.org/
+  - https://operations.osmfoundation.org/policies/api/
+headers: {}
+responseCodes:
+  throttled: 429
+  blockedHighVolume: 429
+limits:
+  - name: Tile server (osm.org)
+    scope: ip
+    metric: requests_per_second
+    limit: 2
+    timeFrame: second per tile server
+    notes: 'Per AUP: be reasonable; bulk download tiles is forbidden.'
+  - name: Nominatim (osm.org)
+    scope: ip
+    metric: requests_per_second
+    limit: 1
+    timeFrame: second per IP
+    notes: Per Nominatim usage policy.
+  - name: Overpass API (overpass-api.de)
+    scope: ip
+    metric: concurrent
+    limit: 2
+    notes: Per public Overpass policy.
+  - name: Editing API
+    scope: user
+    metric: changes_per_day
+    limit: no hard limit
+    notes: Subject to vandalism review.
