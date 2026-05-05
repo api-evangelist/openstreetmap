@@ -1,0 +1,13 @@
+{
+  "repo": "openstreetmap",
+  "feeds": [
+    {
+      "source": "https://blog.openstreetmap.org/",
+      "feed_url": "https://blog.openstreetmap.org/feed/",
+      "saved": 10,
+      "title": "OpenStreetMap Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:33:04Z"
+}
