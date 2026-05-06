@@ -1,0 +1,807 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenStreetMap API v0.6
+  description: The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations,
+    changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25
+    square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.
+  tags:
+  - Openstreetmap
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: openstreetmap
+    baseUri: https://api.openstreetmap.org/api/0.6
+    description: OpenStreetMap API v0.6 HTTP API.
+    authentication:
+      type: bearer
+      token: '{{OPENSTREETMAP_TOKEN}}'
+    resources:
+    - name: map
+      path: /map
+      operations:
+      - name: getmapdata
+        method: GET
+        description: Get map data for a bounding box
+        inputParameters:
+        - name: bbox
+          in: query
+          type: string
+          required: true
+          description: Bounding box as min_lon,min_lat,max_lon,max_lat (e.g., -0.489,51.28,0.236,51.686)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: node-id
+      path: /node/{id}
+      operations:
+      - name: getnode
+        method: GET
+        description: Get node by ID
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatenode
+        method: PUT
+        description: Update a node
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletenode
+        method: DELETE
+        description: Delete a node
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: node-create
+      path: /node/create
+      operations:
+      - name: createnode
+        method: PUT
+        description: Create a new node
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: node-id-version
+      path: /node/{id}/{version}
+      operations:
+      - name: getnodeversion
+        method: GET
+        description: Get a specific version of a node
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        - name: version
+          in: path
+          type: integer
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: way-id
+      path: /way/{id}
+      operations:
+      - name: getway
+        method: GET
+        description: Get way by ID
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: relation-id
+      path: /relation/{id}
+      operations:
+      - name: getrelation
+        method: GET
+        description: Get relation by ID
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: changeset-create
+      path: /changeset/create
+      operations:
+      - name: createchangeset
+        method: PUT
+        description: Create a changeset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: changeset-id
+      path: /changeset/{id}
+      operations:
+      - name: getchangeset
+        method: GET
+        description: Get changeset details
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        - name: include_discussion
+          in: query
+          type: boolean
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatechangeset
+        method: PUT
+        description: Update changeset tags
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: changeset-id-close
+      path: /changeset/{id}/close
+      operations:
+      - name: closechangeset
+        method: PUT
+        description: Close a changeset
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: changeset-id-upload
+      path: /changeset/{id}/upload
+      operations:
+      - name: uploadchangeset
+        method: POST
+        description: Upload an OsmChange document
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: notes
+      path: /notes
+      operations:
+      - name: searchnotes
+        method: GET
+        description: Search notes
+        inputParameters:
+        - name: bbox
+          in: query
+          type: string
+          description: Bounding box (min_lon,min_lat,max_lon,max_lat)
+        - name: q
+          in: query
+          type: string
+          description: Free text search
+        - name: status
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+        - name: closed
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createnote
+        method: POST
+        description: Create a note
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: notes-id
+      path: /notes/{id}
+      operations:
+      - name: getnote
+        method: GET
+        description: Get a note
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: user-details
+      path: /user/details
+      operations:
+      - name: getuserdetails
+        method: GET
+        description: Get authenticated user details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: capabilities
+      path: /capabilities
+      operations:
+      - name: getcapabilities
+        method: GET
+        description: Get API capabilities and limits
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: openstreetmap-rest
+    description: REST adapter for OpenStreetMap API v0.6.
+    resources:
+    - path: /map
+      name: getmapdata
+      operations:
+      - method: GET
+        name: getmapdata
+        description: Get map data for a bounding box
+        call: openstreetmap.getmapdata
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /node/{id}
+      name: getnode
+      operations:
+      - method: GET
+        name: getnode
+        description: Get node by ID
+        call: openstreetmap.getnode
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /node/{id}
+      name: updatenode
+      operations:
+      - method: PUT
+        name: updatenode
+        description: Update a node
+        call: openstreetmap.updatenode
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /node/{id}
+      name: deletenode
+      operations:
+      - method: DELETE
+        name: deletenode
+        description: Delete a node
+        call: openstreetmap.deletenode
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /node/create
+      name: createnode
+      operations:
+      - method: PUT
+        name: createnode
+        description: Create a new node
+        call: openstreetmap.createnode
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /node/{id}/{version}
+      name: getnodeversion
+      operations:
+      - method: GET
+        name: getnodeversion
+        description: Get a specific version of a node
+        call: openstreetmap.getnodeversion
+        with:
+          id: rest.id
+          version: rest.version
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /way/{id}
+      name: getway
+      operations:
+      - method: GET
+        name: getway
+        description: Get way by ID
+        call: openstreetmap.getway
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /relation/{id}
+      name: getrelation
+      operations:
+      - method: GET
+        name: getrelation
+        description: Get relation by ID
+        call: openstreetmap.getrelation
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /changeset/create
+      name: createchangeset
+      operations:
+      - method: PUT
+        name: createchangeset
+        description: Create a changeset
+        call: openstreetmap.createchangeset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /changeset/{id}
+      name: getchangeset
+      operations:
+      - method: GET
+        name: getchangeset
+        description: Get changeset details
+        call: openstreetmap.getchangeset
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /changeset/{id}
+      name: updatechangeset
+      operations:
+      - method: PUT
+        name: updatechangeset
+        description: Update changeset tags
+        call: openstreetmap.updatechangeset
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /changeset/{id}/close
+      name: closechangeset
+      operations:
+      - method: PUT
+        name: closechangeset
+        description: Close a changeset
+        call: openstreetmap.closechangeset
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /changeset/{id}/upload
+      name: uploadchangeset
+      operations:
+      - method: POST
+        name: uploadchangeset
+        description: Upload an OsmChange document
+        call: openstreetmap.uploadchangeset
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /notes
+      name: searchnotes
+      operations:
+      - method: GET
+        name: searchnotes
+        description: Search notes
+        call: openstreetmap.searchnotes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /notes
+      name: createnote
+      operations:
+      - method: POST
+        name: createnote
+        description: Create a note
+        call: openstreetmap.createnote
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /notes/{id}
+      name: getnote
+      operations:
+      - method: GET
+        name: getnote
+        description: Get a note
+        call: openstreetmap.getnote
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /user/details
+      name: getuserdetails
+      operations:
+      - method: GET
+        name: getuserdetails
+        description: Get authenticated user details
+        call: openstreetmap.getuserdetails
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /capabilities
+      name: getcapabilities
+      operations:
+      - method: GET
+        name: getcapabilities
+        description: Get API capabilities and limits
+        call: openstreetmap.getcapabilities
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: openstreetmap-mcp
+    transport: http
+    description: MCP adapter for OpenStreetMap API v0.6 for AI agent use.
+    tools:
+    - name: getmapdata
+      description: Get map data for a bounding box
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openstreetmap.getmapdata
+      with:
+        bbox: tools.bbox
+      inputParameters:
+      - name: bbox
+        type: string
+        description: Bounding box as min_lon,min_lat,max_lon,max_lat (e.g., -0.489,51.28,0.236,51.686)
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getnode
+      description: Get node by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openstreetmap.getnode
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: integer
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatenode
+      description: Update a node
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: openstreetmap.updatenode
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: integer
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletenode
+      description: Delete a node
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: openstreetmap.deletenode
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: integer
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createnode
+      description: Create a new node
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: openstreetmap.createnode
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getnodeversion
+      description: Get a specific version of a node
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openstreetmap.getnodeversion
+      with:
+        id: tools.id
+        version: tools.version
+      inputParameters:
+      - name: id
+        type: integer
+        description: id
+        required: true
+      - name: version
+        type: integer
+        description: version
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getway
+      description: Get way by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openstreetmap.getway
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: integer
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getrelation
+      description: Get relation by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openstreetmap.getrelation
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: integer
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createchangeset
+      description: Create a changeset
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: openstreetmap.createchangeset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getchangeset
+      description: Get changeset details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openstreetmap.getchangeset
+      with:
+        id: tools.id
+        include_discussion: tools.include_discussion
+      inputParameters:
+      - name: id
+        type: integer
+        description: id
+        required: true
+      - name: include_discussion
+        type: boolean
+        description: include_discussion
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatechangeset
+      description: Update changeset tags
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: openstreetmap.updatechangeset
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: integer
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: closechangeset
+      description: Close a changeset
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: openstreetmap.closechangeset
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: integer
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: uploadchangeset
+      description: Upload an OsmChange document
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openstreetmap.uploadchangeset
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: integer
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: searchnotes
+      description: Search notes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openstreetmap.searchnotes
+      with:
+        bbox: tools.bbox
+        q: tools.q
+        status: tools.status
+        limit: tools.limit
+        closed: tools.closed
+      inputParameters:
+      - name: bbox
+        type: string
+        description: Bounding box (min_lon,min_lat,max_lon,max_lat)
+      - name: q
+        type: string
+        description: Free text search
+      - name: status
+        type: string
+        description: status
+      - name: limit
+        type: integer
+        description: limit
+      - name: closed
+        type: integer
+        description: closed
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createnote
+      description: Create a note
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openstreetmap.createnote
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getnote
+      description: Get a note
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openstreetmap.getnote
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: integer
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getuserdetails
+      description: Get authenticated user details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openstreetmap.getuserdetails
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcapabilities
+      description: Get API capabilities and limits
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openstreetmap.getcapabilities
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    OPENSTREETMAP_TOKEN: OPENSTREETMAP_TOKEN
