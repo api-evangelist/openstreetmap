@@ -1,0 +1,176 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenStreetMap API v0.6 — Notes
+  description: 'OpenStreetMap API v0.6 — Notes. 3 operations. Lead operation: Search notes. Self-contained Naftiko capability
+    covering one Openstreetmap business surface.'
+  tags:
+  - Openstreetmap
+  - Notes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OPENSTREETMAP_API_KEY: OPENSTREETMAP_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: main-notes
+    baseUri: https://api.openstreetmap.org/api/0.6
+    description: OpenStreetMap API v0.6 — Notes business capability. Self-contained, no shared references.
+    resources:
+    - name: notes
+      path: /notes
+      operations:
+      - name: searchnotes
+        method: GET
+        description: Search notes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: bbox
+          in: query
+          type: string
+          description: Bounding box (min_lon,min_lat,max_lon,max_lat)
+        - name: q
+          in: query
+          type: string
+          description: Free text search
+        - name: status
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+        - name: closed
+          in: query
+          type: integer
+      - name: createnote
+        method: POST
+        description: Create a note
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: notes-id
+      path: /notes/{id}
+      operations:
+      - name: getnote
+        method: GET
+        description: Get a note
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.OPENSTREETMAP_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: main-notes-rest
+    port: 8080
+    description: REST adapter for OpenStreetMap API v0.6 — Notes. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/notes
+      name: notes
+      description: REST surface for notes.
+      operations:
+      - method: GET
+        name: searchnotes
+        description: Search notes
+        call: main-notes.searchnotes
+        with:
+          bbox: rest.bbox
+          q: rest.q
+          status: rest.status
+          limit: rest.limit
+          closed: rest.closed
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createnote
+        description: Create a note
+        call: main-notes.createnote
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/notes/{id}
+      name: notes-id
+      description: REST surface for notes-id.
+      operations:
+      - method: GET
+        name: getnote
+        description: Get a note
+        call: main-notes.getnote
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: main-notes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenStreetMap API v0.6 — Notes. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: search-notes
+      description: Search notes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: main-notes.searchnotes
+      with:
+        bbox: tools.bbox
+        q: tools.q
+        status: tools.status
+        limit: tools.limit
+        closed: tools.closed
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-note
+      description: Create a note
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: main-notes.createnote
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-note
+      description: Get a note
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: main-notes.getnote
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

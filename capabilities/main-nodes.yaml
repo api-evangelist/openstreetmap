@@ -1,0 +1,250 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenStreetMap API v0.6 — Nodes
+  description: 'OpenStreetMap API v0.6 — Nodes. 5 operations. Lead operation: Create a new node. Self-contained Naftiko capability
+    covering one Openstreetmap business surface.'
+  tags:
+  - Openstreetmap
+  - Nodes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OPENSTREETMAP_API_KEY: OPENSTREETMAP_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: main-nodes
+    baseUri: https://api.openstreetmap.org/api/0.6
+    description: OpenStreetMap API v0.6 — Nodes business capability. Self-contained, no shared references.
+    resources:
+    - name: node-create
+      path: /node/create
+      operations:
+      - name: createnode
+        method: PUT
+        description: Create a new node
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: node-id
+      path: /node/{id}
+      operations:
+      - name: getnode
+        method: GET
+        description: Get node by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+      - name: updatenode
+        method: PUT
+        description: Update a node
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletenode
+        method: DELETE
+        description: Delete a node
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: node-id-version
+      path: /node/{id}/{version}
+      operations:
+      - name: getnodeversion
+        method: GET
+        description: Get a specific version of a node
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        - name: version
+          in: path
+          type: integer
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.OPENSTREETMAP_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: main-nodes-rest
+    port: 8080
+    description: REST adapter for OpenStreetMap API v0.6 — Nodes. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/node/create
+      name: node-create
+      description: REST surface for node-create.
+      operations:
+      - method: PUT
+        name: createnode
+        description: Create a new node
+        call: main-nodes.createnode
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/node/{id}
+      name: node-id
+      description: REST surface for node-id.
+      operations:
+      - method: GET
+        name: getnode
+        description: Get node by ID
+        call: main-nodes.getnode
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatenode
+        description: Update a node
+        call: main-nodes.updatenode
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletenode
+        description: Delete a node
+        call: main-nodes.deletenode
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/node/{id}/{version}
+      name: node-id-version
+      description: REST surface for node-id-version.
+      operations:
+      - method: GET
+        name: getnodeversion
+        description: Get a specific version of a node
+        call: main-nodes.getnodeversion
+        with:
+          id: rest.id
+          version: rest.version
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: main-nodes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenStreetMap API v0.6 — Nodes. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: create-new-node
+      description: Create a new node
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: main-nodes.createnode
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-node-id
+      description: Get node by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: main-nodes.getnode
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-node
+      description: Update a node
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: main-nodes.updatenode
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-node
+      description: Delete a node
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: main-nodes.deletenode
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-specific-version-node
+      description: Get a specific version of a node
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: main-nodes.getnodeversion
+      with:
+        id: tools.id
+        version: tools.version
+      outputParameters:
+      - type: object
+        mapping: $.

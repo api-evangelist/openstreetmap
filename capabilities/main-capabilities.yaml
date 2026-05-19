@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenStreetMap API v0.6 — Capabilities
+  description: 'OpenStreetMap API v0.6 — Capabilities. 1 operations. Lead operation: Get API capabilities and limits. Self-contained
+    Naftiko capability covering one Openstreetmap business surface.'
+  tags:
+  - Openstreetmap
+  - Capabilities
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OPENSTREETMAP_API_KEY: OPENSTREETMAP_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: main-capabilities
+    baseUri: https://api.openstreetmap.org/api/0.6
+    description: OpenStreetMap API v0.6 — Capabilities business capability. Self-contained, no shared references.
+    resources:
+    - name: capabilities
+      path: /capabilities
+      operations:
+      - name: getcapabilities
+        method: GET
+        description: Get API capabilities and limits
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.OPENSTREETMAP_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: main-capabilities-rest
+    port: 8080
+    description: REST adapter for OpenStreetMap API v0.6 — Capabilities. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/capabilities
+      name: capabilities
+      description: REST surface for capabilities.
+      operations:
+      - method: GET
+        name: getcapabilities
+        description: Get API capabilities and limits
+        call: main-capabilities.getcapabilities
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: main-capabilities-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenStreetMap API v0.6 — Capabilities. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-api-capabilities-and-limits
+      description: Get API capabilities and limits
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: main-capabilities.getcapabilities
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,256 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenStreetMap API v0.6 — Changesets
+  description: 'OpenStreetMap API v0.6 — Changesets. 5 operations. Lead operation: Create a changeset. Self-contained Naftiko
+    capability covering one Openstreetmap business surface.'
+  tags:
+  - Openstreetmap
+  - Changesets
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OPENSTREETMAP_API_KEY: OPENSTREETMAP_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: main-changesets
+    baseUri: https://api.openstreetmap.org/api/0.6
+    description: OpenStreetMap API v0.6 — Changesets business capability. Self-contained, no shared references.
+    resources:
+    - name: changeset-create
+      path: /changeset/create
+      operations:
+      - name: createchangeset
+        method: PUT
+        description: Create a changeset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: changeset-id
+      path: /changeset/{id}
+      operations:
+      - name: getchangeset
+        method: GET
+        description: Get changeset details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        - name: include_discussion
+          in: query
+          type: boolean
+      - name: updatechangeset
+        method: PUT
+        description: Update changeset tags
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: changeset-id-close
+      path: /changeset/{id}/close
+      operations:
+      - name: closechangeset
+        method: PUT
+        description: Close a changeset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+    - name: changeset-id-upload
+      path: /changeset/{id}/upload
+      operations:
+      - name: uploadchangeset
+        method: POST
+        description: Upload an OsmChange document
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.OPENSTREETMAP_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: main-changesets-rest
+    port: 8080
+    description: REST adapter for OpenStreetMap API v0.6 — Changesets. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/changeset/create
+      name: changeset-create
+      description: REST surface for changeset-create.
+      operations:
+      - method: PUT
+        name: createchangeset
+        description: Create a changeset
+        call: main-changesets.createchangeset
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/changeset/{id}
+      name: changeset-id
+      description: REST surface for changeset-id.
+      operations:
+      - method: GET
+        name: getchangeset
+        description: Get changeset details
+        call: main-changesets.getchangeset
+        with:
+          id: rest.id
+          include_discussion: rest.include_discussion
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatechangeset
+        description: Update changeset tags
+        call: main-changesets.updatechangeset
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/changeset/{id}/close
+      name: changeset-id-close
+      description: REST surface for changeset-id-close.
+      operations:
+      - method: PUT
+        name: closechangeset
+        description: Close a changeset
+        call: main-changesets.closechangeset
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/changeset/{id}/upload
+      name: changeset-id-upload
+      description: REST surface for changeset-id-upload.
+      operations:
+      - method: POST
+        name: uploadchangeset
+        description: Upload an OsmChange document
+        call: main-changesets.uploadchangeset
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: main-changesets-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenStreetMap API v0.6 — Changesets. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: create-changeset
+      description: Create a changeset
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: main-changesets.createchangeset
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-changeset-details
+      description: Get changeset details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: main-changesets.getchangeset
+      with:
+        id: tools.id
+        include_discussion: tools.include_discussion
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-changeset-tags
+      description: Update changeset tags
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: main-changesets.updatechangeset
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: close-changeset
+      description: Close a changeset
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: main-changesets.closechangeset
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: upload-osmchange-document
+      description: Upload an OsmChange document
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: main-changesets.uploadchangeset
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenStreetMap API v0.6 — Map Data
+  description: 'OpenStreetMap API v0.6 — Map Data. 1 operations. Lead operation: Get map data for a bounding box. Self-contained
+    Naftiko capability covering one Openstreetmap business surface.'
+  tags:
+  - Openstreetmap
+  - Map Data
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OPENSTREETMAP_API_KEY: OPENSTREETMAP_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: main-map-data
+    baseUri: https://api.openstreetmap.org/api/0.6
+    description: OpenStreetMap API v0.6 — Map Data business capability. Self-contained, no shared references.
+    resources:
+    - name: map
+      path: /map
+      operations:
+      - name: getmapdata
+        method: GET
+        description: Get map data for a bounding box
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: bbox
+          in: query
+          type: string
+          description: Bounding box as min_lon,min_lat,max_lon,max_lat (e.g., -0.489,51.28,0.236,51.686)
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.OPENSTREETMAP_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: main-map-data-rest
+    port: 8080
+    description: REST adapter for OpenStreetMap API v0.6 — Map Data. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/map
+      name: map
+      description: REST surface for map.
+      operations:
+      - method: GET
+        name: getmapdata
+        description: Get map data for a bounding box
+        call: main-map-data.getmapdata
+        with:
+          bbox: rest.bbox
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: main-map-data-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenStreetMap API v0.6 — Map Data. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-map-data-bounding-box
+      description: Get map data for a bounding box
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: main-map-data.getmapdata
+      with:
+        bbox: tools.bbox
+      outputParameters:
+      - type: object
+        mapping: $.
