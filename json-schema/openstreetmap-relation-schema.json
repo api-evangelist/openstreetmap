@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Relation",
+  "title": "Relation",
+  "type": "object",
+  "description": "An OSM relation (groups nodes, ways, or other relations)",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "relation"
+      ]
+    },
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "node",
+              "way",
+              "relation"
+            ]
+          },
+          "ref": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "role": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "version": {
+      "type": "integer"
+    },
+    "changeset": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

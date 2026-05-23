@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Capabilities",
+  "title": "Capabilities",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "object",
+      "properties": {
+        "minimum": {
+          "type": "string"
+        },
+        "maximum": {
+          "type": "string"
+        }
+      }
+    },
+    "area": {
+      "type": "object",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Max area in sq degrees"
+        }
+      }
+    },
+    "tracepoints": {
+      "type": "object",
+      "properties": {
+        "per_page": {
+          "type": "integer"
+        }
+      }
+    },
+    "waynodes": {
+      "type": "object",
+      "properties": {
+        "maximum": {
+          "type": "integer"
+        }
+      }
+    },
+    "changesets": {
+      "type": "object",
+      "properties": {
+        "maximum_elements": {
+          "type": "integer"
+        }
+      }
+    },
+    "notes": {
+      "type": "object",
+      "properties": {
+        "default_query_limit": {
+          "type": "integer"
+        },
+        "hard_query_limit": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

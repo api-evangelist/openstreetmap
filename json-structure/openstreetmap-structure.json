@@ -1,0 +1,228 @@
+{
+  "provider": "OpenStreetMap",
+  "providerId": "openstreetmap",
+  "kind": "json-structure",
+  "description": "Structural overview of the OpenStreetMap API surface; extracted from openapi/.",
+  "schemaCount": 9,
+  "operationCount": 18,
+  "schemas": [
+    {
+      "name": "Node",
+      "type": "object",
+      "propertyCount": 11,
+      "required": []
+    },
+    {
+      "name": "Way",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "Relation",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "OSMData",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "Changeset",
+      "type": "object",
+      "propertyCount": 13,
+      "required": []
+    },
+    {
+      "name": "Note",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "NoteCollection",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "User",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "Capabilities",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/map",
+      "operationId": "getMapData",
+      "summary": "Get map data for a bounding box",
+      "tags": [
+        "Map Data"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/node/{id}",
+      "operationId": "getNode",
+      "summary": "Get node by ID",
+      "tags": [
+        "Nodes"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/node/{id}",
+      "operationId": "updateNode",
+      "summary": "Update a node",
+      "tags": [
+        "Nodes"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/node/{id}",
+      "operationId": "deleteNode",
+      "summary": "Delete a node",
+      "tags": [
+        "Nodes"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/node/create",
+      "operationId": "createNode",
+      "summary": "Create a new node",
+      "tags": [
+        "Nodes"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/node/{id}/{version}",
+      "operationId": "getNodeVersion",
+      "summary": "Get a specific version of a node",
+      "tags": [
+        "Nodes"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/way/{id}",
+      "operationId": "getWay",
+      "summary": "Get way by ID",
+      "tags": [
+        "Ways"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/relation/{id}",
+      "operationId": "getRelation",
+      "summary": "Get relation by ID",
+      "tags": [
+        "Relations"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/changeset/create",
+      "operationId": "createChangeset",
+      "summary": "Create a changeset",
+      "tags": [
+        "Changesets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/changeset/{id}",
+      "operationId": "getChangeset",
+      "summary": "Get changeset details",
+      "tags": [
+        "Changesets"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/changeset/{id}",
+      "operationId": "updateChangeset",
+      "summary": "Update changeset tags",
+      "tags": [
+        "Changesets"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/changeset/{id}/close",
+      "operationId": "closeChangeset",
+      "summary": "Close a changeset",
+      "tags": [
+        "Changesets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/changeset/{id}/upload",
+      "operationId": "uploadChangeset",
+      "summary": "Upload an OsmChange document",
+      "tags": [
+        "Changesets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/notes",
+      "operationId": "searchNotes",
+      "summary": "Search notes",
+      "tags": [
+        "Notes"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/notes",
+      "operationId": "createNote",
+      "summary": "Create a note",
+      "tags": [
+        "Notes"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/notes/{id}",
+      "operationId": "getNote",
+      "summary": "Get a note",
+      "tags": [
+        "Notes"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/user/details",
+      "operationId": "getUserDetails",
+      "summary": "Get authenticated user details",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/capabilities",
+      "operationId": "getCapabilities",
+      "summary": "Get API capabilities and limits",
+      "tags": [
+        "Capabilities"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+name: OpenStreetMap Domain Vocabulary
+provider: OpenStreetMap
+providerId: openstreetmap
+description: Tag-derived vocabulary for the OpenStreetMap API surface; sourced from openapi/ tags.
+terms:
+- term: Capabilities
+  description: API version and limits
+- term: Changesets
+  description: Changeset management for grouped edits
+- term: Map Data
+  description: Bulk map data retrieval by bounding box
+- term: Nodes
+  description: OSM node (point) operations
+- term: Notes
+  description: Community map notes
+- term: Relations
+  description: OSM relation operations
+- term: Users
+  description: User account information
+- term: Ways
+  description: OSM way (line/polygon) operations

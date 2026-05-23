@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OSMData",
+  "title": "OSMData",
+  "type": "object",
+  "description": "OSM data response containing nodes, ways, and relations",
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "generator": {
+      "type": "string"
+    },
+    "copyright": {
+      "type": "string"
+    },
+    "attribution": {
+      "type": "string"
+    },
+    "license": {
+      "type": "string"
+    },
+    "bounds": {
+      "type": "object",
+      "properties": {
+        "minlat": {
+          "type": "number"
+        },
+        "minlon": {
+          "type": "number"
+        },
+        "maxlat": {
+          "type": "number"
+        },
+        "maxlon": {
+          "type": "number"
+        }
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Node"
+      }
+    },
+    "ways": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Way"
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Relation"
+      }
+    }
+  }
+}

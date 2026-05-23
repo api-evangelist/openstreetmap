@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Changeset",
+  "title": "Changeset",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "closed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "open": {
+      "type": "boolean"
+    },
+    "user": {
+      "type": "string"
+    },
+    "uid": {
+      "type": "integer"
+    },
+    "min_lat": {
+      "type": "number"
+    },
+    "min_lon": {
+      "type": "number"
+    },
+    "max_lat": {
+      "type": "number"
+    },
+    "max_lon": {
+      "type": "number"
+    },
+    "changes_count": {
+      "type": "integer"
+    },
+    "comments_count": {
+      "type": "integer"
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  }
+}

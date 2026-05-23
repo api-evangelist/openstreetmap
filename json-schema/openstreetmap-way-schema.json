@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Way",
+  "title": "Way",
+  "type": "object",
+  "description": "An OSM way (an ordered list of nodes forming a line or polygon)",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "way"
+      ]
+    },
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "format": "int64"
+      },
+      "description": "Ordered list of node IDs"
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "version": {
+      "type": "integer"
+    },
+    "changeset": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "user": {
+      "type": "string"
+    },
+    "uid": {
+      "type": "integer"
+    },
+    "visible": {
+      "type": "boolean"
+    }
+  }
+}
