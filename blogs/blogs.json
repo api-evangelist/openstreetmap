@@ -2,12 +2,20 @@
   "repo": "openstreetmap",
   "feeds": [
     {
+      "source": "https://blog.openstreetmap.org/feed/",
+      "feed_url": "https://blog.openstreetmap.org/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
       "source": "https://blog.openstreetmap.org/",
       "feed_url": "https://blog.openstreetmap.org/feed/",
-      "title": "OpenStreetMap Blog",
-      "saved": 2
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
     }
   ],
-  "post_count": 12,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 13,
+  "fetched": "2026-06-01T23:35:02Z"
 }
