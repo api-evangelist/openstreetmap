@@ -1,0 +1,413 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStreetMap API v0.6",
+    "version": "0.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Map Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get map data for a bounding box",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/map",
+            "params": [
+              {
+                "name": "bbox",
+                "value": "",
+                "type": "query",
+                "description": "Bounding box as min_lon,min_lat,max_lon,max_lat (e.g., -0.489,51.28,0.236,51.686)"
+              }
+            ]
+          },
+          "docs": "Retrieve all OSM nodes, ways, and relations within a bounding box. Maximum area: 0.25 square degrees. Returns all objects with their current attributes and tags. High-volume use should use Overpass API instead."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Nodes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get node by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/node/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the current version of a node."
+        },
+        {
+          "info": {
+            "name": "Update a node",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.openstreetmap.org/api/0.6/node/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Modify an existing node. Requires authentication and an open changeset."
+        },
+        {
+          "info": {
+            "name": "Delete a node",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.openstreetmap.org/api/0.6/node/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Mark a node as deleted in an open changeset."
+        },
+        {
+          "info": {
+            "name": "Create a new node",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.openstreetmap.org/api/0.6/node/create"
+          },
+          "docs": "Create a new node within an open changeset."
+        },
+        {
+          "info": {
+            "name": "Get a specific version of a node",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/node/:id/:version",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a historical version of a node."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Ways",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get way by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/way/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the current version of a way and its node references."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Relations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get relation by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/relation/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the current version of a relation with its members."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Changesets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a changeset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/create"
+          },
+          "docs": "Create a new changeset to group editing operations."
+        },
+        {
+          "info": {
+            "name": "Get changeset details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include_discussion",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve metadata for a changeset including tags, timestamps, and bounding box."
+        },
+        {
+          "info": {
+            "name": "Update changeset tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Modify the tags of an open changeset (must be the owner)."
+        },
+        {
+          "info": {
+            "name": "Close a changeset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/:id/close",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Close an open changeset (no more edits may be added after this)."
+        },
+        {
+          "info": {
+            "name": "Upload an OsmChange document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/:id/upload",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Upload a batch of creates, modifies, and deletes as an OsmChange XML document. Atomic: either all operations succeed or none are applied."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Notes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/notes",
+            "params": [
+              {
+                "name": "bbox",
+                "value": "",
+                "type": "query",
+                "description": "Bounding box (min_lon,min_lat,max_lon,max_lat)"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Free text search"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "closed",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search OSM notes by bounding box, text, status, or user."
+        },
+        {
+          "info": {
+            "name": "Create a note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openstreetmap.org/api/0.6/notes",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "lat",
+                  "value": ""
+                },
+                {
+                  "name": "lon",
+                  "value": ""
+                },
+                {
+                  "name": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a new map note at a geographic location."
+        },
+        {
+          "info": {
+            "name": "Get a note",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific note by its ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get authenticated user details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/user/details"
+          },
+          "docs": "Returns details of the authenticated user."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Capabilities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get API capabilities and limits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/capabilities"
+          },
+          "docs": "Returns current API capabilities including version, rate limits, and maximum area limits. No authentication required."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

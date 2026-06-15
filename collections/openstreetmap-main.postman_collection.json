@@ -1,0 +1,2293 @@
+{
+  "item": [
+    {
+      "id": "feb8349f-6ff5-40d2-9097-1a95629a9e2f",
+      "name": "Capabilities",
+      "description": {
+        "content": "API version and limits",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fbd300d1-9ca2-4bcf-bdcb-4f65707b6b9d",
+          "name": "Get API capabilities and limits",
+          "request": {
+            "name": "Get API capabilities and limits",
+            "description": {
+              "content": "Returns current API capabilities including version, rate limits, and maximum area limits. No authentication required.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "capabilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd4369d0-6b13-4003-8fe2-290ae8a7207b",
+              "name": "API capabilities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": {\n    \"minimum\": \"string\",\n    \"maximum\": \"string\"\n  },\n  \"area\": {\n    \"maximum\": 9363.627177039003\n  },\n  \"tracepoints\": {\n    \"per_page\": 3851\n  },\n  \"waynodes\": {\n    \"maximum\": 9641\n  },\n  \"changesets\": {\n    \"maximum_elements\": 3284\n  },\n  \"notes\": {\n    \"default_query_limit\": 2199,\n    \"hard_query_limit\": 2501\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f7f60a27-a69a-4db2-9a22-4a3391bc615d",
+      "name": "Changesets",
+      "description": {
+        "content": "Changeset management for grouped edits",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e064f0ac-5a83-403b-8fea-bd6d139657b8",
+          "name": "Create a changeset",
+          "request": {
+            "name": "Create a changeset",
+            "description": {
+              "content": "Create a new changeset to group editing operations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "changeset",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/xml"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "options": {
+                "raw": {
+                  "language": "xml"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2d3bf228-48bf-4bd5-901a-d584f0727bc9",
+              "name": "ID of the created changeset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "changeset",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da06e11b-8183-4383-826e-5e92b1287752",
+          "name": "Get changeset details",
+          "request": {
+            "name": "Get changeset details",
+            "description": {
+              "content": "Retrieve metadata for a changeset including tags, timestamps, and bounding box.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "changeset",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_discussion",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0ab9f602-31ef-40ba-95c5-184591a2acfb",
+              "name": "Changeset details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "changeset",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_discussion",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4655,\n  \"created_at\": \"1983-03-29T14:00:06.106Z\",\n  \"closed_at\": \"1965-10-13T22:58:15.432Z\",\n  \"open\": true,\n  \"user\": \"string\",\n  \"uid\": 2198,\n  \"min_lat\": 9695.226483091388,\n  \"min_lon\": 2493.643818925079,\n  \"max_lat\": 979.5362730246926,\n  \"max_lon\": 495.0956703893006,\n  \"changes_count\": 5606,\n  \"comments_count\": 6529,\n  \"tags\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad57fb93-7d6e-4377-808d-cb9b44b15172",
+          "name": "Update changeset tags",
+          "request": {
+            "name": "Update changeset tags",
+            "description": {
+              "content": "Modify the tags of an open changeset (must be the owner).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "changeset",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/xml"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "options": {
+                "raw": {
+                  "language": "xml"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ef885bfd-b320-4083-9c80-a5036154ecec",
+              "name": "Updated changeset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "changeset",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b77c9c32-07f6-48cc-a646-a6579a3dae2a",
+          "name": "Close a changeset",
+          "request": {
+            "name": "Close a changeset",
+            "description": {
+              "content": "Close an open changeset (no more edits may be added after this).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "changeset",
+                ":id",
+                "close"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3fd4c503-ab31-4f1b-8303-7d40d5cdbad8",
+              "name": "Empty response on success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "changeset",
+                    ":id",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2e60017d-30c1-441f-9abe-1d2b67b4f88e",
+              "name": "Changeset already closed or owned by another user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "changeset",
+                    ":id",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "850490d1-155a-49fe-ae64-1fecad00d121",
+          "name": "Upload an OsmChange document",
+          "request": {
+            "name": "Upload an OsmChange document",
+            "description": {
+              "content": "Upload a batch of creates, modifies, and deletes as an OsmChange XML document. Atomic: either all operations succeed or none are applied.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "changeset",
+                ":id",
+                "upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/xml"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "options": {
+                "raw": {
+                  "language": "xml"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "88cf2d24-b098-49f5-aa08-290f1924edc0",
+              "name": "diffResult XML showing old and new IDs for all objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "changeset",
+                    ":id",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "43ae7d44-1646-4339-8712-2938fb6fc532",
+      "name": "Map Data",
+      "description": {
+        "content": "Bulk map data retrieval by bounding box",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d5c94d39-58c5-4b94-a96d-1dd5538fdb55",
+          "name": "Get map data for a bounding box",
+          "request": {
+            "name": "Get map data for a bounding box",
+            "description": {
+              "content": "Retrieve all OSM nodes, ways, and relations within a bounding box. Maximum area: 0.25 square degrees. Returns all objects with their current attributes and tags. High-volume use should use Overpass API instead.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "map"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "bbox",
+                  "value": "<string>",
+                  "description": "(Required) Bounding box as min_lon,min_lat,max_lon,max_lat (e.g., -0.489,51.28,0.236,51.686)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d2b01a6c-29a2-416e-9c56-cdfe606d112e",
+              "name": "OSM map data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"string\",\n  \"generator\": \"string\",\n  \"copyright\": \"string\",\n  \"attribution\": \"string\",\n  \"license\": \"string\",\n  \"bounds\": {\n    \"minlat\": 5348.537519959451,\n    \"minlon\": 4747.826830330273,\n    \"maxlat\": 5594.573371136905,\n    \"maxlon\": 9081.525134897125\n  },\n  \"nodes\": [\n    {\n      \"type\": \"node\",\n      \"id\": 1407,\n      \"lat\": -72.14255322126232,\n      \"lon\": -127.42647256376418,\n      \"tags\": {\n        \"key_0\": \"string\"\n      },\n      \"version\": 8226,\n      \"changeset\": 8766,\n      \"timestamp\": \"2023-08-16T11:22:43.235Z\",\n      \"user\": \"string\",\n      \"uid\": 2204,\n      \"visible\": false\n    },\n    {\n      \"type\": \"node\",\n      \"id\": 7754,\n      \"lat\": -40.730797461913426,\n      \"lon\": 166.4824562617248,\n      \"tags\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"version\": 5557,\n      \"changeset\": 1175,\n      \"timestamp\": \"1999-04-28T21:46:36.442Z\",\n      \"user\": \"string\",\n      \"uid\": 2383,\n      \"visible\": false\n    }\n  ],\n  \"ways\": [\n    {\n      \"type\": \"way\",\n      \"id\": 688,\n      \"nodes\": [\n        5708,\n        8978\n      ],\n      \"tags\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"version\": 5699,\n      \"changeset\": 3493,\n      \"timestamp\": \"2019-06-29T12:40:40.287Z\",\n      \"user\": \"string\",\n      \"uid\": 8241,\n      \"visible\": true\n    },\n    {\n      \"type\": \"way\",\n      \"id\": 1102,\n      \"nodes\": [\n        3822,\n        9871\n      ],\n      \"tags\": {\n        \"key_0\": \"string\"\n      },\n      \"version\": 4737,\n      \"changeset\": 4482,\n      \"timestamp\": \"2016-11-29T21:01:35.858Z\",\n      \"user\": \"string\",\n      \"uid\": 5085,\n      \"visible\": true\n    }\n  ],\n  \"relations\": [\n    {\n      \"type\": \"relation\",\n      \"id\": 1089,\n      \"members\": [\n        {\n          \"type\": \"relation\",\n          \"ref\": 5061,\n          \"role\": \"string\"\n        },\n        {\n          \"type\": \"way\",\n          \"ref\": 4792,\n          \"role\": \"string\"\n        }\n      ],\n      \"tags\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"version\": 5406,\n      \"changeset\": 1183,\n      \"timestamp\": \"1961-01-29T19:44:46.661Z\"\n    },\n    {\n      \"type\": \"relation\",\n      \"id\": 2875,\n      \"members\": [\n        {\n          \"type\": \"way\",\n          \"ref\": 7903,\n          \"role\": \"string\"\n        },\n        {\n          \"type\": \"way\",\n          \"ref\": 3185,\n          \"role\": \"string\"\n        }\n      ],\n      \"tags\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"version\": 2955,\n      \"changeset\": 6133,\n      \"timestamp\": \"1951-07-28T07:28:55.637Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00d17dc3-2371-4d51-8b74-c6b24b8d69da",
+              "name": "Area too large or invalid bounding box",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "46e77002-3ad4-4bfe-814b-a8418e4f63af",
+              "name": "User throttled for excessive use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bandwidth Limit Exceeded (Apache bw/limited extension)",
+              "code": 509,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "734d7994-97a5-4490-91f8-847b5f02a675",
+      "name": "Nodes",
+      "description": {
+        "content": "OSM node (point) operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e79a3538-17c1-4477-984b-302bef946a4d",
+          "name": "Get node by ID",
+          "request": {
+            "name": "Get node by ID",
+            "description": {
+              "content": "Retrieve the current version of a node.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "node",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a4b1f23b-a00f-4cb4-802e-51280f7ace57",
+              "name": "Node data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"node\",\n  \"id\": 7740,\n  \"lat\": 16.717980831050085,\n  \"lon\": -148.91624011144572,\n  \"tags\": {\n    \"key_0\": \"string\"\n  },\n  \"version\": 1641,\n  \"changeset\": 2895,\n  \"timestamp\": \"1985-04-29T16:07:32.113Z\",\n  \"user\": \"string\",\n  \"uid\": 7351,\n  \"visible\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0a91ab1-9cf2-4eb8-bd2e-691918622374",
+              "name": "Node not found (or deleted)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cf98ef1c-aa2c-4229-a58d-7373ea5a5cea",
+              "name": "Node was deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e8aff7a3-d840-4923-94c7-cc27a5aa22b2",
+          "name": "Update a node",
+          "request": {
+            "name": "Update a node",
+            "description": {
+              "content": "Modify an existing node. Requires authentication and an open changeset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "node",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/xml"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "options": {
+                "raw": {
+                  "language": "xml"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "38541110-1581-461e-b7a5-8e1fccc5422d",
+              "name": "New version number of the node",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "298e3491-91d9-4e69-a984-55b903ba450e",
+              "name": "Changeset conflict or node version mismatch",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ec7fdaed-68a4-46f2-93c2-2d9e1f55fa7a",
+              "name": "Precondition failed (node is still in use by a way/relation)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fed9cac3-8411-4767-974b-be5b352099c6",
+          "name": "Delete a node",
+          "request": {
+            "name": "Delete a node",
+            "description": {
+              "content": "Mark a node as deleted in an open changeset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "node",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/xml"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "options": {
+                "raw": {
+                  "language": "xml"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff90f3d4-f58d-4253-83b5-03564c81a20e",
+              "name": "New version number after deletion",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e7a44c59-a11a-41ae-8dd4-b5cccb3a2674",
+          "name": "Create a new node",
+          "request": {
+            "name": "Create a new node",
+            "description": {
+              "content": "Create a new node within an open changeset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "node",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/xml"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "options": {
+                "raw": {
+                  "language": "xml"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7d44e5aa-dc8b-43c7-a8bb-6c5637ba738a",
+              "name": "ID of the created node",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "471d1536-3e7a-4ad1-b765-43f2fa1499d0",
+              "name": "Missing required fields or invalid geometry",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dceb4a33-36a7-492d-8905-5c057ea8c865",
+              "name": "The node is not inside the bounding box of the changeset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45a2e265-fdd4-4e0b-89d7-e65cdf8b783e",
+          "name": "Get a specific version of a node",
+          "request": {
+            "name": "Get a specific version of a node",
+            "description": {
+              "content": "Retrieve a historical version of a node.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "node",
+                ":id",
+                ":version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "version",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a8cfde1-8ca2-40c8-aa20-9109f9f5b44f",
+              "name": "Historical node version",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    ":id",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "version",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"node\",\n  \"id\": 7740,\n  \"lat\": 16.717980831050085,\n  \"lon\": -148.91624011144572,\n  \"tags\": {\n    \"key_0\": \"string\"\n  },\n  \"version\": 1641,\n  \"changeset\": 2895,\n  \"timestamp\": \"1985-04-29T16:07:32.113Z\",\n  \"user\": \"string\",\n  \"uid\": 7351,\n  \"visible\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d3c4403d-6822-4dda-aa96-aa14dbead731",
+      "name": "Notes",
+      "description": {
+        "content": "Community map notes",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9fe4f98c-3f46-4d58-b0c2-fa8c7f51aa46",
+          "name": "Search notes",
+          "request": {
+            "name": "Search notes",
+            "description": {
+              "content": "Search OSM notes by bounding box, text, status, or user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "bbox",
+                  "value": "<string>",
+                  "description": "Bounding box (min_lon,min_lat,max_lon,max_lat)"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Free text search"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "open"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "closed",
+                  "value": "7"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b3a7e661-1a05-4207-b6f7-1106ff02c9ae",
+              "name": "Notes matching the query",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "open"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "closed",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          4839.368325314221,\n          8826.983672165969\n        ]\n      },\n      \"properties\": {\n        \"id\": 8941,\n        \"url\": \"https://FHAvXLpabXAGZsGxxFaIiHjajFuNVOwH.edyxWd8glBIA6R9tiOahghVXzCe8Z3oUkHENf0dKmKpBPC5diS-686p1q6F\",\n        \"status\": \"closed\",\n        \"date_created\": \"2013-12-29T00:15:13.614Z\",\n        \"date_closed\": \"1947-04-17T11:07:47.633Z\",\n        \"comments\": [\n          {\n            \"date\": \"2011-05-11T20:00:01.476Z\",\n            \"user\": \"string\",\n            \"user_url\": \"https://helfdvLBFclwMqmmzSyqDCRV.zutRWbZIUYsQ6.WKohEtwnUI21p9dj2azVwP9f37KGZNOyj\",\n            \"action\": \"commented\",\n            \"text\": \"string\",\n            \"html\": \"string\"\n          },\n          {\n            \"date\": \"2014-03-12T02:12:07.434Z\",\n            \"user\": \"string\",\n            \"user_url\": \"http://dECKhHijOCJ.aikjvV+4DPds9ZDjYSTwvLKs-1tR4IhXuft0SajNNyaNXXefCdEs,XaQepFo8gAbxAEe\",\n            \"action\": \"commented\",\n            \"text\": \"string\",\n            \"html\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          6409.735424766998,\n          9638.977680215832\n        ]\n      },\n      \"properties\": {\n        \"id\": 1081,\n        \"url\": \"https://zXDcJShxpDuNsJqPXVQLiQhmGJAmBDhbi.adViV+TVLYC.Bhzwz9+Pn\",\n        \"status\": \"closed\",\n        \"date_created\": \"1961-10-10T12:45:53.687Z\",\n        \"date_closed\": \"2009-07-18T15:02:09.456Z\",\n        \"comments\": [\n          {\n            \"date\": \"2009-05-03T04:48:43.720Z\",\n            \"user\": \"string\",\n            \"user_url\": \"http://mgAgvrlwQMz.dmwV0pf24fZ4\",\n            \"action\": \"reopened\",\n            \"text\": \"string\",\n            \"html\": \"string\"\n          },\n          {\n            \"date\": \"2017-08-07T04:38:43.994Z\",\n            \"user\": \"string\",\n            \"user_url\": \"http://JoScrW.iolecaPqmZIFtQrvjNcE.aREoubqh\",\n            \"action\": \"commented\",\n            \"text\": \"string\",\n            \"html\": \"string\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b139b93-f2b5-4dca-9a55-2472212b47ee",
+          "name": "Create a note",
+          "request": {
+            "name": "Create a note",
+            "description": {
+              "content": "Create a new map note at a geographic location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<double>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<double>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "text",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "43c04145-b011-4a19-a2d3-327ab08d1df8",
+              "name": "Created note",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "lat",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "lon",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "text",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"Feature\",\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      246.91992384997752,\n      9107.86262698891\n    ]\n  },\n  \"properties\": {\n    \"id\": 8863,\n    \"url\": \"http://iMJVrhLgnKuVgtkgAaO.jmMjtMUFRTYkg1j4yK13KDwoNSvmnQcagPkJNm\",\n    \"status\": \"open\",\n    \"date_created\": \"2018-03-12T18:46:24.312Z\",\n    \"date_closed\": \"1974-12-05T12:04:06.516Z\",\n    \"comments\": [\n      {\n        \"date\": \"2026-05-01T09:59:56.884Z\",\n        \"user\": \"string\",\n        \"user_url\": \"http://TUvYNfLyCLCAybyNepAEhrRyKJt.nmvhs+SoRDGGvHY9.tZKvs1NWe1MsqEyASPQOPg5s6fEvru5Bh5qIvWGTCEvX\",\n        \"action\": \"closed\",\n        \"text\": \"string\",\n        \"html\": \"string\"\n      },\n      {\n        \"date\": \"1978-06-26T06:46:08.044Z\",\n        \"user\": \"string\",\n        \"user_url\": \"https://WPJLQQ.hweed,H7kp99WJDNrWN.68V6PdVxga3T5us1etESP+9isPK.kUrDnI\",\n        \"action\": \"commented\",\n        \"text\": \"string\",\n        \"html\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42548384-b8ba-489f-93e7-e249e9e74de6",
+          "name": "Get a note",
+          "request": {
+            "name": "Get a note",
+            "description": {
+              "content": "Retrieve a specific note by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe09dfbe-aeec-47a4-8b61-371440399e3c",
+              "name": "Note details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"Feature\",\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      246.91992384997752,\n      9107.86262698891\n    ]\n  },\n  \"properties\": {\n    \"id\": 8863,\n    \"url\": \"http://iMJVrhLgnKuVgtkgAaO.jmMjtMUFRTYkg1j4yK13KDwoNSvmnQcagPkJNm\",\n    \"status\": \"open\",\n    \"date_created\": \"2018-03-12T18:46:24.312Z\",\n    \"date_closed\": \"1974-12-05T12:04:06.516Z\",\n    \"comments\": [\n      {\n        \"date\": \"2026-05-01T09:59:56.884Z\",\n        \"user\": \"string\",\n        \"user_url\": \"http://TUvYNfLyCLCAybyNepAEhrRyKJt.nmvhs+SoRDGGvHY9.tZKvs1NWe1MsqEyASPQOPg5s6fEvru5Bh5qIvWGTCEvX\",\n        \"action\": \"closed\",\n        \"text\": \"string\",\n        \"html\": \"string\"\n      },\n      {\n        \"date\": \"1978-06-26T06:46:08.044Z\",\n        \"user\": \"string\",\n        \"user_url\": \"https://WPJLQQ.hweed,H7kp99WJDNrWN.68V6PdVxga3T5us1etESP+9isPK.kUrDnI\",\n        \"action\": \"commented\",\n        \"text\": \"string\",\n        \"html\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d03dcd99-b233-45f2-a7fd-d62f565b49a0",
+              "name": "Note not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "586a5b00-4372-4834-8f41-ece894615cc9",
+      "name": "Relations",
+      "description": {
+        "content": "OSM relation operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "65437973-c0dc-4535-86b4-b11df6cdaa3d",
+          "name": "Get relation by ID",
+          "request": {
+            "name": "Get relation by ID",
+            "description": {
+              "content": "Retrieve the current version of a relation with its members.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "relation",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af457893-77c1-4133-ac29-71da6b7a9275",
+              "name": "Relation data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "relation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"relation\",\n  \"id\": 278,\n  \"members\": [\n    {\n      \"type\": \"relation\",\n      \"ref\": 1211,\n      \"role\": \"string\"\n    },\n    {\n      \"type\": \"node\",\n      \"ref\": 9553,\n      \"role\": \"string\"\n    }\n  ],\n  \"tags\": {\n    \"key_0\": \"string\"\n  },\n  \"version\": 7326,\n  \"changeset\": 1754,\n  \"timestamp\": \"1991-07-19T08:17:58.041Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ff97c06c-11e1-4b2f-bdc9-20b8f33ca9a8",
+      "name": "Users",
+      "description": {
+        "content": "User account information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "99792ff2-7df2-43e5-8c6a-ee41b0904283",
+          "name": "Get authenticated user details",
+          "request": {
+            "name": "Get authenticated user details",
+            "description": {
+              "content": "Returns details of the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "details"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec5c2575-72a8-4d13-ba3e-dc9aead94bde",
+              "name": "User details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2335,\n  \"display_name\": \"string\",\n  \"account_created\": \"2002-01-23T06:57:02.481Z\",\n  \"description\": \"string\",\n  \"img\": {\n    \"href\": \"https://pJiPCgdgmqpcomARUIjnBbawU.ffwEPEKlz8vfmodjI+HAnfCNkxqW5mOjNI1GN8VzRiV.sCH+PsE5Rvw7T-Whmw6NEeF3FGQ\"\n  },\n  \"changesets\": {\n    \"count\": 7605\n  },\n  \"traces\": {\n    \"count\": 2183\n  },\n  \"contributor_terms\": {\n    \"agreed\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "373600df-a7d3-4479-b759-5c85ef2299d5",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "84d82412-e261-4e17-bd8b-b243f3d93565",
+      "name": "Ways",
+      "description": {
+        "content": "OSM way (line/polygon) operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "abf19b94-f448-410a-9d12-3a5f630562cd",
+          "name": "Get way by ID",
+          "request": {
+            "name": "Get way by ID",
+            "description": {
+              "content": "Retrieve the current version of a way and its node references.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "way",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d302b14e-83d0-44a7-b12c-c769126d064f",
+              "name": "Way data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "way",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"way\",\n  \"id\": 1884,\n  \"nodes\": [\n    1,\n    2592\n  ],\n  \"tags\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"version\": 4850,\n  \"changeset\": 9357,\n  \"timestamp\": \"1957-06-13T01:54:25.877Z\",\n  \"user\": \"string\",\n  \"uid\": 7961,\n  \"visible\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c84cbe92-cf0d-4666-84dc-beec2c96dcb2",
+              "name": "Way not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "way",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openstreetmap.org/api/0.6",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "baddbf9c-474d-4906-9f68-5eb4797fbc00",
+    "name": "OpenStreetMap API v0.6",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.\n\nContact Support:\n Name: OpenStreetMap Foundation",
+      "type": "text/plain"
+    }
+  }
+}
