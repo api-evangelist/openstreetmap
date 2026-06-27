@@ -132,7 +132,7 @@ common:
     type: Documentation
   - url: https://community.openstreetmap.org/
     name: OSM Community Forum
-    type: Forum
+    type: Forums
   - url: https://help.openstreetmap.org/
     name: Help
     type: Support
