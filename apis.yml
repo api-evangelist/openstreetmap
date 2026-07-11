@@ -92,6 +92,8 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/openapi/openstreetmap-nominatim-openapi.yml
 common:
+  - type: OAuthScopes
+    url: scopes/openstreetmap-scopes.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/openstreetmap-foundation
   - url: https://www.openstreetmap.org/

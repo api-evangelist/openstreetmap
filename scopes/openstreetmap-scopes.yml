@@ -1,0 +1,54 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/openstreetmap-main-openapi.yml
+schemes:
+- name: OAuth2
+  source: openapi/openstreetmap-main-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.openstreetmap.org/oauth2/authorize
+    tokenUrl: https://www.openstreetmap.org/oauth2/token
+  description: OAuth 2.0 — required for write operations
+scopes:
+- scope: read_gpx
+  description: Read private GPS traces
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/openstreetmap-main-openapi.yml
+- scope: read_prefs
+  description: Read user preferences
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/openstreetmap-main-openapi.yml
+- scope: write_api
+  description: Modify the map (nodes, ways, relations, changesets)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/openstreetmap-main-openapi.yml
+- scope: write_diary
+  description: Create diary entries
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/openstreetmap-main-openapi.yml
+- scope: write_gpx
+  description: Upload GPS traces
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/openstreetmap-main-openapi.yml
+- scope: write_notes
+  description: Create, comment on, and close notes
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/openstreetmap-main-openapi.yml
+- scope: write_prefs
+  description: Modify user preferences
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/openstreetmap-main-openapi.yml
