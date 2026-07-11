@@ -1,0 +1,35 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.openstreetmap.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  1 21:25:37 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: wiki.openstreetmap.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 20 18:15:51 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: api.openstreetmap.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  1 21:25:37 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+domains:
+- domain: openstreetmap.org
+  dnssec: true
+  caa:
+  - 0 issue "comodoca.com"
+  - 0 issue "digicert.com; cansignhttpexchanges=yes"
+  - 0 issue "globalsign.com"
+  - 0 issue "letsencrypt.org"
+  - 0 issue "pki.goog; cansignhttpexchanges=yes"
+  - 0 issue "ssl.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: none

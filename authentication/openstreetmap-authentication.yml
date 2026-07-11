@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/openstreetmap-main-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.openstreetmap.org/oauth2/authorize
+    tokenUrl: https://www.openstreetmap.org/oauth2/token
+    scopes: 7
+  description: OAuth 2.0 — required for write operations
+  sources:
+  - openapi/openstreetmap-main-openapi.yml

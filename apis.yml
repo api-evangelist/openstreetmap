@@ -92,6 +92,12 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/openapi/openstreetmap-nominatim-openapi.yml
 common:
+  - type: VulnerabilityDisclosure
+    url: security/openstreetmap-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/openstreetmap-domain-security.yml
+  - type: Authentication
+    url: authentication/openstreetmap-authentication.yml
   - type: OAuthScopes
     url: scopes/openstreetmap-scopes.yml
   - type: LinkedIn
