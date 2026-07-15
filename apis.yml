@@ -92,6 +92,8 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/openapi/openstreetmap-nominatim-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/openstreetmap-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/openstreetmap-vulnerability-disclosure.yml
   - type: DomainSecurity
