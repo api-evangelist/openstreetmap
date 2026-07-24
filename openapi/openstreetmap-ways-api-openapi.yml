@@ -1,0 +1,108 @@
+openapi: 3.1.0
+info:
+  title: OpenStreetMap API v0.6 Capabilities Ways API
+  description: The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.
+  version: 0.6.0
+  contact:
+    name: OpenStreetMap Foundation
+    url: https://osmfoundation.org/
+  license:
+    name: ODbL 1.0 (map data) / CC BY-SA 2.0 (tiles)
+    url: https://www.openstreetmap.org/copyright
+servers:
+- url: https://api.openstreetmap.org/api/0.6
+  description: OpenStreetMap production API
+- url: https://master.apis.dev.openstreetmap.org/api/0.6
+  description: OSM development/sandbox API
+security:
+- {}
+- OAuth2:
+  - read_prefs
+  - write_api
+  - write_notes
+tags:
+- name: Ways
+  description: OSM way (line/polygon) operations
+paths:
+  /way/{id}:
+    get:
+      operationId: getWay
+      summary: Get way by ID
+      description: Retrieve the current version of a way and its node references.
+      tags:
+      - Ways
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Way data
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Way'
+        '404':
+          description: Way not found
+components:
+  schemas:
+    Way:
+      type: object
+      description: An OSM way (an ordered list of nodes forming a line or polygon)
+      properties:
+        type:
+          type: string
+          enum:
+          - way
+        id:
+          type: integer
+          format: int64
+        nodes:
+          type: array
+          items:
+            type: integer
+            format: int64
+          description: Ordered list of node IDs
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        version:
+          type: integer
+        changeset:
+          type: integer
+          format: int64
+        timestamp:
+          type: string
+          format: date-time
+        user:
+          type: string
+        uid:
+          type: integer
+        visible:
+          type: boolean
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 — required for write operations
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.openstreetmap.org/oauth2/authorize
+          tokenUrl: https://www.openstreetmap.org/oauth2/token
+          scopes:
+            read_prefs: Read user preferences
+            write_prefs: Modify user preferences
+            write_diary: Create diary entries
+            write_api: Modify the map (nodes, ways, relations, changesets)
+            read_gpx: Read private GPS traces
+            write_gpx: Upload GPS traces
+            write_notes: Create, comment on, and close notes
+externalDocs:
+  description: OSM API v0.6 Wiki
+  url: https://wiki.openstreetmap.org/wiki/API_v0.6

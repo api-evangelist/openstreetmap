@@ -1,0 +1,200 @@
+openapi: 3.1.0
+info:
+  title: OpenStreetMap API v0.6 Capabilities Changesets API
+  description: The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.
+  version: 0.6.0
+  contact:
+    name: OpenStreetMap Foundation
+    url: https://osmfoundation.org/
+  license:
+    name: ODbL 1.0 (map data) / CC BY-SA 2.0 (tiles)
+    url: https://www.openstreetmap.org/copyright
+servers:
+- url: https://api.openstreetmap.org/api/0.6
+  description: OpenStreetMap production API
+- url: https://master.apis.dev.openstreetmap.org/api/0.6
+  description: OSM development/sandbox API
+security:
+- {}
+- OAuth2:
+  - read_prefs
+  - write_api
+  - write_notes
+tags:
+- name: Changesets
+  description: Changeset management for grouped edits
+paths:
+  /changeset/create:
+    put:
+      operationId: createChangeset
+      summary: Create a changeset
+      description: Create a new changeset to group editing operations.
+      tags:
+      - Changesets
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+              description: OSM XML with changeset tags (must include created_by and comment)
+      responses:
+        '200':
+          description: ID of the created changeset
+          content:
+            text/plain:
+              schema:
+                type: integer
+  /changeset/{id}:
+    get:
+      operationId: getChangeset
+      summary: Get changeset details
+      description: Retrieve metadata for a changeset including tags, timestamps, and bounding box.
+      tags:
+      - Changesets
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: include_discussion
+        in: query
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Changeset details
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Changeset'
+    put:
+      operationId: updateChangeset
+      summary: Update changeset tags
+      description: Modify the tags of an open changeset (must be the owner).
+      tags:
+      - Changesets
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: Updated changeset
+  /changeset/{id}/close:
+    put:
+      operationId: closeChangeset
+      summary: Close a changeset
+      description: Close an open changeset (no more edits may be added after this).
+      tags:
+      - Changesets
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Empty response on success
+        '409':
+          description: Changeset already closed or owned by another user
+  /changeset/{id}/upload:
+    post:
+      operationId: uploadChangeset
+      summary: Upload an OsmChange document
+      description: 'Upload a batch of creates, modifies, and deletes as an OsmChange XML document. Atomic: either all operations succeed or none are applied.'
+      tags:
+      - Changesets
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+              description: OsmChange XML document with create/modify/delete sections
+      responses:
+        '200':
+          description: diffResult XML showing old and new IDs for all objects
+          content:
+            application/xml:
+              schema:
+                type: string
+components:
+  schemas:
+    Changeset:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        created_at:
+          type: string
+          format: date-time
+        closed_at:
+          type: string
+          format: date-time
+        open:
+          type: boolean
+        user:
+          type: string
+        uid:
+          type: integer
+        min_lat:
+          type: number
+        min_lon:
+          type: number
+        max_lat:
+          type: number
+        max_lon:
+          type: number
+        changes_count:
+          type: integer
+        comments_count:
+          type: integer
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 — required for write operations
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.openstreetmap.org/oauth2/authorize
+          tokenUrl: https://www.openstreetmap.org/oauth2/token
+          scopes:
+            read_prefs: Read user preferences
+            write_prefs: Modify user preferences
+            write_diary: Create diary entries
+            write_api: Modify the map (nodes, ways, relations, changesets)
+            read_gpx: Read private GPS traces
+            write_gpx: Upload GPS traces
+            write_notes: Create, comment on, and close notes
+externalDocs:
+  description: OSM API v0.6 Wiki
+  url: https://wiki.openstreetmap.org/wiki/API_v0.6
