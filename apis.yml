@@ -6,9 +6,22 @@ description: >-
   complex read-only geospatial queries, and the Nominatim API for forward and reverse geocoding. Map data is licensed
   under the Open Database License (ODbL) 1.0 and tile imagery under CC BY-SA 2.0.
 type: Index
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/openstreetmap.png
 tags:
   - Geospatial
   - Mapping
@@ -20,78 +33,223 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: openstreetmap:main-api
-    name: OpenStreetMap Main Editing API v0.6
-    description: >-
-      The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations,
-      changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is
-      0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.
-    humanURL: https://wiki.openstreetmap.org/wiki/API_v0.6
-    baseURL: https://api.openstreetmap.org/api/0.6
-    tags:
-      - Geospatial
-      - Mapping
-      - Open Data
-      - REST
-      - Editing
-    properties:
-      - type: Documentation
-        url: https://wiki.openstreetmap.org/wiki/API_v0.6
-      - type: RateLimits
-        url: https://operations.osmfoundation.org/policies/api/
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/openapi/openstreetmap-main-openapi.yml
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-schema/openstreetmap-node-schema.json
-      - type: JSONLDContext
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-ld/openstreetmap-context.jsonld
-  - aid: openstreetmap:overpass-api
-    name: OpenStreetMap Overpass API
-    description: >-
-      The Overpass API is a read-only database engine for complex geospatial queries against the OSM dataset. Accepts
-      Overpass QL or XML queries and returns results in XML, JSON, GeoJSON, or CSV. Safe usage: under 10,000 queries/day
-      and under 1 GB/day. Python SDKs include overpass, overpy, and OSMPythonTools; JavaScript SDKs include
-      query-overpass and overpass-ts.
-    humanURL: https://wiki.openstreetmap.org/wiki/Overpass_API
-    baseURL: https://overpass-api.de/api
-    tags:
-      - Geospatial
-      - Mapping
-      - Open Data
-      - XML
-      - Overpass
-    properties:
-      - type: Documentation
-        url: https://wiki.openstreetmap.org/wiki/Overpass_API
-      - type: Reference
-        url: https://dev.overpass-api.de/overpass-doc/en/
-      - type: DeveloperTools
-        url: https://overpass-turbo.eu/
-  - aid: openstreetmap:nominatim-api
-    name: OpenStreetMap Nominatim Geocoding API
-    description: >-
-      Nominatim is the OpenStreetMap geocoding API providing search (forward geocoding), reverse geocoding, and address
-      lookup for OSM objects. Rate limit is 1 request/second for the public instance. Requires valid User-Agent header.
-      Open source under GNU GPL v3; self-hosted deployment available for higher volume needs.
-    humanURL: https://nominatim.org/release-docs/latest/api/Overview/
-    baseURL: https://nominatim.openstreetmap.org
-    tags:
-      - Geospatial
-      - Mapping
-      - Geocoding
-      - Open Data
-    properties:
-      - type: Documentation
-        url: https://nominatim.org/release-docs/latest/api/Overview/
-      - type: RateLimits
-        url: https://operations.osmfoundation.org/policies/nominatim/
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/openapi/openstreetmap-nominatim-openapi.yml
+- aid: openstreetmap:overpass-api
+  name: OpenStreetMap Overpass API
+  description: >-
+    The Overpass API is a read-only database engine for complex geospatial queries against the OSM dataset.
+    Accepts Overpass QL or XML queries and returns results in XML, JSON, GeoJSON, or CSV. Safe usage:
+    under 10,000 queries/day and under 1 GB/day. Python SDKs include overpass, overpy, and OSMPythonTools;
+    JavaScript SDKs include query-overpass and overpass-ts.
+  humanURL: https://wiki.openstreetmap.org/wiki/Overpass_API
+  baseURL: https://overpass-api.de/api
+  tags:
+  - Geospatial
+  - Mapping
+  - Open Data
+  - XML
+  - Overpass
+  properties:
+  - type: Documentation
+    url: https://wiki.openstreetmap.org/wiki/Overpass_API
+  - type: Reference
+    url: https://dev.overpass-api.de/overpass-doc/en/
+  - type: DeveloperTools
+    url: https://overpass-turbo.eu/
+- aid: openstreetmap:openstreetmap-capabilities-api
+  name: OpenStreetMap Capabilities API
+  description: API version and limits
+  humanURL: https://wiki.openstreetmap.org/wiki/API_v0.6
+  baseURL: https://api.openstreetmap.org/api/0.6
+  tags:
+  - Capabilities
+  properties:
+  - type: OpenAPI
+    url: openapi/openstreetmap-capabilities-api-openapi.yml
+  - type: Documentation
+    url: https://wiki.openstreetmap.org/wiki/API_v0.6
+  - type: RateLimits
+    url: https://operations.osmfoundation.org/policies/api/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-schema/openstreetmap-node-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-ld/openstreetmap-context.jsonld
+  - type: Documentation
+    url: https://nominatim.org/release-docs/latest/api/Overview/
+  - type: RateLimits
+    url: https://operations.osmfoundation.org/policies/nominatim/
+- aid: openstreetmap:openstreetmap-changesets-api
+  name: OpenStreetMap Changesets API
+  description: Changeset management for grouped edits
+  humanURL: https://wiki.openstreetmap.org/wiki/API_v0.6
+  baseURL: https://api.openstreetmap.org/api/0.6
+  tags:
+  - Changesets
+  properties:
+  - type: OpenAPI
+    url: openapi/openstreetmap-changesets-api-openapi.yml
+  - type: Documentation
+    url: https://wiki.openstreetmap.org/wiki/API_v0.6
+  - type: RateLimits
+    url: https://operations.osmfoundation.org/policies/api/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-schema/openstreetmap-node-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-ld/openstreetmap-context.jsonld
+  - type: Documentation
+    url: https://nominatim.org/release-docs/latest/api/Overview/
+  - type: RateLimits
+    url: https://operations.osmfoundation.org/policies/nominatim/
+- aid: openstreetmap:openstreetmap-map-data-api
+  name: OpenStreetMap Map Data API
+  description: Bulk map data retrieval by bounding box
+  humanURL: https://wiki.openstreetmap.org/wiki/API_v0.6
+  baseURL: https://api.openstreetmap.org/api/0.6
+  tags:
+  - Map Data
+  properties:
+  - type: OpenAPI
+    url: openapi/openstreetmap-map-data-api-openapi.yml
+  - type: Documentation
+    url: https://wiki.openstreetmap.org/wiki/API_v0.6
+  - type: RateLimits
+    url: https://operations.osmfoundation.org/policies/api/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-schema/openstreetmap-node-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-ld/openstreetmap-context.jsonld
+  - type: Documentation
+    url: https://nominatim.org/release-docs/latest/api/Overview/
+  - type: RateLimits
+    url: https://operations.osmfoundation.org/policies/nominatim/
+- aid: openstreetmap:openstreetmap-nodes-api
+  name: OpenStreetMap Nodes API
+  description: OSM node (point) operations
+  humanURL: https://wiki.openstreetmap.org/wiki/API_v0.6
+  baseURL: https://api.openstreetmap.org/api/0.6
+  tags:
+  - Nodes
+  properties:
+  - type: OpenAPI
+    url: openapi/openstreetmap-nodes-api-openapi.yml
+  - type: Documentation
+    url: https://wiki.openstreetmap.org/wiki/API_v0.6
+  - type: RateLimits
+    url: https://operations.osmfoundation.org/policies/api/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-schema/openstreetmap-node-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-ld/openstreetmap-context.jsonld
+  - type: Documentation
+    url: https://nominatim.org/release-docs/latest/api/Overview/
+  - type: RateLimits
+    url: https://operations.osmfoundation.org/policies/nominatim/
+- aid: openstreetmap:openstreetmap-notes-api
+  name: OpenStreetMap Notes API
+  description: Community map notes
+  humanURL: https://wiki.openstreetmap.org/wiki/API_v0.6
+  baseURL: https://api.openstreetmap.org/api/0.6
+  tags:
+  - Notes
+  properties:
+  - type: OpenAPI
+    url: openapi/openstreetmap-notes-api-openapi.yml
+  - type: Documentation
+    url: https://wiki.openstreetmap.org/wiki/API_v0.6
+  - type: RateLimits
+    url: https://operations.osmfoundation.org/policies/api/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-schema/openstreetmap-node-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-ld/openstreetmap-context.jsonld
+  - type: Documentation
+    url: https://nominatim.org/release-docs/latest/api/Overview/
+  - type: RateLimits
+    url: https://operations.osmfoundation.org/policies/nominatim/
+- aid: openstreetmap:openstreetmap-relations-api
+  name: OpenStreetMap Relations API
+  description: OSM relation operations
+  humanURL: https://wiki.openstreetmap.org/wiki/API_v0.6
+  baseURL: https://api.openstreetmap.org/api/0.6
+  tags:
+  - Relations
+  properties:
+  - type: OpenAPI
+    url: openapi/openstreetmap-relations-api-openapi.yml
+  - type: Documentation
+    url: https://wiki.openstreetmap.org/wiki/API_v0.6
+  - type: RateLimits
+    url: https://operations.osmfoundation.org/policies/api/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-schema/openstreetmap-node-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-ld/openstreetmap-context.jsonld
+  - type: Documentation
+    url: https://nominatim.org/release-docs/latest/api/Overview/
+  - type: RateLimits
+    url: https://operations.osmfoundation.org/policies/nominatim/
+- aid: openstreetmap:openstreetmap-users-api
+  name: OpenStreetMap Users API
+  description: User account information
+  humanURL: https://wiki.openstreetmap.org/wiki/API_v0.6
+  baseURL: https://api.openstreetmap.org/api/0.6
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/openstreetmap-users-api-openapi.yml
+  - type: Documentation
+    url: https://wiki.openstreetmap.org/wiki/API_v0.6
+  - type: RateLimits
+    url: https://operations.osmfoundation.org/policies/api/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-schema/openstreetmap-node-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-ld/openstreetmap-context.jsonld
+  - type: Documentation
+    url: https://nominatim.org/release-docs/latest/api/Overview/
+  - type: RateLimits
+    url: https://operations.osmfoundation.org/policies/nominatim/
+- aid: openstreetmap:openstreetmap-ways-api
+  name: OpenStreetMap Ways API
+  description: OSM way (line/polygon) operations
+  humanURL: https://wiki.openstreetmap.org/wiki/API_v0.6
+  baseURL: https://api.openstreetmap.org/api/0.6
+  tags:
+  - Ways
+  properties:
+  - type: OpenAPI
+    url: openapi/openstreetmap-ways-api-openapi.yml
+  - type: Documentation
+    url: https://wiki.openstreetmap.org/wiki/API_v0.6
+  - type: RateLimits
+    url: https://operations.osmfoundation.org/policies/api/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-schema/openstreetmap-node-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-ld/openstreetmap-context.jsonld
+  - type: Documentation
+    url: https://nominatim.org/release-docs/latest/api/Overview/
+  - type: RateLimits
+    url: https://operations.osmfoundation.org/policies/nominatim/
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/openstreetmap/overview
   - type: AgenticAccess
     url: agentic-access/openstreetmap-agentic-access.yml
   - type: VulnerabilityDisclosure
