@@ -1,0 +1,573 @@
+{
+  "info": {
+    "_postman_id": "788d99d5-3bce-4f41-af4f-d6a290acc6b1",
+    "name": "OpenStreetMap API v0.6 Capabilities Changesets API",
+    "description": "The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.\n\nContact Support:\n Name: OpenStreetMap Foundation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:26:45.000Z",
+    "updatedAt": "2026-07-28T02:26:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-788d99d5-3bce-4f41-af4f-d6a290acc6b1"
+  },
+  "item": [
+    {
+      "name": "changeset",
+      "item": [
+        {
+          "name": "create",
+          "item": [
+            {
+              "name": "Create a changeset",
+              "id": "d21bc7c2-167a-4de8-9dbe-147383f941f3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/changeset/create",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "changeset",
+                    "create"
+                  ]
+                },
+                "description": "Create a new changeset to group editing operations."
+              },
+              "response": [
+                {
+                  "id": "cdbc3631-5a56-4ef2-80b1-64ca655c198c",
+                  "name": "ID of the created changeset",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/changeset/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "changeset",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<integer>",
+                  "createdAt": "2026-07-28T02:26:46.000Z",
+                  "updatedAt": "2026-07-28T02:26:46.000Z",
+                  "uid": "35240-cdbc3631-5a56-4ef2-80b1-64ca655c198c"
+                }
+              ],
+              "createdAt": "2026-07-28T02:26:46.000Z",
+              "updatedAt": "2026-07-28T02:26:46.000Z",
+              "uid": "35240-d21bc7c2-167a-4de8-9dbe-147383f941f3"
+            }
+          ],
+          "id": "ecfc1310-1491-43df-ae5b-4de00934ba26",
+          "createdAt": "2026-07-28T02:26:46.000Z",
+          "updatedAt": "2026-07-28T02:26:46.000Z",
+          "uid": "35240-ecfc1310-1491-43df-ae5b-4de00934ba26"
+        },
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "close",
+              "item": [
+                {
+                  "name": "Close a changeset",
+                  "id": "f91179f3-adc4-4029-a393-a1fd9e92bc59",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/changeset/:id/close",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "changeset",
+                        ":id",
+                        "close"
+                      ],
+                      "variable": [
+                        {
+                          "id": "818ef91c-e417-470c-86ad-f839bdc473d5",
+                          "key": "id",
+                          "value": "<long>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Close an open changeset (no more edits may be added after this)."
+                  },
+                  "response": [
+                    {
+                      "id": "ffb53b6d-c281-45ed-b5ed-0da8b533e96d",
+                      "name": "Empty response on success",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/changeset/:id/close",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "changeset",
+                            ":id",
+                            "close"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:26:46.000Z",
+                      "updatedAt": "2026-07-28T02:26:46.000Z",
+                      "uid": "35240-ffb53b6d-c281-45ed-b5ed-0da8b533e96d"
+                    },
+                    {
+                      "id": "1d2a21fa-3d42-41a9-97f5-3b679e10ebac",
+                      "name": "Changeset already closed or owned by another user",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/changeset/:id/close",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "changeset",
+                            ":id",
+                            "close"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:26:46.000Z",
+                      "updatedAt": "2026-07-28T02:26:46.000Z",
+                      "uid": "35240-1d2a21fa-3d42-41a9-97f5-3b679e10ebac"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:26:46.000Z",
+                  "updatedAt": "2026-07-28T02:26:46.000Z",
+                  "uid": "35240-f91179f3-adc4-4029-a393-a1fd9e92bc59"
+                }
+              ],
+              "id": "4e97ecf4-0846-456a-888d-f0421d92e8ff",
+              "createdAt": "2026-07-28T02:26:46.000Z",
+              "updatedAt": "2026-07-28T02:26:46.000Z",
+              "uid": "35240-4e97ecf4-0846-456a-888d-f0421d92e8ff"
+            },
+            {
+              "name": "upload",
+              "item": [
+                {
+                  "name": "Upload an OsmChange document",
+                  "id": "3edd5d59-6244-4034-93b3-4d1b8e9f8eca",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/changeset/:id/upload",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "changeset",
+                        ":id",
+                        "upload"
+                      ],
+                      "variable": [
+                        {
+                          "id": "49dcc419-6b32-4617-808e-4f3ffa184d3b",
+                          "key": "id",
+                          "value": "<long>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Upload a batch of creates, modifies, and deletes as an OsmChange XML document. Atomic: either all operations succeed or none are applied."
+                  },
+                  "response": [
+                    {
+                      "id": "d74310e7-d9ab-4a6b-a2b5-5ac02131e653",
+                      "name": "diffResult XML showing old and new IDs for all objects",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/xml"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/xml"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "xml",
+                              "language": "xml"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/changeset/:id/upload",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "changeset",
+                            ":id",
+                            "upload"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "xml",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/xml"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "createdAt": "2026-07-28T02:26:46.000Z",
+                      "updatedAt": "2026-07-28T02:26:46.000Z",
+                      "uid": "35240-d74310e7-d9ab-4a6b-a2b5-5ac02131e653"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:26:46.000Z",
+                  "updatedAt": "2026-07-28T02:26:46.000Z",
+                  "uid": "35240-3edd5d59-6244-4034-93b3-4d1b8e9f8eca"
+                }
+              ],
+              "id": "5ae015e1-fed3-49d8-8470-a09f714fcb15",
+              "createdAt": "2026-07-28T02:26:46.000Z",
+              "updatedAt": "2026-07-28T02:26:46.000Z",
+              "uid": "35240-5ae015e1-fed3-49d8-8470-a09f714fcb15"
+            },
+            {
+              "name": "Get changeset details",
+              "id": "8449ccd9-c5ee-477e-a615-62602c1b6040",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/changeset/:id?include_discussion=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "changeset",
+                    ":id"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_discussion",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "dcf97703-dc8b-40a5-99c5-c02e4da439ff",
+                      "key": "id",
+                      "value": "<long>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Retrieve metadata for a changeset including tags, timestamps, and bounding box."
+              },
+              "response": [
+                {
+                  "id": "bc1d0d97-f684-43fc-ac9f-15f11dbb7bf7",
+                  "name": "Changeset details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/changeset/:id?include_discussion=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "changeset",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "key": "include_discussion",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<long>\",\n  \"created_at\": \"<dateTime>\",\n  \"closed_at\": \"<dateTime>\",\n  \"open\": \"<boolean>\",\n  \"user\": \"<string>\",\n  \"uid\": \"<integer>\",\n  \"min_lat\": \"<number>\",\n  \"min_lon\": \"<number>\",\n  \"max_lat\": \"<number>\",\n  \"max_lon\": \"<number>\",\n  \"changes_count\": \"<integer>\",\n  \"comments_count\": \"<integer>\",\n  \"tags\": {\n    \"id_4\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:26:46.000Z",
+                  "updatedAt": "2026-07-28T02:26:46.000Z",
+                  "uid": "35240-bc1d0d97-f684-43fc-ac9f-15f11dbb7bf7"
+                }
+              ],
+              "createdAt": "2026-07-28T02:26:46.000Z",
+              "updatedAt": "2026-07-28T02:26:46.000Z",
+              "uid": "35240-8449ccd9-c5ee-477e-a615-62602c1b6040"
+            },
+            {
+              "name": "Update changeset tags",
+              "id": "f4567bed-7394-4aa4-b04c-def349895974",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/xml"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/changeset/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "changeset",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "87b2b82f-cf49-4944-b260-f13967ef80d0",
+                      "key": "id",
+                      "value": "<long>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Modify the tags of an open changeset (must be the owner)."
+              },
+              "response": [
+                {
+                  "id": "0988be93-baeb-406f-ac3e-75a9b3d2e075",
+                  "name": "Updated changeset",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/changeset/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "changeset",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:26:46.000Z",
+                  "updatedAt": "2026-07-28T02:26:46.000Z",
+                  "uid": "35240-0988be93-baeb-406f-ac3e-75a9b3d2e075"
+                }
+              ],
+              "createdAt": "2026-07-28T02:26:46.000Z",
+              "updatedAt": "2026-07-28T02:26:46.000Z",
+              "uid": "35240-f4567bed-7394-4aa4-b04c-def349895974"
+            }
+          ],
+          "id": "574ca96f-3b01-4bce-8c89-8d54e2c29da2",
+          "createdAt": "2026-07-28T02:26:46.000Z",
+          "updatedAt": "2026-07-28T02:26:46.000Z",
+          "uid": "35240-574ca96f-3b01-4bce-8c89-8d54e2c29da2"
+        }
+      ],
+      "id": "ba0c7f3d-5c87-4d01-98d9-9975f995495a",
+      "createdAt": "2026-07-28T02:26:46.000Z",
+      "updatedAt": "2026-07-28T02:26:46.000Z",
+      "uid": "35240-ba0c7f3d-5c87-4d01-98d9-9975f995495a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openstreetmap.org/api/0.6"
+    }
+  ]
+}

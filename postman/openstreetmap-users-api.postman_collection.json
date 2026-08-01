@@ -1,0 +1,136 @@
+{
+  "info": {
+    "_postman_id": "c369550f-c951-4fc9-ba26-801d6d3aaea9",
+    "name": "OpenStreetMap API v0.6 Capabilities Users API",
+    "description": "The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.\n\nContact Support:\n Name: OpenStreetMap Foundation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:26:49.000Z",
+    "updatedAt": "2026-07-28T02:26:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c369550f-c951-4fc9-ba26-801d6d3aaea9"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "details",
+          "item": [
+            {
+              "name": "Get authenticated user details",
+              "id": "cd4ac11d-00b9-4bb0-89d6-1f3f218de318",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user/details",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "details"
+                  ]
+                },
+                "description": "Returns details of the authenticated user."
+              },
+              "response": [
+                {
+                  "id": "4b4a8148-f4d8-4814-89b3-575a76870136",
+                  "name": "User details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/details",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "details"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"display_name\": \"<string>\",\n  \"account_created\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"img\": {\n    \"href\": \"<uri>\"\n  },\n  \"changesets\": {\n    \"count\": \"<integer>\"\n  },\n  \"traces\": {\n    \"count\": \"<integer>\"\n  },\n  \"contributor_terms\": {\n    \"agreed\": \"<boolean>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:26:50.000Z",
+                  "updatedAt": "2026-07-28T02:26:50.000Z",
+                  "uid": "35240-4b4a8148-f4d8-4814-89b3-575a76870136"
+                },
+                {
+                  "id": "3efe34b0-35df-45d2-8eb9-ef9ff37ea8ae",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/details",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "details"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:26:50.000Z",
+                  "updatedAt": "2026-07-28T02:26:50.000Z",
+                  "uid": "35240-3efe34b0-35df-45d2-8eb9-ef9ff37ea8ae"
+                }
+              ],
+              "createdAt": "2026-07-28T02:26:50.000Z",
+              "updatedAt": "2026-07-28T02:26:50.000Z",
+              "uid": "35240-cd4ac11d-00b9-4bb0-89d6-1f3f218de318"
+            }
+          ],
+          "id": "f1dee1e8-d6ad-4f0a-97df-9ad31f185143",
+          "createdAt": "2026-07-28T02:26:50.000Z",
+          "updatedAt": "2026-07-28T02:26:50.000Z",
+          "uid": "35240-f1dee1e8-d6ad-4f0a-97df-9ad31f185143"
+        }
+      ],
+      "id": "de5af0cf-80e2-41df-bf41-70e89c282153",
+      "createdAt": "2026-07-28T02:26:50.000Z",
+      "updatedAt": "2026-07-28T02:26:50.000Z",
+      "uid": "35240-de5af0cf-80e2-41df-bf41-70e89c282153"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openstreetmap.org/api/0.6"
+    }
+  ]
+}

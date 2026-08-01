@@ -1,0 +1,121 @@
+{
+  "info": {
+    "_postman_id": "e8457ee4-88d4-4999-b406-db373a41e54a",
+    "name": "OpenStreetMap API v0.6 Capabilities Relations API",
+    "description": "The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.\n\nContact Support:\n Name: OpenStreetMap Foundation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:26:49.000Z",
+    "updatedAt": "2026-07-28T02:26:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e8457ee4-88d4-4999-b406-db373a41e54a"
+  },
+  "item": [
+    {
+      "name": "relation",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get relation by ID",
+              "id": "0d8b48ac-b60c-4c8c-9508-c941141d8d74",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/relation/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "relation",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "cc104d8c-679d-4440-8c40-8941762bb5fa",
+                      "key": "id",
+                      "value": "<long>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Retrieve the current version of a relation with its members."
+              },
+              "response": [
+                {
+                  "id": "2dd1fd34-8561-499a-b4fd-7db504387f7a",
+                  "name": "Relation data",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/relation/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "relation",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"relation\",\n  \"id\": \"<long>\",\n  \"members\": [\n    {\n      \"type\": \"relation\",\n      \"ref\": \"<long>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"type\": \"node\",\n      \"ref\": \"<long>\",\n      \"role\": \"<string>\"\n    }\n  ],\n  \"tags\": {\n    \"commodo011\": \"<string>\",\n    \"elit_ed\": \"<string>\"\n  },\n  \"version\": \"<integer>\",\n  \"changeset\": \"<long>\",\n  \"timestamp\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:26:49.000Z",
+                  "updatedAt": "2026-07-28T02:26:49.000Z",
+                  "uid": "35240-2dd1fd34-8561-499a-b4fd-7db504387f7a"
+                }
+              ],
+              "createdAt": "2026-07-28T02:26:49.000Z",
+              "updatedAt": "2026-07-28T02:26:49.000Z",
+              "uid": "35240-0d8b48ac-b60c-4c8c-9508-c941141d8d74"
+            }
+          ],
+          "id": "04d0ca38-0856-402b-b8e1-11cedc96e327",
+          "createdAt": "2026-07-28T02:26:49.000Z",
+          "updatedAt": "2026-07-28T02:26:49.000Z",
+          "uid": "35240-04d0ca38-0856-402b-b8e1-11cedc96e327"
+        }
+      ],
+      "id": "cbaeca02-f6ba-4b40-943d-145399c73624",
+      "createdAt": "2026-07-28T02:26:49.000Z",
+      "updatedAt": "2026-07-28T02:26:49.000Z",
+      "uid": "35240-cbaeca02-f6ba-4b40-943d-145399c73624"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openstreetmap.org/api/0.6"
+    }
+  ]
+}

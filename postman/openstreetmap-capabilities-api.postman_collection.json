@@ -1,0 +1,97 @@
+{
+  "info": {
+    "_postman_id": "a79f0efa-d15e-4948-b83b-e12f2c54850d",
+    "name": "OpenStreetMap API v0.6 Capabilities API",
+    "description": "The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.\n\nContact Support:\n Name: OpenStreetMap Foundation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:26:44.000Z",
+    "updatedAt": "2026-07-28T02:26:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a79f0efa-d15e-4948-b83b-e12f2c54850d"
+  },
+  "item": [
+    {
+      "name": "capabilities",
+      "item": [
+        {
+          "name": "Get API capabilities and limits",
+          "id": "674c4aa0-a9da-417f-b4ed-062f68a3848f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/capabilities",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "capabilities"
+              ]
+            },
+            "description": "Returns current API capabilities including version, rate limits, and maximum area limits. No authentication required."
+          },
+          "response": [
+            {
+              "id": "7215d0d2-ab85-4ad6-b237-3e74a01cd820",
+              "name": "API capabilities",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/capabilities",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "capabilities"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"version\": {\n    \"minimum\": \"<string>\",\n    \"maximum\": \"<string>\"\n  },\n  \"area\": {\n    \"maximum\": \"<number>\"\n  },\n  \"tracepoints\": {\n    \"per_page\": \"<integer>\"\n  },\n  \"waynodes\": {\n    \"maximum\": \"<integer>\"\n  },\n  \"changesets\": {\n    \"maximum_elements\": \"<integer>\"\n  },\n  \"notes\": {\n    \"default_query_limit\": \"<integer>\",\n    \"hard_query_limit\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:26:45.000Z",
+              "updatedAt": "2026-07-28T02:26:45.000Z",
+              "uid": "35240-7215d0d2-ab85-4ad6-b237-3e74a01cd820"
+            }
+          ],
+          "createdAt": "2026-07-28T02:26:45.000Z",
+          "updatedAt": "2026-07-28T02:26:45.000Z",
+          "uid": "35240-674c4aa0-a9da-417f-b4ed-062f68a3848f"
+        }
+      ],
+      "id": "28862801-84fb-40e7-8e7f-3df7986504e9",
+      "createdAt": "2026-07-28T02:26:45.000Z",
+      "updatedAt": "2026-07-28T02:26:45.000Z",
+      "uid": "35240-28862801-84fb-40e7-8e7f-3df7986504e9"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openstreetmap.org/api/0.6"
+    }
+  ]
+}

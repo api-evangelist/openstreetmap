@@ -1,0 +1,154 @@
+{
+  "info": {
+    "_postman_id": "e238c778-264a-4c44-a8b3-05730a9a6e48",
+    "name": "OpenStreetMap API v0.6 Capabilities Ways API",
+    "description": "The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.\n\nContact Support:\n Name: OpenStreetMap Foundation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:26:50.000Z",
+    "updatedAt": "2026-07-28T02:26:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e238c778-264a-4c44-a8b3-05730a9a6e48"
+  },
+  "item": [
+    {
+      "name": "way",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get way by ID",
+              "id": "d61fe5c0-a50f-481a-9845-770377b3561a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/way/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "way",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "8ea678f6-d7dc-4f55-bbcd-a24438fe6426",
+                      "key": "id",
+                      "value": "<long>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Retrieve the current version of a way and its node references."
+              },
+              "response": [
+                {
+                  "id": "848e8ede-0049-4dcd-aa11-0b551633d584",
+                  "name": "Way data",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/way/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "way",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"way\",\n  \"id\": \"<long>\",\n  \"nodes\": [\n    \"<long>\",\n    \"<long>\"\n  ],\n  \"tags\": {\n    \"ine07\": \"<string>\",\n    \"nostrud41a\": \"<string>\"\n  },\n  \"version\": \"<integer>\",\n  \"changeset\": \"<long>\",\n  \"timestamp\": \"<dateTime>\",\n  \"user\": \"<string>\",\n  \"uid\": \"<integer>\",\n  \"visible\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:26:51.000Z",
+                  "updatedAt": "2026-07-28T02:26:51.000Z",
+                  "uid": "35240-848e8ede-0049-4dcd-aa11-0b551633d584"
+                },
+                {
+                  "id": "fcd583b0-4153-4d31-ae60-868da7859019",
+                  "name": "Way not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/way/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "way",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:26:51.000Z",
+                  "updatedAt": "2026-07-28T02:26:51.000Z",
+                  "uid": "35240-fcd583b0-4153-4d31-ae60-868da7859019"
+                }
+              ],
+              "createdAt": "2026-07-28T02:26:51.000Z",
+              "updatedAt": "2026-07-28T02:26:51.000Z",
+              "uid": "35240-d61fe5c0-a50f-481a-9845-770377b3561a"
+            }
+          ],
+          "id": "d1412de2-5afb-480d-a05d-1208145ba13b",
+          "createdAt": "2026-07-28T02:26:51.000Z",
+          "updatedAt": "2026-07-28T02:26:51.000Z",
+          "uid": "35240-d1412de2-5afb-480d-a05d-1208145ba13b"
+        }
+      ],
+      "id": "1caf7964-7de4-4bec-b7a1-ff689525dc5b",
+      "createdAt": "2026-07-28T02:26:51.000Z",
+      "updatedAt": "2026-07-28T02:26:51.000Z",
+      "uid": "35240-1caf7964-7de4-4bec-b7a1-ff689525dc5b"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openstreetmap.org/api/0.6"
+    }
+  ]
+}

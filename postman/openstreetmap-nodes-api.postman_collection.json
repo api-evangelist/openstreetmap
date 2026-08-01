@@ -1,0 +1,801 @@
+{
+  "info": {
+    "_postman_id": "fa94fd6e-9934-46ca-8410-eac0a9d73ed3",
+    "name": "OpenStreetMap API v0.6 Capabilities Nodes API",
+    "description": "The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.\n\nContact Support:\n Name: OpenStreetMap Foundation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:26:47.000Z",
+    "updatedAt": "2026-07-28T02:26:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fa94fd6e-9934-46ca-8410-eac0a9d73ed3"
+  },
+  "item": [
+    {
+      "name": "node",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "{version}",
+              "item": [
+                {
+                  "name": "Get a specific version of a node",
+                  "id": "a9099a49-1a31-4590-a51f-8e6e3500f057",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/node/:id/:version",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "node",
+                        ":id",
+                        ":version"
+                      ],
+                      "variable": [
+                        {
+                          "id": "65a835b1-ef6c-433d-ad4c-0ed26bfda670",
+                          "key": "id",
+                          "value": "<long>",
+                          "description": "(Required) "
+                        },
+                        {
+                          "id": "3c31a945-a022-4480-b547-f09abcf86662",
+                          "key": "version",
+                          "value": "<integer>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a historical version of a node."
+                  },
+                  "response": [
+                    {
+                      "id": "526d6895-b352-473e-b440-07be18fcb122",
+                      "name": "Historical node version",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/xml"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/node/:id/:version",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "node",
+                            ":id",
+                            ":version"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            },
+                            {
+                              "key": "version"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"node\",\n  \"id\": \"<long>\",\n  \"lat\": \"<double>\",\n  \"lon\": \"<double>\",\n  \"tags\": {\n    \"nulla73\": \"<string>\",\n    \"ut_ca\": \"<string>\",\n    \"incididunt_0\": \"<string>\"\n  },\n  \"version\": \"<integer>\",\n  \"changeset\": \"<long>\",\n  \"timestamp\": \"<dateTime>\",\n  \"user\": \"<string>\",\n  \"uid\": \"<integer>\",\n  \"visible\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T02:26:47.000Z",
+                      "updatedAt": "2026-07-28T02:26:47.000Z",
+                      "uid": "35240-526d6895-b352-473e-b440-07be18fcb122"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:26:47.000Z",
+                  "updatedAt": "2026-07-28T02:26:47.000Z",
+                  "uid": "35240-a9099a49-1a31-4590-a51f-8e6e3500f057"
+                }
+              ],
+              "id": "1fb4878b-84de-437c-a2bf-0a34da05cefa",
+              "createdAt": "2026-07-28T02:26:47.000Z",
+              "updatedAt": "2026-07-28T02:26:47.000Z",
+              "uid": "35240-1fb4878b-84de-437c-a2bf-0a34da05cefa"
+            },
+            {
+              "name": "Get node by ID",
+              "id": "2f84faa8-8889-4b12-9f14-420ca157c22f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/node/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "node",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6ce68e66-8ca9-4966-affe-7d4ba9ac386e",
+                      "key": "id",
+                      "value": "<long>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Retrieve the current version of a node."
+              },
+              "response": [
+                {
+                  "id": "84bcf269-57f6-4cc1-b661-ae6d0b0f7d9e",
+                  "name": "Node data",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/node/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "node",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"node\",\n  \"id\": \"<long>\",\n  \"lat\": \"<double>\",\n  \"lon\": \"<double>\",\n  \"tags\": {\n    \"nulla73\": \"<string>\",\n    \"ut_ca\": \"<string>\",\n    \"incididunt_0\": \"<string>\"\n  },\n  \"version\": \"<integer>\",\n  \"changeset\": \"<long>\",\n  \"timestamp\": \"<dateTime>\",\n  \"user\": \"<string>\",\n  \"uid\": \"<integer>\",\n  \"visible\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:26:47.000Z",
+                  "updatedAt": "2026-07-28T02:26:47.000Z",
+                  "uid": "35240-84bcf269-57f6-4cc1-b661-ae6d0b0f7d9e"
+                },
+                {
+                  "id": "1be3fe41-521b-4fb9-8999-e5f1572a3637",
+                  "name": "Node not found (or deleted)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/node/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "node",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:26:47.000Z",
+                  "updatedAt": "2026-07-28T02:26:47.000Z",
+                  "uid": "35240-1be3fe41-521b-4fb9-8999-e5f1572a3637"
+                },
+                {
+                  "id": "033da021-6ed7-4c35-87b6-934a50332272",
+                  "name": "Node was deleted",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/node/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "node",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Gone",
+                  "code": 410,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:26:47.000Z",
+                  "updatedAt": "2026-07-28T02:26:47.000Z",
+                  "uid": "35240-033da021-6ed7-4c35-87b6-934a50332272"
+                }
+              ],
+              "createdAt": "2026-07-28T02:26:47.000Z",
+              "updatedAt": "2026-07-28T02:26:47.000Z",
+              "uid": "35240-2f84faa8-8889-4b12-9f14-420ca157c22f"
+            },
+            {
+              "name": "Update a node",
+              "id": "c5182dbe-05ba-45e3-9240-a343b187c31d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/node/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "node",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "94c9cf8d-759f-4583-83c8-b4ef06e04d0c",
+                      "key": "id",
+                      "value": "<long>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Modify an existing node. Requires authentication and an open changeset."
+              },
+              "response": [
+                {
+                  "id": "14396abd-e6e2-4341-98c7-cf67e97bde54",
+                  "name": "New version number of the node",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/node/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "node",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<integer>",
+                  "createdAt": "2026-07-28T02:26:47.000Z",
+                  "updatedAt": "2026-07-28T02:26:47.000Z",
+                  "uid": "35240-14396abd-e6e2-4341-98c7-cf67e97bde54"
+                },
+                {
+                  "id": "c673309f-f930-4368-a79d-4edf88f0936e",
+                  "name": "Changeset conflict or node version mismatch",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/node/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "node",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:26:47.000Z",
+                  "updatedAt": "2026-07-28T02:26:47.000Z",
+                  "uid": "35240-c673309f-f930-4368-a79d-4edf88f0936e"
+                },
+                {
+                  "id": "45be403b-c649-44bb-93ac-4d8bbe1843c7",
+                  "name": "Precondition failed (node is still in use by a way/relation)",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/node/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "node",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Precondition Failed",
+                  "code": 412,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:26:47.000Z",
+                  "updatedAt": "2026-07-28T02:26:47.000Z",
+                  "uid": "35240-45be403b-c649-44bb-93ac-4d8bbe1843c7"
+                }
+              ],
+              "createdAt": "2026-07-28T02:26:47.000Z",
+              "updatedAt": "2026-07-28T02:26:47.000Z",
+              "uid": "35240-c5182dbe-05ba-45e3-9240-a343b187c31d"
+            },
+            {
+              "name": "Delete a node",
+              "id": "7c919fa0-0e7b-4b34-a21c-fc980caee28a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/node/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "node",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "09458d70-3e4a-4efb-9130-c43ed79b9976",
+                      "key": "id",
+                      "value": "<long>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Mark a node as deleted in an open changeset."
+              },
+              "response": [
+                {
+                  "id": "a63a8d20-f525-405d-a475-4acde0e117db",
+                  "name": "New version number after deletion",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/node/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "node",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<integer>",
+                  "createdAt": "2026-07-28T02:26:47.000Z",
+                  "updatedAt": "2026-07-28T02:26:47.000Z",
+                  "uid": "35240-a63a8d20-f525-405d-a475-4acde0e117db"
+                }
+              ],
+              "createdAt": "2026-07-28T02:26:47.000Z",
+              "updatedAt": "2026-07-28T02:26:47.000Z",
+              "uid": "35240-7c919fa0-0e7b-4b34-a21c-fc980caee28a"
+            }
+          ],
+          "id": "5b90c7da-02c8-4539-81c5-2d02ee45fc01",
+          "createdAt": "2026-07-28T02:26:47.000Z",
+          "updatedAt": "2026-07-28T02:26:47.000Z",
+          "uid": "35240-5b90c7da-02c8-4539-81c5-2d02ee45fc01"
+        },
+        {
+          "name": "create",
+          "item": [
+            {
+              "name": "Create a new node",
+              "id": "31701189-3813-42f3-bf78-0e10847c7347",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/node/create",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "node",
+                    "create"
+                  ]
+                },
+                "description": "Create a new node within an open changeset."
+              },
+              "response": [
+                {
+                  "id": "659d7a2d-c501-47f3-9bb1-fac6b927b206",
+                  "name": "ID of the created node",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/node/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "node",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<integer>",
+                  "createdAt": "2026-07-28T02:26:47.000Z",
+                  "updatedAt": "2026-07-28T02:26:47.000Z",
+                  "uid": "35240-659d7a2d-c501-47f3-9bb1-fac6b927b206"
+                },
+                {
+                  "id": "6f178812-141d-495d-a2d2-01792bb9cb0a",
+                  "name": "Missing required fields or invalid geometry",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/node/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "node",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:26:47.000Z",
+                  "updatedAt": "2026-07-28T02:26:47.000Z",
+                  "uid": "35240-6f178812-141d-495d-a2d2-01792bb9cb0a"
+                },
+                {
+                  "id": "1a4b59e8-c32d-4ac8-93fb-2c35dd9e876b",
+                  "name": "The node is not inside the bounding box of the changeset",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/node/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "node",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "Method Not Allowed",
+                  "code": 405,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:26:47.000Z",
+                  "updatedAt": "2026-07-28T02:26:47.000Z",
+                  "uid": "35240-1a4b59e8-c32d-4ac8-93fb-2c35dd9e876b"
+                }
+              ],
+              "createdAt": "2026-07-28T02:26:47.000Z",
+              "updatedAt": "2026-07-28T02:26:47.000Z",
+              "uid": "35240-31701189-3813-42f3-bf78-0e10847c7347"
+            }
+          ],
+          "id": "d00b86d2-9dc0-4eac-9786-54762f1d6b5f",
+          "createdAt": "2026-07-28T02:26:47.000Z",
+          "updatedAt": "2026-07-28T02:26:47.000Z",
+          "uid": "35240-d00b86d2-9dc0-4eac-9786-54762f1d6b5f"
+        }
+      ],
+      "id": "7c9c352a-e166-4914-afae-5dc06f4d573f",
+      "createdAt": "2026-07-28T02:26:47.000Z",
+      "updatedAt": "2026-07-28T02:26:47.000Z",
+      "uid": "35240-7c9c352a-e166-4914-afae-5dc06f4d573f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openstreetmap.org/api/0.6"
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "info": {
+    "_postman_id": "4aa8ca51-6586-4a16-82a0-0da3f280cd88",
+    "name": "OpenStreetMap API v0.6 Capabilities Map Data API",
+    "description": "The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.\n\nContact Support:\n Name: OpenStreetMap Foundation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:26:46.000Z",
+    "updatedAt": "2026-07-28T02:26:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4aa8ca51-6586-4a16-82a0-0da3f280cd88"
+  },
+  "item": [
+    {
+      "name": "map",
+      "item": [
+        {
+          "name": "Get map data for a bounding box",
+          "id": "e0a45b4d-6162-472c-a762-dd74a777c568",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/map?bbox=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "map"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Bounding box as min_lon,min_lat,max_lon,max_lat (e.g., -0.489,51.28,0.236,51.686)",
+                  "key": "bbox",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve all OSM nodes, ways, and relations within a bounding box. Maximum area: 0.25 square degrees. Returns all objects with their current attributes and tags. High-volume use should use Overpass API instead."
+          },
+          "response": [
+            {
+              "id": "f7cc6656-e427-4bb0-b3ef-71077de2bde0",
+              "name": "OSM map data",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/map?bbox=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "map"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Bounding box as min_lon,min_lat,max_lon,max_lat (e.g., -0.489,51.28,0.236,51.686)",
+                      "key": "bbox",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"version\": \"<string>\",\n  \"generator\": \"<string>\",\n  \"copyright\": \"<string>\",\n  \"attribution\": \"<string>\",\n  \"license\": \"<string>\",\n  \"bounds\": {\n    \"minlat\": \"<number>\",\n    \"minlon\": \"<number>\",\n    \"maxlat\": \"<number>\",\n    \"maxlon\": \"<number>\"\n  },\n  \"nodes\": [\n    {\n      \"type\": \"node\",\n      \"id\": \"<long>\",\n      \"lat\": \"<double>\",\n      \"lon\": \"<double>\",\n      \"tags\": {\n        \"exercitation_3cf\": \"<string>\",\n        \"irure4\": \"<string>\",\n        \"magna60\": \"<string>\"\n      },\n      \"version\": \"<integer>\",\n      \"changeset\": \"<long>\",\n      \"timestamp\": \"<dateTime>\",\n      \"user\": \"<string>\",\n      \"uid\": \"<integer>\",\n      \"visible\": \"<boolean>\"\n    },\n    {\n      \"type\": \"node\",\n      \"id\": \"<long>\",\n      \"lat\": \"<double>\",\n      \"lon\": \"<double>\",\n      \"tags\": {\n        \"incididunt6_4\": \"<string>\",\n        \"quiec\": \"<string>\"\n      },\n      \"version\": \"<integer>\",\n      \"changeset\": \"<long>\",\n      \"timestamp\": \"<dateTime>\",\n      \"user\": \"<string>\",\n      \"uid\": \"<integer>\",\n      \"visible\": \"<boolean>\"\n    }\n  ],\n  \"ways\": [\n    {\n      \"type\": \"way\",\n      \"id\": \"<long>\",\n      \"nodes\": [\n        \"<long>\",\n        \"<long>\"\n      ],\n      \"tags\": {\n        \"velitdda\": \"<string>\",\n        \"culpa_a\": \"<string>\"\n      },\n      \"version\": \"<integer>\",\n      \"changeset\": \"<long>\",\n      \"timestamp\": \"<dateTime>\",\n      \"user\": \"<string>\",\n      \"uid\": \"<integer>\",\n      \"visible\": \"<boolean>\"\n    },\n    {\n      \"type\": \"way\",\n      \"id\": \"<long>\",\n      \"nodes\": [\n        \"<long>\",\n        \"<long>\"\n      ],\n      \"tags\": {\n        \"irured39\": \"<string>\"\n      },\n      \"version\": \"<integer>\",\n      \"changeset\": \"<long>\",\n      \"timestamp\": \"<dateTime>\",\n      \"user\": \"<string>\",\n      \"uid\": \"<integer>\",\n      \"visible\": \"<boolean>\"\n    }\n  ],\n  \"relations\": [\n    {\n      \"type\": \"relation\",\n      \"id\": \"<long>\",\n      \"members\": [\n        {\n          \"type\": \"relation\",\n          \"ref\": \"<long>\",\n          \"role\": \"<string>\"\n        },\n        {\n          \"type\": \"relation\",\n          \"ref\": \"<long>\",\n          \"role\": \"<string>\"\n        }\n      ],\n      \"tags\": {\n        \"quisa\": \"<string>\"\n      },\n      \"version\": \"<integer>\",\n      \"changeset\": \"<long>\",\n      \"timestamp\": \"<dateTime>\"\n    },\n    {\n      \"type\": \"relation\",\n      \"id\": \"<long>\",\n      \"members\": [\n        {\n          \"type\": \"way\",\n          \"ref\": \"<long>\",\n          \"role\": \"<string>\"\n        },\n        {\n          \"type\": \"node\",\n          \"ref\": \"<long>\",\n          \"role\": \"<string>\"\n        }\n      ],\n      \"tags\": {\n        \"ut_710\": \"<string>\",\n        \"aliquaa0\": \"<string>\"\n      },\n      \"version\": \"<integer>\",\n      \"changeset\": \"<long>\",\n      \"timestamp\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:26:47.000Z",
+              "updatedAt": "2026-07-28T02:26:47.000Z",
+              "uid": "35240-f7cc6656-e427-4bb0-b3ef-71077de2bde0"
+            },
+            {
+              "id": "002fc92c-1013-4147-ae10-729a39af2565",
+              "name": "Area too large or invalid bounding box",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/map?bbox=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "map"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Bounding box as min_lon,min_lat,max_lon,max_lat (e.g., -0.489,51.28,0.236,51.686)",
+                      "key": "bbox",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T02:26:47.000Z",
+              "updatedAt": "2026-07-28T02:26:47.000Z",
+              "uid": "35240-002fc92c-1013-4147-ae10-729a39af2565"
+            },
+            {
+              "id": "6b292d85-57b8-4dd4-afdd-8e29d5f2094e",
+              "name": "User throttled for excessive use",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/map?bbox=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "map"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Bounding box as min_lon,min_lat,max_lon,max_lat (e.g., -0.489,51.28,0.236,51.686)",
+                      "key": "bbox",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bandwidth Limit Exceeded (Apache bw/limited extension)",
+              "code": 509,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:26:47.000Z",
+              "updatedAt": "2026-07-28T02:26:47.000Z",
+              "uid": "35240-6b292d85-57b8-4dd4-afdd-8e29d5f2094e"
+            }
+          ],
+          "createdAt": "2026-07-28T02:26:47.000Z",
+          "updatedAt": "2026-07-28T02:26:47.000Z",
+          "uid": "35240-e0a45b4d-6162-472c-a762-dd74a777c568"
+        }
+      ],
+      "id": "71b87eb8-cb3c-4df7-bbb4-843486d1f617",
+      "createdAt": "2026-07-28T02:26:46.000Z",
+      "updatedAt": "2026-07-28T02:26:46.000Z",
+      "uid": "35240-71b87eb8-cb3c-4df7-bbb4-843486d1f617"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openstreetmap.org/api/0.6"
+    }
+  ]
+}

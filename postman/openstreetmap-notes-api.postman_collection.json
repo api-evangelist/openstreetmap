@@ -1,0 +1,386 @@
+{
+  "info": {
+    "_postman_id": "039d25e1-3300-4caa-abb2-3817ec5d7781",
+    "name": "OpenStreetMap API v0.6 Capabilities Notes API",
+    "description": "The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.\n\nContact Support:\n Name: OpenStreetMap Foundation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:26:48.000Z",
+    "updatedAt": "2026-07-28T02:26:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-039d25e1-3300-4caa-abb2-3817ec5d7781"
+  },
+  "item": [
+    {
+      "name": "notes",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get a note",
+              "id": "60bf8f05-4b6e-49a0-bad0-1489fd376caa",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/notes/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notes",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "bab0bb27-3311-43d6-bc2b-83b1ce951659",
+                      "key": "id",
+                      "value": "<long>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Retrieve a specific note by its ID."
+              },
+              "response": [
+                {
+                  "id": "2cfca249-e774-4c41-9160-2029857f2cca",
+                  "name": "Note details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/notes/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "notes",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"Feature\",\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      \"<number>\",\n      \"<number>\"\n    ]\n  },\n  \"properties\": {\n    \"id\": \"<long>\",\n    \"url\": \"<uri>\",\n    \"status\": \"open\",\n    \"date_created\": \"<dateTime>\",\n    \"date_closed\": \"<dateTime>\",\n    \"comments\": [\n      {\n        \"date\": \"<dateTime>\",\n        \"user\": \"<string>\",\n        \"user_url\": \"<uri>\",\n        \"action\": \"commented\",\n        \"text\": \"<string>\",\n        \"html\": \"<string>\"\n      },\n      {\n        \"date\": \"<dateTime>\",\n        \"user\": \"<string>\",\n        \"user_url\": \"<uri>\",\n        \"action\": \"opened\",\n        \"text\": \"<string>\",\n        \"html\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:26:48.000Z",
+                  "updatedAt": "2026-07-28T02:26:48.000Z",
+                  "uid": "35240-2cfca249-e774-4c41-9160-2029857f2cca"
+                },
+                {
+                  "id": "466542ba-021f-46bc-b284-e468b2564241",
+                  "name": "Note not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/notes/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "notes",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:26:48.000Z",
+                  "updatedAt": "2026-07-28T02:26:48.000Z",
+                  "uid": "35240-466542ba-021f-46bc-b284-e468b2564241"
+                }
+              ],
+              "createdAt": "2026-07-28T02:26:48.000Z",
+              "updatedAt": "2026-07-28T02:26:48.000Z",
+              "uid": "35240-60bf8f05-4b6e-49a0-bad0-1489fd376caa"
+            }
+          ],
+          "id": "9e3c7d8f-48a6-4ee3-881f-157b4db576d7",
+          "createdAt": "2026-07-28T02:26:48.000Z",
+          "updatedAt": "2026-07-28T02:26:48.000Z",
+          "uid": "35240-9e3c7d8f-48a6-4ee3-881f-157b4db576d7"
+        },
+        {
+          "name": "Search notes",
+          "id": "1c1990f0-4dae-410c-be27-483aed35feef",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/notes?bbox=<string>&q=<string>&status=open&limit=100&closed=7",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "notes"
+              ],
+              "query": [
+                {
+                  "description": "Bounding box (min_lon,min_lat,max_lon,max_lat)",
+                  "key": "bbox",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Free text search",
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "key": "status",
+                  "value": "open"
+                },
+                {
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "key": "closed",
+                  "value": "7"
+                }
+              ]
+            },
+            "description": "Search OSM notes by bounding box, text, status, or user."
+          },
+          "response": [
+            {
+              "id": "5fec4b3c-ccd7-4d5c-9a34-52fe7fe4e602",
+              "name": "Notes matching the query",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/notes?bbox=<string>&q=<string>&status=open&limit=100&closed=7",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notes"
+                  ],
+                  "query": [
+                    {
+                      "description": "Bounding box (min_lon,min_lat,max_lon,max_lat)",
+                      "key": "bbox",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Free text search",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "open"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "closed",
+                      "value": "7"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"properties\": {\n        \"id\": \"<long>\",\n        \"url\": \"<uri>\",\n        \"status\": \"open\",\n        \"date_created\": \"<dateTime>\",\n        \"date_closed\": \"<dateTime>\",\n        \"comments\": [\n          {\n            \"date\": \"<dateTime>\",\n            \"user\": \"<string>\",\n            \"user_url\": \"<uri>\",\n            \"action\": \"reopened\",\n            \"text\": \"<string>\",\n            \"html\": \"<string>\"\n          },\n          {\n            \"date\": \"<dateTime>\",\n            \"user\": \"<string>\",\n            \"user_url\": \"<uri>\",\n            \"action\": \"reopened\",\n            \"text\": \"<string>\",\n            \"html\": \"<string>\"\n          }\n        ]\n      }\n    },\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"properties\": {\n        \"id\": \"<long>\",\n        \"url\": \"<uri>\",\n        \"status\": \"open\",\n        \"date_created\": \"<dateTime>\",\n        \"date_closed\": \"<dateTime>\",\n        \"comments\": [\n          {\n            \"date\": \"<dateTime>\",\n            \"user\": \"<string>\",\n            \"user_url\": \"<uri>\",\n            \"action\": \"opened\",\n            \"text\": \"<string>\",\n            \"html\": \"<string>\"\n          },\n          {\n            \"date\": \"<dateTime>\",\n            \"user\": \"<string>\",\n            \"user_url\": \"<uri>\",\n            \"action\": \"commented\",\n            \"text\": \"<string>\",\n            \"html\": \"<string>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:26:48.000Z",
+              "updatedAt": "2026-07-28T02:26:48.000Z",
+              "uid": "35240-5fec4b3c-ccd7-4d5c-9a34-52fe7fe4e602"
+            }
+          ],
+          "createdAt": "2026-07-28T02:26:48.000Z",
+          "updatedAt": "2026-07-28T02:26:48.000Z",
+          "uid": "35240-1c1990f0-4dae-410c-be27-483aed35feef"
+        },
+        {
+          "name": "Create a note",
+          "id": "5f45bf36-8701-422d-85cd-db0921917016",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) ",
+                  "key": "lat",
+                  "value": "<double>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "lon",
+                  "value": "<double>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "text",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/notes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "notes"
+              ]
+            },
+            "description": "Create a new map note at a geographic location."
+          },
+          "response": [
+            {
+              "id": "06d55e29-a285-42fc-bdeb-068c9aef0ba7",
+              "name": "Created note",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) ",
+                      "key": "lat",
+                      "value": "<double>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "lon",
+                      "value": "<double>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "text",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/notes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notes"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"Feature\",\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      \"<number>\",\n      \"<number>\"\n    ]\n  },\n  \"properties\": {\n    \"id\": \"<long>\",\n    \"url\": \"<uri>\",\n    \"status\": \"open\",\n    \"date_created\": \"<dateTime>\",\n    \"date_closed\": \"<dateTime>\",\n    \"comments\": [\n      {\n        \"date\": \"<dateTime>\",\n        \"user\": \"<string>\",\n        \"user_url\": \"<uri>\",\n        \"action\": \"commented\",\n        \"text\": \"<string>\",\n        \"html\": \"<string>\"\n      },\n      {\n        \"date\": \"<dateTime>\",\n        \"user\": \"<string>\",\n        \"user_url\": \"<uri>\",\n        \"action\": \"opened\",\n        \"text\": \"<string>\",\n        \"html\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:26:48.000Z",
+              "updatedAt": "2026-07-28T02:26:48.000Z",
+              "uid": "35240-06d55e29-a285-42fc-bdeb-068c9aef0ba7"
+            }
+          ],
+          "createdAt": "2026-07-28T02:26:48.000Z",
+          "updatedAt": "2026-07-28T02:26:48.000Z",
+          "uid": "35240-5f45bf36-8701-422d-85cd-db0921917016"
+        }
+      ],
+      "id": "dc77cffa-e09f-4c44-a353-ec24da875087",
+      "createdAt": "2026-07-28T02:26:48.000Z",
+      "updatedAt": "2026-07-28T02:26:48.000Z",
+      "uid": "35240-dc77cffa-e09f-4c44-a353-ec24da875087"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openstreetmap.org/api/0.6"
+    }
+  ]
+}
