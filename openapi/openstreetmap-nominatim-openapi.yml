@@ -41,7 +41,7 @@ paths:
           in: query
           schema:
             type: string
-          description: Structured search: house number and street name
+          description: "Structured search: house number and street name"
         - name: city
           in: query
           schema:
@@ -174,7 +174,7 @@ paths:
             minimum: 0
             maximum: 18
             default: 18
-          description: Level of detail: 0=country, 3=region, 10=city, 14=suburb, 16=street, 18=building
+          description: "Level of detail: 0=country, 3=region, 10=city, 14=suburb, 16=street, 18=building"
         - name: format
           in: query
           schema:
