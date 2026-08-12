@@ -247,6 +247,26 @@ apis:
     url: https://nominatim.org/release-docs/latest/api/Overview/
   - type: RateLimits
     url: https://operations.osmfoundation.org/policies/nominatim/
+- aid: openstreetmap:openstreetmap-geocoding-api
+  name: OpenStreetMap Geocoding API
+  description: Forward geocoding, reverse geocoding, and OSM object lookup
+  humanURL: https://wiki.openstreetmap.org/wiki/Overpass_API
+  baseURL: https://overpass-api.de/api
+  tags:
+  - Geocoding
+  properties:
+  - type: OpenAPI
+    url: openapi/openstreetmap-geocoding-api-openapi.yml
+- aid: openstreetmap:openstreetmap-status-api
+  name: OpenStreetMap Status API
+  description: Server status and version information
+  humanURL: https://wiki.openstreetmap.org/wiki/Overpass_API
+  baseURL: https://overpass-api.de/api
+  tags:
+  - Status
+  properties:
+  - type: OpenAPI
+    url: openapi/openstreetmap-status-api-openapi.yml
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/openstreetmap/overview
