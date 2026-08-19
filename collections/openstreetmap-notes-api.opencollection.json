@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStreetMap API v0.6 Capabilities Notes API",
+    "version": "0.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/notes",
+            "params": [
+              {
+                "name": "bbox",
+                "value": "",
+                "type": "query",
+                "description": "Bounding box (min_lon,min_lat,max_lon,max_lat)"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Free text search"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "closed",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search OSM notes by bounding box, text, status, or user."
+        },
+        {
+          "info": {
+            "name": "Create a note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openstreetmap.org/api/0.6/notes",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "lat",
+                  "value": ""
+                },
+                {
+                  "name": "lon",
+                  "value": ""
+                },
+                {
+                  "name": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a new map note at a geographic location."
+        },
+        {
+          "info": {
+            "name": "Get a note",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific note by its ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

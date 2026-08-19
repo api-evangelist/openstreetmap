@@ -1,0 +1,161 @@
+{
+  "item": [
+    {
+      "id": "b6bcdaa5-cbc9-4b04-aece-5714035ce772",
+      "name": "Ways",
+      "description": {
+        "content": "OSM way (line/polygon) operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5d29b624-4a7e-4cc2-9b6b-75019176c977",
+          "name": "Get way by ID",
+          "request": {
+            "name": "Get way by ID",
+            "description": {
+              "content": "Retrieve the current version of a way and its node references.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "way",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf89386e-c3ba-42a9-bd98-8413796fea5d",
+              "name": "Way data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "way",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"way\",\n  \"id\": 2303,\n  \"nodes\": [\n    3561,\n    8187\n  ],\n  \"tags\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"version\": 2483,\n  \"changeset\": 6297,\n  \"timestamp\": \"1965-01-14T02:21:50.763Z\",\n  \"user\": \"string\",\n  \"uid\": 1223,\n  \"visible\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d081bb00-7e59-40f3-b82e-7de2a6276f6f",
+              "name": "Way not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "way",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openstreetmap.org/api/0.6",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "e675e565-aa68-47c0-9e67-ff46b4b42d93",
+    "name": "OpenStreetMap API v0.6 Capabilities Ways API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.\n\nContact Support:\n Name: OpenStreetMap Foundation",
+      "type": "text/plain"
+    }
+  }
+}

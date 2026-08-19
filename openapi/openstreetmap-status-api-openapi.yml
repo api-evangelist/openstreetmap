@@ -1,0 +1,67 @@
+openapi: 3.2.0
+info:
+  title: OpenStreetMap Nominatim Geocoding Status API
+  description: 'Nominatim is the OpenStreetMap geocoding API providing search (forward geocoding), reverse geocoding, and address lookup for OSM objects. Rate limit: 1 request/second for the public instance. Requires valid User-Agent header. Open source under GNU GPL v3.'
+  version: 4.4.0
+  contact:
+    name: Nominatim Project
+    url: https://nominatim.org/
+  license:
+    name: ODbL 1.0
+    url: https://www.openstreetmap.org/copyright
+servers:
+- url: https://nominatim.openstreetmap.org
+  description: Nominatim public instance (1 req/sec limit)
+security: []
+tags:
+- name: Status
+  description: Server status and version information
+paths:
+  /status:
+    get:
+      operationId: getStatus
+      summary: Get Nominatim server status
+      description: Returns server status including database version and last import timestamp.
+      tags:
+      - Status
+      parameters:
+      - name: format
+        in: query
+        schema:
+          type: string
+          enum:
+          - json
+          - text
+          default: json
+      responses:
+        '200':
+          description: Server status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+components:
+  schemas:
+    Status:
+      type: object
+      properties:
+        status:
+          type: integer
+          enum:
+          - 0
+          - 700
+          - 701
+          description: 0=OK, 700=Import not yet finished, 701=Database connection failed
+        message:
+          type: string
+        data_updated:
+          type: string
+          format: date-time
+          description: Timestamp of last OSM data import
+        software_version:
+          type: string
+        database_version:
+          type: string
+externalDocs:
+  description: Nominatim API Documentation
+  url: https://nominatim.org/release-docs/latest/api/Overview/

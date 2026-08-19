@@ -1,0 +1,191 @@
+{
+  "item": [
+    {
+      "id": "481b6881-9210-46e6-9358-09b577632a8b",
+      "name": "Map Data",
+      "description": {
+        "content": "Bulk map data retrieval by bounding box",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9ba0996a-f19c-4aed-b7da-b504269f2835",
+          "name": "Get map data for a bounding box",
+          "request": {
+            "name": "Get map data for a bounding box",
+            "description": {
+              "content": "Retrieve all OSM nodes, ways, and relations within a bounding box. Maximum area: 0.25 square degrees. Returns all objects with their current attributes and tags. High-volume use should use Overpass API instead.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "map"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "bbox",
+                  "value": "<string>",
+                  "description": "(Required) Bounding box as min_lon,min_lat,max_lon,max_lat (e.g., -0.489,51.28,0.236,51.686)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8cdc2cab-b99e-45c2-9f31-9fd857c2a186",
+              "name": "OSM map data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"string\",\n  \"generator\": \"string\",\n  \"copyright\": \"string\",\n  \"attribution\": \"string\",\n  \"license\": \"string\",\n  \"bounds\": {\n    \"minlat\": 8747.830739577177,\n    \"minlon\": 7914.29327966677,\n    \"maxlat\": 3343.82049914555,\n    \"maxlon\": 1930.0988516309137\n  },\n  \"nodes\": [\n    {\n      \"type\": \"node\",\n      \"id\": 8656,\n      \"lat\": 13.861239956553504,\n      \"lon\": -38.56250517143678,\n      \"tags\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"version\": 5404,\n      \"changeset\": 39,\n      \"timestamp\": \"1962-01-09T17:09:07.163Z\",\n      \"user\": \"string\",\n      \"uid\": 1726,\n      \"visible\": false\n    },\n    {\n      \"type\": \"node\",\n      \"id\": 8434,\n      \"lat\": 52.14797319424366,\n      \"lon\": 127.66714717412805,\n      \"tags\": {\n        \"key_0\": \"string\"\n      },\n      \"version\": 3519,\n      \"changeset\": 3783,\n      \"timestamp\": \"1999-09-02T07:01:44.161Z\",\n      \"user\": \"string\",\n      \"uid\": 3144,\n      \"visible\": true\n    }\n  ],\n  \"ways\": [\n    {\n      \"type\": \"way\",\n      \"id\": 6273,\n      \"nodes\": [\n        7292,\n        448\n      ],\n      \"tags\": {\n        \"key_0\": \"string\"\n      },\n      \"version\": 371,\n      \"changeset\": 1122,\n      \"timestamp\": \"1983-08-02T20:11:56.435Z\",\n      \"user\": \"string\",\n      \"uid\": 9244,\n      \"visible\": true\n    },\n    {\n      \"type\": \"way\",\n      \"id\": 2634,\n      \"nodes\": [\n        4944,\n        5867\n      ],\n      \"tags\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"version\": 9253,\n      \"changeset\": 4477,\n      \"timestamp\": \"1947-11-20T01:03:17.290Z\",\n      \"user\": \"string\",\n      \"uid\": 4969,\n      \"visible\": true\n    }\n  ],\n  \"relations\": [\n    {\n      \"type\": \"relation\",\n      \"id\": 3345,\n      \"members\": [\n        {\n          \"type\": \"node\",\n          \"ref\": 967,\n          \"role\": \"string\"\n        },\n        {\n          \"type\": \"relation\",\n          \"ref\": 5568,\n          \"role\": \"string\"\n        }\n      ],\n      \"tags\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"version\": 2835,\n      \"changeset\": 6995,\n      \"timestamp\": \"1965-06-11T14:04:25.798Z\"\n    },\n    {\n      \"type\": \"relation\",\n      \"id\": 7570,\n      \"members\": [\n        {\n          \"type\": \"way\",\n          \"ref\": 4114,\n          \"role\": \"string\"\n        },\n        {\n          \"type\": \"node\",\n          \"ref\": 1524,\n          \"role\": \"string\"\n        }\n      ],\n      \"tags\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\",\n        \"key_4\": \"string\"\n      },\n      \"version\": 3799,\n      \"changeset\": 1036,\n      \"timestamp\": \"1971-11-12T00:09:52.787Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5775cf64-067d-47f2-8139-e8f80df68481",
+              "name": "Area too large or invalid bounding box",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2f5a4242-140f-4fd4-a8dd-345667e212f7",
+              "name": "User throttled for excessive use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bandwidth Limit Exceeded (Apache bw/limited extension)",
+              "code": 509,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openstreetmap.org/api/0.6",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "bc2b1424-a94e-480f-ad1a-b791161dc291",
+    "name": "OpenStreetMap API v0.6 Capabilities Map Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.\n\nContact Support:\n Name: OpenStreetMap Foundation",
+      "type": "text/plain"
+    }
+  }
+}

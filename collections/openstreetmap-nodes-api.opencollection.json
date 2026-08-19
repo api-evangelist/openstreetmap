@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStreetMap API v0.6 Capabilities Nodes API",
+    "version": "0.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Nodes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get node by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/node/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the current version of a node."
+        },
+        {
+          "info": {
+            "name": "Update a node",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.openstreetmap.org/api/0.6/node/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Modify an existing node. Requires authentication and an open changeset."
+        },
+        {
+          "info": {
+            "name": "Delete a node",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.openstreetmap.org/api/0.6/node/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Mark a node as deleted in an open changeset."
+        },
+        {
+          "info": {
+            "name": "Create a new node",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.openstreetmap.org/api/0.6/node/create"
+          },
+          "docs": "Create a new node within an open changeset."
+        },
+        {
+          "info": {
+            "name": "Get a specific version of a node",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/node/:id/:version",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a historical version of a node."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

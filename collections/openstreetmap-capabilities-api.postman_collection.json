@@ -1,0 +1,105 @@
+{
+  "item": [
+    {
+      "id": "7ef0a56d-2208-4be4-b36c-3a74dcf4b415",
+      "name": "Capabilities",
+      "description": {
+        "content": "API version and limits",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9ba7531b-7339-45b9-b9cc-a4698e0f2a3f",
+          "name": "Get API capabilities and limits",
+          "request": {
+            "name": "Get API capabilities and limits",
+            "description": {
+              "content": "Returns current API capabilities including version, rate limits, and maximum area limits. No authentication required.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "capabilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e8ae7194-a0f4-48ed-902e-ea45d35958e7",
+              "name": "API capabilities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": {\n    \"minimum\": \"string\",\n    \"maximum\": \"string\"\n  },\n  \"area\": {\n    \"maximum\": 2558.439122005063\n  },\n  \"tracepoints\": {\n    \"per_page\": 6706\n  },\n  \"waynodes\": {\n    \"maximum\": 66\n  },\n  \"changesets\": {\n    \"maximum_elements\": 6129\n  },\n  \"notes\": {\n    \"default_query_limit\": 1279,\n    \"hard_query_limit\": 8426\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openstreetmap.org/api/0.6",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "f2de4274-3bb6-4cd2-869b-9b88aa6d861a",
+    "name": "OpenStreetMap API v0.6 Capabilities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.\n\nContact Support:\n Name: OpenStreetMap Foundation",
+      "type": "text/plain"
+    }
+  }
+}

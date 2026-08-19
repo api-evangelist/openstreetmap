@@ -1,0 +1,706 @@
+{
+  "item": [
+    {
+      "id": "76e4398b-9c6e-4e3c-a26d-9f064e3acb25",
+      "name": "Geocoding",
+      "description": {
+        "content": "Forward geocoding, reverse geocoding, and OSM object lookup",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "77c2dfef-25cb-4e33-b75e-7af5e6632487",
+          "name": "Forward geocode (search by address/name)",
+          "request": {
+            "name": "Forward geocode (search by address/name)",
+            "description": {
+              "content": "Search for locations by address, place name, or structured address components. Returns geographic coordinates and address details. Rate limit: 1 request/second; User-Agent header required.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Free-form query string (incompatible with structured parameters)"
+                },
+                {
+                  "disabled": false,
+                  "key": "street",
+                  "value": "<string>",
+                  "description": "Structured search: house number and street name"
+                },
+                {
+                  "disabled": false,
+                  "key": "city",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "county",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "Country name or ISO 3166-1 alpha-2 code"
+                },
+                {
+                  "disabled": false,
+                  "key": "postalcode",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "jsonv2"
+                },
+                {
+                  "disabled": false,
+                  "key": "addressdetails",
+                  "value": "0",
+                  "description": "Include address breakdown in results"
+                },
+                {
+                  "disabled": false,
+                  "key": "extratags",
+                  "value": "0",
+                  "description": "Include extra OSM tags"
+                },
+                {
+                  "disabled": false,
+                  "key": "namedetails",
+                  "value": "0",
+                  "description": "Include all localized names"
+                },
+                {
+                  "disabled": false,
+                  "key": "countrycodes",
+                  "value": "<string>",
+                  "description": "Comma-separated list of ISO 3166-1 alpha-2 codes to limit results"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "disabled": false,
+                  "key": "dedupe",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "bounded",
+                  "value": "0",
+                  "description": "Restrict results to viewbox when combined with viewbox parameter"
+                },
+                {
+                  "disabled": false,
+                  "key": "viewbox",
+                  "value": "<string>",
+                  "description": "Preferred search area as min_lon,min_lat,max_lon,max_lat"
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_place_ids",
+                  "value": "<string>",
+                  "description": "Comma-separated OSM place IDs to exclude"
+                },
+                {
+                  "disabled": false,
+                  "key": "accept-language",
+                  "value": "<string>",
+                  "description": "Preferred response language (BCP 47 code or comma-separated list)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc4ad2cf-5309-496d-a776-c36403383dcf",
+              "name": "Geocoding results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "street",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "county",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postalcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "jsonv2"
+                    },
+                    {
+                      "key": "addressdetails",
+                      "value": "0"
+                    },
+                    {
+                      "key": "extratags",
+                      "value": "0"
+                    },
+                    {
+                      "key": "namedetails",
+                      "value": "0"
+                    },
+                    {
+                      "key": "countrycodes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "dedupe",
+                      "value": "1"
+                    },
+                    {
+                      "key": "bounded",
+                      "value": "0"
+                    },
+                    {
+                      "key": "viewbox",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_place_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accept-language",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"place_id\": 7703,\n    \"licence\": \"string\",\n    \"osm_type\": \"way\",\n    \"osm_id\": 2387,\n    \"lat\": \"string\",\n    \"lon\": \"string\",\n    \"display_name\": \"string\",\n    \"class\": \"string\",\n    \"type\": \"string\",\n    \"importance\": 4725.266730425322,\n    \"icon\": \"http://bKvVgtrhjExNTPAd.xnipJQv9JHa9vHJvuhyIKrTiuL-\",\n    \"address\": {\n      \"house_number\": \"string\",\n      \"road\": \"string\",\n      \"suburb\": \"string\",\n      \"neighbourhood\": \"string\",\n      \"quarter\": \"string\",\n      \"borough\": \"string\",\n      \"city\": \"string\",\n      \"town\": \"string\",\n      \"village\": \"string\",\n      \"county\": \"string\",\n      \"state\": \"string\",\n      \"state_district\": \"string\",\n      \"postcode\": \"string\",\n      \"country\": \"string\",\n      \"country_code\": \"string\"\n    },\n    \"boundingbox\": [\n      \"string\",\n      \"string\",\n      \"string\",\n      \"string\"\n    ],\n    \"extratags\": {\n      \"key_0\": \"string\"\n    },\n    \"namedetails\": {\n      \"key_0\": \"string\"\n    }\n  },\n  {\n    \"place_id\": 4825,\n    \"licence\": \"string\",\n    \"osm_type\": \"way\",\n    \"osm_id\": 9155,\n    \"lat\": \"string\",\n    \"lon\": \"string\",\n    \"display_name\": \"string\",\n    \"class\": \"string\",\n    \"type\": \"string\",\n    \"importance\": 6268.131777761751,\n    \"icon\": \"http://SqBDFAo.bhybyXDoq0iWjqInlMM,uVS9feGUnAvbdHahWoJJ4XVvyVsj2xNrRFMdB\",\n    \"address\": {\n      \"house_number\": \"string\",\n      \"road\": \"string\",\n      \"suburb\": \"string\",\n      \"neighbourhood\": \"string\",\n      \"quarter\": \"string\",\n      \"borough\": \"string\",\n      \"city\": \"string\",\n      \"town\": \"string\",\n      \"village\": \"string\",\n      \"county\": \"string\",\n      \"state\": \"string\",\n      \"state_district\": \"string\",\n      \"postcode\": \"string\",\n      \"country\": \"string\",\n      \"country_code\": \"string\"\n    },\n    \"boundingbox\": [\n      \"string\",\n      \"string\",\n      \"string\",\n      \"string\"\n    ],\n    \"extratags\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"namedetails\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95ead04a-6b81-473d-b3de-0951c80518f4",
+              "name": "Rate limit exceeded — maximum 1 request/second",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "street",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "county",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postalcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "jsonv2"
+                    },
+                    {
+                      "key": "addressdetails",
+                      "value": "0"
+                    },
+                    {
+                      "key": "extratags",
+                      "value": "0"
+                    },
+                    {
+                      "key": "namedetails",
+                      "value": "0"
+                    },
+                    {
+                      "key": "countrycodes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "dedupe",
+                      "value": "1"
+                    },
+                    {
+                      "key": "bounded",
+                      "value": "0"
+                    },
+                    {
+                      "key": "viewbox",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_place_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accept-language",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42c2f1f2-e365-4577-925b-189e4774bd2d",
+          "name": "Reverse geocode (coordinates to address)",
+          "request": {
+            "name": "Reverse geocode (coordinates to address)",
+            "description": {
+              "content": "Convert geographic coordinates (lat/lon) into a human-readable address. Returns the OSM object closest to the given coordinates at the specified zoom level.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reverse"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<double>",
+                  "description": "(Required) Latitude in decimal degrees (WGS84)"
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<double>",
+                  "description": "(Required) Longitude in decimal degrees (WGS84)"
+                },
+                {
+                  "disabled": false,
+                  "key": "zoom",
+                  "value": "18",
+                  "description": "Level of detail: 0=country, 3=region, 10=city, 14=suburb, 16=street, 18=building"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "jsonv2"
+                },
+                {
+                  "disabled": false,
+                  "key": "addressdetails",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "extratags",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "namedetails",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "accept-language",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26026af8-e0a1-42b6-9acc-d96c8da7d963",
+              "name": "Reverse geocoding result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reverse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "zoom",
+                      "value": "18"
+                    },
+                    {
+                      "key": "format",
+                      "value": "jsonv2"
+                    },
+                    {
+                      "key": "addressdetails",
+                      "value": "1"
+                    },
+                    {
+                      "key": "extratags",
+                      "value": "0"
+                    },
+                    {
+                      "key": "namedetails",
+                      "value": "0"
+                    },
+                    {
+                      "key": "accept-language",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"place_id\": 1527,\n  \"licence\": \"string\",\n  \"osm_type\": \"relation\",\n  \"osm_id\": 488,\n  \"lat\": \"string\",\n  \"lon\": \"string\",\n  \"display_name\": \"string\",\n  \"class\": \"string\",\n  \"type\": \"string\",\n  \"importance\": 2722.5710208038677,\n  \"icon\": \"https://PtX.hotps866m,H9oeB4.GAtPx5,XmoKsVNTyWvOI2SKeI9ekj5kjlZVbQdo\",\n  \"address\": {\n    \"house_number\": \"string\",\n    \"road\": \"string\",\n    \"suburb\": \"string\",\n    \"neighbourhood\": \"string\",\n    \"quarter\": \"string\",\n    \"borough\": \"string\",\n    \"city\": \"string\",\n    \"town\": \"string\",\n    \"village\": \"string\",\n    \"county\": \"string\",\n    \"state\": \"string\",\n    \"state_district\": \"string\",\n    \"postcode\": \"string\",\n    \"country\": \"string\",\n    \"country_code\": \"string\"\n  },\n  \"boundingbox\": [\n    \"string\",\n    \"string\",\n    \"string\",\n    \"string\"\n  ],\n  \"extratags\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"namedetails\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "242317e2-644a-4f6c-80f1-771550f322f3",
+              "name": "No result found for the given coordinates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reverse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "zoom",
+                      "value": "18"
+                    },
+                    {
+                      "key": "format",
+                      "value": "jsonv2"
+                    },
+                    {
+                      "key": "addressdetails",
+                      "value": "1"
+                    },
+                    {
+                      "key": "extratags",
+                      "value": "0"
+                    },
+                    {
+                      "key": "namedetails",
+                      "value": "0"
+                    },
+                    {
+                      "key": "accept-language",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8cdbe5f9-8be2-4338-9c50-994130fe2734",
+          "name": "Look up OSM objects by ID",
+          "request": {
+            "name": "Look up OSM objects by ID",
+            "description": {
+              "content": "Look up address details for specific OSM objects by their type and ID. Maximum 50 IDs per request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "osm_ids",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of OSM IDs with type prefix: N=node, W=way, R=relation (e.g., R146656,W104393803,N240109189)"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "jsonv2"
+                },
+                {
+                  "disabled": false,
+                  "key": "addressdetails",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "extratags",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "namedetails",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60afcbb6-5682-42be-a716-1525e2ba72b6",
+              "name": "Object address details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "osm_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "jsonv2"
+                    },
+                    {
+                      "key": "addressdetails",
+                      "value": "1"
+                    },
+                    {
+                      "key": "extratags",
+                      "value": "0"
+                    },
+                    {
+                      "key": "namedetails",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"place_id\": 2740,\n    \"licence\": \"string\",\n    \"osm_type\": \"way\",\n    \"osm_id\": 4267,\n    \"lat\": \"string\",\n    \"lon\": \"string\",\n    \"display_name\": \"string\",\n    \"class\": \"string\",\n    \"type\": \"string\",\n    \"importance\": 8191.404429529948,\n    \"icon\": \"http://TQwkUPBDEeqxpdNxwDvreIRUjftQjnH.vuaf5L8IRGGjUQs2-HijL+mk4QcbTSLAGH58eZMuUMMJ-i6,lMB7RM5XyV1wxiE\",\n    \"address\": {\n      \"house_number\": \"string\",\n      \"road\": \"string\",\n      \"suburb\": \"string\",\n      \"neighbourhood\": \"string\",\n      \"quarter\": \"string\",\n      \"borough\": \"string\",\n      \"city\": \"string\",\n      \"town\": \"string\",\n      \"village\": \"string\",\n      \"county\": \"string\",\n      \"state\": \"string\",\n      \"state_district\": \"string\",\n      \"postcode\": \"string\",\n      \"country\": \"string\",\n      \"country_code\": \"string\"\n    },\n    \"boundingbox\": [\n      \"string\",\n      \"string\",\n      \"string\",\n      \"string\"\n    ],\n    \"extratags\": {\n      \"key_0\": \"string\"\n    },\n    \"namedetails\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": \"string\"\n    }\n  },\n  {\n    \"place_id\": 6111,\n    \"licence\": \"string\",\n    \"osm_type\": \"relation\",\n    \"osm_id\": 2110,\n    \"lat\": \"string\",\n    \"lon\": \"string\",\n    \"display_name\": \"string\",\n    \"class\": \"string\",\n    \"type\": \"string\",\n    \"importance\": 4325.925317328502,\n    \"icon\": \"http://nUnYfCxTWhyMoVPqqYzZTLSqY.uunlHGZZ90REr5HXs6YanEF+jLVvqy5qRLSfAoHJr1\",\n    \"address\": {\n      \"house_number\": \"string\",\n      \"road\": \"string\",\n      \"suburb\": \"string\",\n      \"neighbourhood\": \"string\",\n      \"quarter\": \"string\",\n      \"borough\": \"string\",\n      \"city\": \"string\",\n      \"town\": \"string\",\n      \"village\": \"string\",\n      \"county\": \"string\",\n      \"state\": \"string\",\n      \"state_district\": \"string\",\n      \"postcode\": \"string\",\n      \"country\": \"string\",\n      \"country_code\": \"string\"\n    },\n    \"boundingbox\": [\n      \"string\",\n      \"string\",\n      \"string\",\n      \"string\"\n    ],\n    \"extratags\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    \"namedetails\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://nominatim.openstreetmap.org",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4a3572e2-fb9f-4597-a0ca-436d587fa2eb",
+    "name": "OpenStreetMap Nominatim Geocoding API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Nominatim is the OpenStreetMap geocoding API providing search (forward geocoding), reverse geocoding, and address lookup for OSM objects. Rate limit: 1 request/second for the public instance. Requires valid User-Agent header. Open source under GNU GPL v3.\n\nContact Support:\n Name: Nominatim Project",
+      "type": "text/plain"
+    }
+  }
+}

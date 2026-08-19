@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStreetMap API v0.6 Capabilities Relations API",
+    "version": "0.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Relations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get relation by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/relation/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the current version of a relation with its members."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

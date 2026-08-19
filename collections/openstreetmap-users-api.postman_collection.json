@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "5fb946d5-6a50-425b-9ece-ae158dff427b",
+      "name": "Users",
+      "description": {
+        "content": "User account information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "04bc711f-7dda-4094-babd-bedb036915ea",
+          "name": "Get authenticated user details",
+          "request": {
+            "name": "Get authenticated user details",
+            "description": {
+              "content": "Returns details of the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "details"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fa1ed541-4133-4dd5-867d-255be2adfd7c",
+              "name": "User details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1617,\n  \"display_name\": \"string\",\n  \"account_created\": \"1979-10-14T07:38:39.077Z\",\n  \"description\": \"string\",\n  \"img\": {\n    \"href\": \"http://xOQwcWgsdUwkTLtfCDVPOEqiFAWNGe.jsdElvRqYxZLF-Qp6U.sLHGU6YVlg5fzCqNB\"\n  },\n  \"changesets\": {\n    \"count\": 6273\n  },\n  \"traces\": {\n    \"count\": 6980\n  },\n  \"contributor_terms\": {\n    \"agreed\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0637e21e-0c7d-4da6-8d0e-050edba0ec39",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openstreetmap.org/api/0.6",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "727e38db-3433-4bb0-a292-08c97f438fec",
+    "name": "OpenStreetMap API v0.6 Capabilities Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.\n\nContact Support:\n Name: OpenStreetMap Foundation",
+      "type": "text/plain"
+    }
+  }
+}

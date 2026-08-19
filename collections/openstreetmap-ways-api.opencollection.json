@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStreetMap API v0.6 Capabilities Ways API",
+    "version": "0.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ways",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get way by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/way/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the current version of a way and its node references."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

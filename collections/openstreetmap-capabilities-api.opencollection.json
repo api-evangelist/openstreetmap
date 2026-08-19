@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStreetMap API v0.6 Capabilities API",
+    "version": "0.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Capabilities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get API capabilities and limits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/capabilities"
+          },
+          "docs": "Returns current API capabilities including version, rate limits, and maximum area limits. No authentication required."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

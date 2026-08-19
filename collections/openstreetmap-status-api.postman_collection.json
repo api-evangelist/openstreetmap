@@ -1,0 +1,113 @@
+{
+  "item": [
+    {
+      "id": "cea495f8-c88b-4b66-824e-eda758bcd6ff",
+      "name": "Status",
+      "description": {
+        "content": "Server status and version information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6af3bf74-6f00-4470-9704-30175598569e",
+          "name": "Get Nominatim server status",
+          "request": {
+            "name": "Get Nominatim server status",
+            "description": {
+              "content": "Returns server status including database version and last import timestamp.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "661051b2-902b-4315-b613-b971a6b37c9b",
+              "name": "Server status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 700,\n  \"message\": \"string\",\n  \"data_updated\": \"1949-09-22T21:53:56.024Z\",\n  \"software_version\": \"string\",\n  \"database_version\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://nominatim.openstreetmap.org",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7d2c5f2f-a72c-4398-97f0-0afce658fb80",
+    "name": "OpenStreetMap Nominatim Geocoding Status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Nominatim is the OpenStreetMap geocoding API providing search (forward geocoding), reverse geocoding, and address lookup for OSM objects. Rate limit: 1 request/second for the public instance. Requires valid User-Agent header. Open source under GNU GPL v3.\n\nContact Support:\n Name: Nominatim Project",
+      "type": "text/plain"
+    }
+  }
+}

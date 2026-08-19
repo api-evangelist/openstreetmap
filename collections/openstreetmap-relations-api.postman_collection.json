@@ -1,0 +1,123 @@
+{
+  "item": [
+    {
+      "id": "013a1125-70a0-4272-86b2-b9b553a2b87c",
+      "name": "Relations",
+      "description": {
+        "content": "OSM relation operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "054e16ea-7f36-489f-8662-ece7ec91b6ce",
+          "name": "Get relation by ID",
+          "request": {
+            "name": "Get relation by ID",
+            "description": {
+              "content": "Retrieve the current version of a relation with its members.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "relation",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e75e37f4-81e9-4fe7-b278-40ba83088283",
+              "name": "Relation data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "relation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"relation\",\n  \"id\": 7619,\n  \"members\": [\n    {\n      \"type\": \"way\",\n      \"ref\": 4252,\n      \"role\": \"string\"\n    },\n    {\n      \"type\": \"way\",\n      \"ref\": 2101,\n      \"role\": \"string\"\n    }\n  ],\n  \"tags\": {\n    \"key_0\": \"string\"\n  },\n  \"version\": 4285,\n  \"changeset\": 6201,\n  \"timestamp\": \"1985-07-14T20:46:55.803Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openstreetmap.org/api/0.6",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "c7bcd525-9922-4036-9e39-5097d31493ea",
+    "name": "OpenStreetMap API v0.6 Capabilities Relations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.\n\nContact Support:\n Name: OpenStreetMap Foundation",
+      "type": "text/plain"
+    }
+  }
+}

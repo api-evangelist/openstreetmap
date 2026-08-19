@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStreetMap API v0.6 Capabilities Changesets API",
+    "version": "0.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Changesets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a changeset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/create"
+          },
+          "docs": "Create a new changeset to group editing operations."
+        },
+        {
+          "info": {
+            "name": "Get changeset details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include_discussion",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve metadata for a changeset including tags, timestamps, and bounding box."
+        },
+        {
+          "info": {
+            "name": "Update changeset tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Modify the tags of an open changeset (must be the owner)."
+        },
+        {
+          "info": {
+            "name": "Close a changeset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/:id/close",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Close an open changeset (no more edits may be added after this)."
+        },
+        {
+          "info": {
+            "name": "Upload an OsmChange document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/:id/upload",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Upload a batch of creates, modifies, and deletes as an OsmChange XML document. Atomic: either all operations succeed or none are applied."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

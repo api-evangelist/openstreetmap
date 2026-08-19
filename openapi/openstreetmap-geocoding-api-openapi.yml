@@ -1,0 +1,395 @@
+openapi: 3.2.0
+info:
+  title: OpenStreetMap Nominatim Geocoding API
+  description: 'Nominatim is the OpenStreetMap geocoding API providing search (forward geocoding), reverse geocoding, and address lookup for OSM objects. Rate limit: 1 request/second for the public instance. Requires valid User-Agent header. Open source under GNU GPL v3.'
+  version: 4.4.0
+  contact:
+    name: Nominatim Project
+    url: https://nominatim.org/
+  license:
+    name: ODbL 1.0
+    url: https://www.openstreetmap.org/copyright
+servers:
+- url: https://nominatim.openstreetmap.org
+  description: Nominatim public instance (1 req/sec limit)
+security: []
+tags:
+- name: Geocoding
+  description: Forward geocoding, reverse geocoding, and OSM object lookup
+paths:
+  /search:
+    get:
+      operationId: geocodeSearch
+      summary: Forward geocode (search by address/name)
+      description: 'Search for locations by address, place name, or structured address components. Returns geographic coordinates and address details. Rate limit: 1 request/second; User-Agent header required.'
+      tags:
+      - Geocoding
+      parameters:
+      - name: q
+        in: query
+        schema:
+          type: string
+        description: Free-form query string (incompatible with structured parameters)
+      - name: street
+        in: query
+        schema:
+          type: string
+        description: 'Structured search: house number and street name'
+      - name: city
+        in: query
+        schema:
+          type: string
+      - name: county
+        in: query
+        schema:
+          type: string
+      - name: state
+        in: query
+        schema:
+          type: string
+      - name: country
+        in: query
+        schema:
+          type: string
+        description: Country name or ISO 3166-1 alpha-2 code
+      - name: postalcode
+        in: query
+        schema:
+          type: string
+      - name: format
+        in: query
+        schema:
+          type: string
+          enum:
+          - json
+          - jsonv2
+          - geojson
+          - geocodejson
+          - xml
+          default: jsonv2
+      - name: addressdetails
+        in: query
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+        description: Include address breakdown in results
+      - name: extratags
+        in: query
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+        description: Include extra OSM tags
+      - name: namedetails
+        in: query
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+        description: Include all localized names
+      - name: countrycodes
+        in: query
+        schema:
+          type: string
+        description: Comma-separated list of ISO 3166-1 alpha-2 codes to limit results
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 10
+          maximum: 50
+      - name: dedupe
+        in: query
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 1
+      - name: bounded
+        in: query
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+        description: Restrict results to viewbox when combined with viewbox parameter
+      - name: viewbox
+        in: query
+        schema:
+          type: string
+        description: Preferred search area as min_lon,min_lat,max_lon,max_lat
+      - name: exclude_place_ids
+        in: query
+        schema:
+          type: string
+        description: Comma-separated OSM place IDs to exclude
+      - name: accept-language
+        in: query
+        schema:
+          type: string
+        description: Preferred response language (BCP 47 code or comma-separated list)
+      responses:
+        '200':
+          description: Geocoding results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResults'
+        '429':
+          description: Rate limit exceeded — maximum 1 request/second
+  /reverse:
+    get:
+      operationId: geocodeReverse
+      summary: Reverse geocode (coordinates to address)
+      description: Convert geographic coordinates (lat/lon) into a human-readable address. Returns the OSM object closest to the given coordinates at the specified zoom level.
+      tags:
+      - Geocoding
+      parameters:
+      - name: lat
+        in: query
+        required: true
+        schema:
+          type: number
+          format: double
+          minimum: -90
+          maximum: 90
+        description: Latitude in decimal degrees (WGS84)
+      - name: lon
+        in: query
+        required: true
+        schema:
+          type: number
+          format: double
+          minimum: -180
+          maximum: 180
+        description: Longitude in decimal degrees (WGS84)
+      - name: zoom
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          maximum: 18
+          default: 18
+        description: 'Level of detail: 0=country, 3=region, 10=city, 14=suburb, 16=street, 18=building'
+      - name: format
+        in: query
+        schema:
+          type: string
+          enum:
+          - json
+          - jsonv2
+          - geojson
+          - geocodejson
+          - xml
+          default: jsonv2
+      - name: addressdetails
+        in: query
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 1
+      - name: extratags
+        in: query
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      - name: namedetails
+        in: query
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      - name: accept-language
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Reverse geocoding result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReverseResult'
+        '404':
+          description: No result found for the given coordinates
+  /lookup:
+    get:
+      operationId: lookupOSMObjects
+      summary: Look up OSM objects by ID
+      description: Look up address details for specific OSM objects by their type and ID. Maximum 50 IDs per request.
+      tags:
+      - Geocoding
+      parameters:
+      - name: osm_ids
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 'Comma-separated list of OSM IDs with type prefix: N=node, W=way, R=relation (e.g., R146656,W104393803,N240109189)'
+      - name: format
+        in: query
+        schema:
+          type: string
+          enum:
+          - json
+          - jsonv2
+          - geojson
+          - geocodejson
+          - xml
+          default: jsonv2
+      - name: addressdetails
+        in: query
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 1
+      - name: extratags
+        in: query
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      - name: namedetails
+        in: query
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      responses:
+        '200':
+          description: Object address details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResults'
+components:
+  schemas:
+    Address:
+      type: object
+      description: Structured address components
+      properties:
+        house_number:
+          type: string
+        road:
+          type: string
+        suburb:
+          type: string
+        neighbourhood:
+          type: string
+        quarter:
+          type: string
+        borough:
+          type: string
+        city:
+          type: string
+        town:
+          type: string
+        village:
+          type: string
+        county:
+          type: string
+        state:
+          type: string
+        state_district:
+          type: string
+        postcode:
+          type: string
+        country:
+          type: string
+        country_code:
+          type: string
+          description: ISO 3166-1 alpha-2 country code (lowercase)
+    ReverseResult:
+      allOf:
+      - $ref: '#/components/schemas/SearchResult'
+      - type: object
+        properties:
+          error:
+            type: string
+            description: Error message if no result found
+    SearchResult:
+      type: object
+      description: A single geocoding result
+      properties:
+        place_id:
+          type: integer
+          description: Internal Nominatim place identifier
+        licence:
+          type: string
+          description: Data licence text
+        osm_type:
+          type: string
+          enum:
+          - node
+          - way
+          - relation
+        osm_id:
+          type: integer
+          format: int64
+        lat:
+          type: string
+          description: Latitude as string
+        lon:
+          type: string
+          description: Longitude as string
+        display_name:
+          type: string
+          description: Full formatted address string
+        class:
+          type: string
+          description: OSM class (e.g., place, highway, amenity)
+        type:
+          type: string
+          description: OSM type within the class (e.g., city, residential, restaurant)
+        importance:
+          type: number
+          description: Relevance score (0-1)
+        icon:
+          type: string
+          format: uri
+        address:
+          $ref: '#/components/schemas/Address'
+        boundingbox:
+          type: array
+          items:
+            type: string
+          minItems: 4
+          maxItems: 4
+          description: Bounding box [min_lat, max_lat, min_lon, max_lon]
+        extratags:
+          type: object
+          additionalProperties:
+            type: string
+        namedetails:
+          type: object
+          additionalProperties:
+            type: string
+    SearchResults:
+      type: array
+      items:
+        $ref: '#/components/schemas/SearchResult'
+externalDocs:
+  description: Nominatim API Documentation
+  url: https://nominatim.org/release-docs/latest/api/Overview/

@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStreetMap API v0.6 Capabilities Map Data API",
+    "version": "0.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Map Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get map data for a bounding box",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openstreetmap.org/api/0.6/map",
+            "params": [
+              {
+                "name": "bbox",
+                "value": "",
+                "type": "query",
+                "description": "Bounding box as min_lon,min_lat,max_lon,max_lat (e.g., -0.489,51.28,0.236,51.686)"
+              }
+            ]
+          },
+          "docs": "Retrieve all OSM nodes, ways, and relations within a bounding box. Maximum area: 0.25 square degrees. Returns all objects with their current attributes and tags. High-volume use should use Overpass API instead."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

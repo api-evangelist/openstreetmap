@@ -1,0 +1,227 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStreetMap Nominatim Geocoding API",
+    "version": "4.4.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Geocoding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Forward geocode (search by address/name)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://nominatim.openstreetmap.org/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Free-form query string (incompatible with structured parameters)"
+              },
+              {
+                "name": "street",
+                "value": "",
+                "type": "query",
+                "description": "Structured search: house number and street name"
+              },
+              {
+                "name": "city",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Country name or ISO 3166-1 alpha-2 code"
+              },
+              {
+                "name": "postalcode",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "addressdetails",
+                "value": "",
+                "type": "query",
+                "description": "Include address breakdown in results"
+              },
+              {
+                "name": "extratags",
+                "value": "",
+                "type": "query",
+                "description": "Include extra OSM tags"
+              },
+              {
+                "name": "namedetails",
+                "value": "",
+                "type": "query",
+                "description": "Include all localized names"
+              },
+              {
+                "name": "countrycodes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of ISO 3166-1 alpha-2 codes to limit results"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dedupe",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "bounded",
+                "value": "",
+                "type": "query",
+                "description": "Restrict results to viewbox when combined with viewbox parameter"
+              },
+              {
+                "name": "viewbox",
+                "value": "",
+                "type": "query",
+                "description": "Preferred search area as min_lon,min_lat,max_lon,max_lat"
+              },
+              {
+                "name": "exclude_place_ids",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated OSM place IDs to exclude"
+              },
+              {
+                "name": "accept-language",
+                "value": "",
+                "type": "query",
+                "description": "Preferred response language (BCP 47 code or comma-separated list)"
+              }
+            ]
+          },
+          "docs": "Search for locations by address, place name, or structured address components. Returns geographic coordinates and address details. Rate limit: 1 request/second; User-Agent header required."
+        },
+        {
+          "info": {
+            "name": "Reverse geocode (coordinates to address)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://nominatim.openstreetmap.org/reverse",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees (WGS84)"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees (WGS84)"
+              },
+              {
+                "name": "zoom",
+                "value": "",
+                "type": "query",
+                "description": "Level of detail: 0=country, 3=region, 10=city, 14=suburb, 16=street, 18=building"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "addressdetails",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "extratags",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "namedetails",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "accept-language",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Convert geographic coordinates (lat/lon) into a human-readable address. Returns the OSM object closest to the given coordinates at the specified zoom level."
+        },
+        {
+          "info": {
+            "name": "Look up OSM objects by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://nominatim.openstreetmap.org/lookup",
+            "params": [
+              {
+                "name": "osm_ids",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of OSM IDs with type prefix: N=node, W=way, R=relation (e.g., R146656,W104393803,N240109189)"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "addressdetails",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "extratags",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "namedetails",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Look up address details for specific OSM objects by their type and ID. Maximum 50 IDs per request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

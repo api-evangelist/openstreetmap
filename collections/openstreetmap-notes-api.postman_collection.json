@@ -1,0 +1,408 @@
+{
+  "item": [
+    {
+      "id": "274f812d-0a26-40fe-80b1-0e6fd9235199",
+      "name": "Notes",
+      "description": {
+        "content": "Community map notes",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8d136eb2-ce13-4b8a-bf65-a0f19d5d5120",
+          "name": "Search notes",
+          "request": {
+            "name": "Search notes",
+            "description": {
+              "content": "Search OSM notes by bounding box, text, status, or user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "bbox",
+                  "value": "<string>",
+                  "description": "Bounding box (min_lon,min_lat,max_lon,max_lat)"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Free text search"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "open"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "closed",
+                  "value": "7"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a7c28b1e-72f6-426e-9a0d-e945e506985c",
+              "name": "Notes matching the query",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "open"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "closed",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          5600.424047880123,\n          5.222163708751282\n        ]\n      },\n      \"properties\": {\n        \"id\": 6018,\n        \"url\": \"http://YMRLeYiZtppuKfQKQAl.mlkiDNdUskjbGxXoiFpG9IIwCF\",\n        \"status\": \"closed\",\n        \"date_created\": \"2005-12-06T20:39:08.273Z\",\n        \"date_closed\": \"2025-10-20T21:28:47.257Z\",\n        \"comments\": [\n          {\n            \"date\": \"1958-12-14T02:47:18.040Z\",\n            \"user\": \"string\",\n            \"user_url\": \"https://gQsm.uxkuhlaByKzoBTZvmR5BOuBK9zUmmwqTE1OavxLiGscCFcVyy\",\n            \"action\": \"closed\",\n            \"text\": \"string\",\n            \"html\": \"string\"\n          },\n          {\n            \"date\": \"1976-02-11T12:01:22.850Z\",\n            \"user\": \"string\",\n            \"user_url\": \"http://RrdzXbqfI.epgG1qRuqn,B73Mtt6RzWx1Qn-m6EvpjqrK\",\n            \"action\": \"opened\",\n            \"text\": \"string\",\n            \"html\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          3767.420602125762,\n          43.648080165233914\n        ]\n      },\n      \"properties\": {\n        \"id\": 6974,\n        \"url\": \"https://FcCtIMgMEIrvEpbAJuKAsv.nakv8anUD6JFY6ZC.\",\n        \"status\": \"closed\",\n        \"date_created\": \"1971-03-29T15:01:33.389Z\",\n        \"date_closed\": \"1998-03-22T08:27:42.122Z\",\n        \"comments\": [\n          {\n            \"date\": \"2023-04-15T00:14:59.867Z\",\n            \"user\": \"string\",\n            \"user_url\": \"http://tAvCjeNEKJECQxxPQrEVRrSHDYThdiJgD.jiGFYIQnuYLLSCf2oYBh3sCMcpt,j\",\n            \"action\": \"reopened\",\n            \"text\": \"string\",\n            \"html\": \"string\"\n          },\n          {\n            \"date\": \"1993-03-26T12:28:43.546Z\",\n            \"user\": \"string\",\n            \"user_url\": \"http://etbcSeWzbCezIbEPcyiMg.kyhdtmdXxoKrfl-\",\n            \"action\": \"reopened\",\n            \"text\": \"string\",\n            \"html\": \"string\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3bd0bcd1-7a5c-493c-9451-1379a18f46f7",
+          "name": "Create a note",
+          "request": {
+            "name": "Create a note",
+            "description": {
+              "content": "Create a new map note at a geographic location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<double>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<double>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "text",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7339163e-0d42-4811-ab81-b446c629efe1",
+              "name": "Created note",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "lat",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "lon",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "text",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"Feature\",\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      5882.434886177443,\n      7577.017123103908\n    ]\n  },\n  \"properties\": {\n    \"id\": 609,\n    \"url\": \"https://iFbEcoQXmvxp.ckbbb,8VWOR2ystSm8iToNvIZqMXpSI\",\n    \"status\": \"closed\",\n    \"date_created\": \"2001-07-14T01:32:27.044Z\",\n    \"date_closed\": \"1952-05-09T23:44:10.588Z\",\n    \"comments\": [\n      {\n        \"date\": \"1967-12-04T10:27:55.849Z\",\n        \"user\": \"string\",\n        \"user_url\": \"https://kIMMbuVrXfbttcSQ.gtygihwAJMK+,XPxJ2wTPm5bI9LvU4\",\n        \"action\": \"commented\",\n        \"text\": \"string\",\n        \"html\": \"string\"\n      },\n      {\n        \"date\": \"1994-05-27T12:43:35.157Z\",\n        \"user\": \"string\",\n        \"user_url\": \"http://QYKqyzcSMbyJ.qpsnWz3g10TDSDk-WmN8piQMfqnaQEFaKc8PkUSmDoT6h,cQQLnm6+UUTPuX.N7\",\n        \"action\": \"closed\",\n        \"text\": \"string\",\n        \"html\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec23302f-c404-4e52-80f6-05ce74a8da55",
+          "name": "Get a note",
+          "request": {
+            "name": "Get a note",
+            "description": {
+              "content": "Retrieve a specific note by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b8a5c185-a70b-45f6-ae51-cde600e4ef6d",
+              "name": "Note details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"Feature\",\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      5882.434886177443,\n      7577.017123103908\n    ]\n  },\n  \"properties\": {\n    \"id\": 609,\n    \"url\": \"https://iFbEcoQXmvxp.ckbbb,8VWOR2ystSm8iToNvIZqMXpSI\",\n    \"status\": \"closed\",\n    \"date_created\": \"2001-07-14T01:32:27.044Z\",\n    \"date_closed\": \"1952-05-09T23:44:10.588Z\",\n    \"comments\": [\n      {\n        \"date\": \"1967-12-04T10:27:55.849Z\",\n        \"user\": \"string\",\n        \"user_url\": \"https://kIMMbuVrXfbttcSQ.gtygihwAJMK+,XPxJ2wTPm5bI9LvU4\",\n        \"action\": \"commented\",\n        \"text\": \"string\",\n        \"html\": \"string\"\n      },\n      {\n        \"date\": \"1994-05-27T12:43:35.157Z\",\n        \"user\": \"string\",\n        \"user_url\": \"http://QYKqyzcSMbyJ.qpsnWz3g10TDSDk-WmN8piQMfqnaQEFaKc8PkUSmDoT6h,cQQLnm6+UUTPuX.N7\",\n        \"action\": \"closed\",\n        \"text\": \"string\",\n        \"html\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41f8ecda-8ddd-4230-845c-424906e3866d",
+              "name": "Note not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openstreetmap.org/api/0.6",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "985994da-3af5-425f-a008-39cc46e949aa",
+    "name": "OpenStreetMap API v0.6 Capabilities Notes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.\n\nContact Support:\n Name: OpenStreetMap Foundation",
+      "type": "text/plain"
+    }
+  }
+}
