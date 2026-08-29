@@ -6,6 +6,20 @@ description: >-
   complex read-only geospatial queries, and the Nominatim API for forward and reverse geocoding. Map data is licensed
   under the Open Database License (ODbL) 1.0 and tile imagery under CC BY-SA 2.0.
 type: Index
+deliveryModel:
+  model: saas
+  license: Copyright and License
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - license
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
