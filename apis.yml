@@ -148,6 +148,8 @@ apis:
   humanURL: https://wiki.openstreetmap.org/wiki/API_v0.6
   baseURL: https://api.openstreetmap.org/api/0.6
   tags:
+  - Node
+  tags_raw:
   - Nodes
   properties:
   - type: OpenAPI
