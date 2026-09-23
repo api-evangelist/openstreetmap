@@ -1,44 +1,40 @@
 {
   "provider": "openstreetmap",
   "sources": [
-    "openstreetmap-capabilities-api-openapi.yml",
-    "openstreetmap-changesets-api-openapi.yml",
-    "openstreetmap-geocoding-api-openapi.yml",
-    "openstreetmap-map-data-api-openapi.yml",
-    "openstreetmap-nodes-api-openapi.yml",
-    "openstreetmap-notes-api-openapi.yml",
-    "openstreetmap-relations-api-openapi.yml",
-    "openstreetmap-status-api-openapi.yml",
-    "openstreetmap-users-api-openapi.yml",
-    "openstreetmap-ways-api-openapi.yml"
+    "_original/openstreetmap-main-openapi.yml",
+    "_original/openstreetmap-nominatim-openapi.yml"
   ],
   "outputs": [
     "openstreetmap-capabilities-api-openapi.yml",
     "openstreetmap-changesets-api-openapi.yml",
-    "openstreetmap-geocoding-api-openapi.yml",
     "openstreetmap-map-data-api-openapi.yml",
     "openstreetmap-nodes-api-openapi.yml",
     "openstreetmap-notes-api-openapi.yml",
     "openstreetmap-relations-api-openapi.yml",
-    "openstreetmap-status-api-openapi.yml",
     "openstreetmap-users-api-openapi.yml",
-    "openstreetmap-ways-api-openapi.yml"
+    "openstreetmap-ways-api-openapi.yml",
+    "openstreetmap-geocoding-api-openapi.yml",
+    "openstreetmap-status-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
-    "openstreetmap-capabilities-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "openstreetmap-changesets-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "openstreetmap-geocoding-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "openstreetmap-map-data-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "openstreetmap-nodes-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "openstreetmap-notes-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "openstreetmap-relations-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "openstreetmap-status-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "openstreetmap-users-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "openstreetmap-ways-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openstreetmap-main-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "openstreetmap-nominatim-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "openstreetmap-capabilities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openstreetmap-changesets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openstreetmap-geocoding-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openstreetmap-map-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openstreetmap-nodes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openstreetmap-notes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openstreetmap-relations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openstreetmap-status-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openstreetmap-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openstreetmap-ways-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

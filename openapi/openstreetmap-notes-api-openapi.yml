@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: OpenStreetMap API v0.6 Capabilities Notes API
+  title: OpenStreetMap API v0.6 Notes API
   description: The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.
   version: 0.6.0
   contact:
@@ -136,6 +136,17 @@ paths:
           description: Note not found
 components:
   schemas:
+    NoteCollection:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - FeatureCollection
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/Note'
     Note:
       type: object
       properties:
@@ -200,17 +211,6 @@ components:
                     type: string
                   html:
                     type: string
-    NoteCollection:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - FeatureCollection
-        features:
-          type: array
-          items:
-            $ref: '#/components/schemas/Note'
   securitySchemes:
     OAuth2:
       type: oauth2

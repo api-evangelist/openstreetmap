@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: OpenStreetMap API v0.6 Capabilities Map Data API
+  title: OpenStreetMap API v0.6 Map Data API
   description: The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.
   version: 0.6.0
   contact:
@@ -59,6 +59,43 @@ paths:
           description: User throttled for excessive use
 components:
   schemas:
+    OSMData:
+      type: object
+      description: OSM data response containing nodes, ways, and relations
+      properties:
+        version:
+          type: string
+        generator:
+          type: string
+        copyright:
+          type: string
+        attribution:
+          type: string
+        license:
+          type: string
+        bounds:
+          type: object
+          properties:
+            minlat:
+              type: number
+            minlon:
+              type: number
+            maxlat:
+              type: number
+            maxlon:
+              type: number
+        nodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Node'
+        ways:
+          type: array
+          items:
+            $ref: '#/components/schemas/Way'
+        relations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Relation'
     Node:
       type: object
       description: An OSM node (a single geographic point)
@@ -99,43 +136,6 @@ components:
           type: integer
         visible:
           type: boolean
-    OSMData:
-      type: object
-      description: OSM data response containing nodes, ways, and relations
-      properties:
-        version:
-          type: string
-        generator:
-          type: string
-        copyright:
-          type: string
-        attribution:
-          type: string
-        license:
-          type: string
-        bounds:
-          type: object
-          properties:
-            minlat:
-              type: number
-            minlon:
-              type: number
-            maxlat:
-              type: number
-            maxlon:
-              type: number
-        nodes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Node'
-        ways:
-          type: array
-          items:
-            $ref: '#/components/schemas/Way'
-        relations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Relation'
     Way:
       type: object
       description: An OSM way (an ordered list of nodes forming a line or polygon)
