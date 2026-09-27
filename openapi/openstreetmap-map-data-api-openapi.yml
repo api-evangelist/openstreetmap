@@ -96,6 +96,45 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Relation'
+    Relation:
+      type: object
+      description: An OSM relation (groups nodes, ways, or other relations)
+      properties:
+        type:
+          type: string
+          enum:
+          - relation
+        id:
+          type: integer
+          format: int64
+        members:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - node
+                - way
+                - relation
+              ref:
+                type: integer
+                format: int64
+              role:
+                type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        version:
+          type: integer
+        changeset:
+          type: integer
+          format: int64
+        timestamp:
+          type: string
+          format: date-time
     Node:
       type: object
       description: An OSM node (a single geographic point)
@@ -171,45 +210,6 @@ components:
           type: integer
         visible:
           type: boolean
-    Relation:
-      type: object
-      description: An OSM relation (groups nodes, ways, or other relations)
-      properties:
-        type:
-          type: string
-          enum:
-          - relation
-        id:
-          type: integer
-          format: int64
-        members:
-          type: array
-          items:
-            type: object
-            properties:
-              type:
-                type: string
-                enum:
-                - node
-                - way
-                - relation
-              ref:
-                type: integer
-                format: int64
-              role:
-                type: string
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-        version:
-          type: integer
-        changeset:
-          type: integer
-          format: int64
-        timestamp:
-          type: string
-          format: date-time
   securitySchemes:
     OAuth2:
       type: oauth2

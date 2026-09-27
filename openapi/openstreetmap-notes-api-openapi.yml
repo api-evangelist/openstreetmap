@@ -136,17 +136,6 @@ paths:
           description: Note not found
 components:
   schemas:
-    NoteCollection:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - FeatureCollection
-        features:
-          type: array
-          items:
-            $ref: '#/components/schemas/Note'
     Note:
       type: object
       properties:
@@ -211,6 +200,17 @@ components:
                     type: string
                   html:
                     type: string
+    NoteCollection:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - FeatureCollection
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/Note'
   securitySchemes:
     OAuth2:
       type: oauth2

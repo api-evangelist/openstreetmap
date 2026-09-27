@@ -286,6 +286,10 @@ paths:
                 $ref: '#/components/schemas/SearchResults'
 components:
   schemas:
+    SearchResults:
+      type: array
+      items:
+        $ref: '#/components/schemas/SearchResult'
     ReverseResult:
       allOf:
       - $ref: '#/components/schemas/SearchResult'
@@ -351,10 +355,6 @@ components:
           type: object
           additionalProperties:
             type: string
-    SearchResults:
-      type: array
-      items:
-        $ref: '#/components/schemas/SearchResult'
     Address:
       type: object
       description: Structured address components
