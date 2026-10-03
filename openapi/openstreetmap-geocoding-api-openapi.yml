@@ -286,10 +286,6 @@ paths:
                 $ref: '#/components/schemas/SearchResults'
 components:
   schemas:
-    SearchResults:
-      type: array
-      items:
-        $ref: '#/components/schemas/SearchResult'
     ReverseResult:
       allOf:
       - $ref: '#/components/schemas/SearchResult'
@@ -390,6 +386,10 @@ components:
         country_code:
           type: string
           description: ISO 3166-1 alpha-2 country code (lowercase)
+    SearchResults:
+      type: array
+      items:
+        $ref: '#/components/schemas/SearchResult'
 externalDocs:
   description: Nominatim API Documentation
   url: https://nominatim.org/release-docs/latest/api/Overview/
