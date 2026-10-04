@@ -351,6 +351,10 @@ components:
           type: object
           additionalProperties:
             type: string
+    SearchResults:
+      type: array
+      items:
+        $ref: '#/components/schemas/SearchResult'
     Address:
       type: object
       description: Structured address components
@@ -386,10 +390,6 @@ components:
         country_code:
           type: string
           description: ISO 3166-1 alpha-2 country code (lowercase)
-    SearchResults:
-      type: array
-      items:
-        $ref: '#/components/schemas/SearchResult'
 externalDocs:
   description: Nominatim API Documentation
   url: https://nominatim.org/release-docs/latest/api/Overview/

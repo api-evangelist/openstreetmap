@@ -59,6 +59,43 @@ paths:
           description: User throttled for excessive use
 components:
   schemas:
+    OSMData:
+      type: object
+      description: OSM data response containing nodes, ways, and relations
+      properties:
+        version:
+          type: string
+        generator:
+          type: string
+        copyright:
+          type: string
+        attribution:
+          type: string
+        license:
+          type: string
+        bounds:
+          type: object
+          properties:
+            minlat:
+              type: number
+            minlon:
+              type: number
+            maxlat:
+              type: number
+            maxlon:
+              type: number
+        nodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Node'
+        ways:
+          type: array
+          items:
+            $ref: '#/components/schemas/Way'
+        relations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Relation'
     Node:
       type: object
       description: An OSM node (a single geographic point)
@@ -85,41 +122,6 @@ components:
           additionalProperties:
             type: string
           description: Key-value metadata tags
-        version:
-          type: integer
-        changeset:
-          type: integer
-          format: int64
-        timestamp:
-          type: string
-          format: date-time
-        user:
-          type: string
-        uid:
-          type: integer
-        visible:
-          type: boolean
-    Way:
-      type: object
-      description: An OSM way (an ordered list of nodes forming a line or polygon)
-      properties:
-        type:
-          type: string
-          enum:
-          - way
-        id:
-          type: integer
-          format: int64
-        nodes:
-          type: array
-          items:
-            type: integer
-            format: int64
-          description: Ordered list of node IDs
-        tags:
-          type: object
-          additionalProperties:
-            type: string
         version:
           type: integer
         changeset:
@@ -173,43 +175,41 @@ components:
         timestamp:
           type: string
           format: date-time
-    OSMData:
+    Way:
       type: object
-      description: OSM data response containing nodes, ways, and relations
+      description: An OSM way (an ordered list of nodes forming a line or polygon)
       properties:
-        version:
+        type:
           type: string
-        generator:
-          type: string
-        copyright:
-          type: string
-        attribution:
-          type: string
-        license:
-          type: string
-        bounds:
-          type: object
-          properties:
-            minlat:
-              type: number
-            minlon:
-              type: number
-            maxlat:
-              type: number
-            maxlon:
-              type: number
+          enum:
+          - way
+        id:
+          type: integer
+          format: int64
         nodes:
           type: array
           items:
-            $ref: '#/components/schemas/Node'
-        ways:
-          type: array
-          items:
-            $ref: '#/components/schemas/Way'
-        relations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Relation'
+            type: integer
+            format: int64
+          description: Ordered list of node IDs
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        version:
+          type: integer
+        changeset:
+          type: integer
+          format: int64
+        timestamp:
+          type: string
+          format: date-time
+        user:
+          type: string
+        uid:
+          type: integer
+        visible:
+          type: boolean
   securitySchemes:
     OAuth2:
       type: oauth2
