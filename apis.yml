@@ -287,6 +287,10 @@ apis:
   - type: OpenAPI
     url: openapi/openstreetmap-status-api-openapi.yml
 common:
+  - type: Plans
+    url: plans/openstreetmap-plans-pricing.yml
+  - type: FinOps
+    url: finops/openstreetmap-finops.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/openstreetmap/overview
   - type: AgenticAccess
