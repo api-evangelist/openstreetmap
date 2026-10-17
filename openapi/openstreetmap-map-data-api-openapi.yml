@@ -59,6 +59,80 @@ paths:
           description: User throttled for excessive use
 components:
   schemas:
+    Relation:
+      type: object
+      description: An OSM relation (groups nodes, ways, or other relations)
+      properties:
+        type:
+          type: string
+          enum:
+          - relation
+        id:
+          type: integer
+          format: int64
+        members:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - node
+                - way
+                - relation
+              ref:
+                type: integer
+                format: int64
+              role:
+                type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        version:
+          type: integer
+        changeset:
+          type: integer
+          format: int64
+        timestamp:
+          type: string
+          format: date-time
+    Way:
+      type: object
+      description: An OSM way (an ordered list of nodes forming a line or polygon)
+      properties:
+        type:
+          type: string
+          enum:
+          - way
+        id:
+          type: integer
+          format: int64
+        nodes:
+          type: array
+          items:
+            type: integer
+            format: int64
+          description: Ordered list of node IDs
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        version:
+          type: integer
+        changeset:
+          type: integer
+          format: int64
+        timestamp:
+          type: string
+          format: date-time
+        user:
+          type: string
+        uid:
+          type: integer
+        visible:
+          type: boolean
     OSMData:
       type: object
       description: OSM data response containing nodes, ways, and relations
@@ -122,80 +196,6 @@ components:
           additionalProperties:
             type: string
           description: Key-value metadata tags
-        version:
-          type: integer
-        changeset:
-          type: integer
-          format: int64
-        timestamp:
-          type: string
-          format: date-time
-        user:
-          type: string
-        uid:
-          type: integer
-        visible:
-          type: boolean
-    Relation:
-      type: object
-      description: An OSM relation (groups nodes, ways, or other relations)
-      properties:
-        type:
-          type: string
-          enum:
-          - relation
-        id:
-          type: integer
-          format: int64
-        members:
-          type: array
-          items:
-            type: object
-            properties:
-              type:
-                type: string
-                enum:
-                - node
-                - way
-                - relation
-              ref:
-                type: integer
-                format: int64
-              role:
-                type: string
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-        version:
-          type: integer
-        changeset:
-          type: integer
-          format: int64
-        timestamp:
-          type: string
-          format: date-time
-    Way:
-      type: object
-      description: An OSM way (an ordered list of nodes forming a line or polygon)
-      properties:
-        type:
-          type: string
-          enum:
-          - way
-        id:
-          type: integer
-          format: int64
-        nodes:
-          type: array
-          items:
-            type: integer
-            format: int64
-          description: Ordered list of node IDs
-        tags:
-          type: object
-          additionalProperties:
-            type: string
         version:
           type: integer
         changeset:
