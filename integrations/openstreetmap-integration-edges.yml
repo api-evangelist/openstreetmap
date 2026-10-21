@@ -1,0 +1,48 @@
+edges:
+- partner_name: DataPortals.org (Open Knowledge Foundation)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://dataportals.org/portal/openstreetmap
+  category: open data portal directory listing
+  contract_reference:
+    register: DataPortals.org (Open Knowledge Foundation; dataportals.org/api/data.json)
+    standard: open data portal directory
+    spec_file: null
+    role: listed-portal
+    registered_name: OpenStreetMap Foundation
+    register_id: openstreetmap
+    matched_domain: openstreetmap.org
+    matched_by: domain
+    listings:
+    - portal: openstreetmap
+      title: OpenStreetMap
+      url: https://www.openstreetmap.org
+      publisher: OpenStreetMap Foundation
+      classification: null
+      country: null
+      status: active
+    signal_note: 'participation only: a curated directory listing of the portal; listing is not conformance'
+    detected_by: sweep-open-data-portals.py
+    detected: '2026-10-21'
+  detected_by: sweep-open-data-portals.py
+  first_seen: '2026-10-21'
+generated: '2026-10-21'
+method: searched
+source:
+- https://data.europa.eu/api/hub/search/catalogues
+- https://raw.githubusercontent.com/ckan/ckan-instances/gh-pages/config/instances.json
+- https://dataportals.org/api/data.json
+- 'https://interoperable-europe.ec.europa.eu/collection/semic-support-centre/dcat-ap (no implementations or conformance
+  register: the ''SEMIC map'' link redirects to the collection home)'
+- https://ckan.org/showcase (marketing showcase, not a register; not read)
+checked:
+- https://ckan.org/showcase (marketing showcase, not a register; not read)
+- https://data.europa.eu/api/hub/search/catalogues
+- https://dataportals.org/api/data.json
+- 'https://interoperable-europe.ec.europa.eu/collection/semic-support-centre/dcat-ap (no implementations or conformance
+  register: the ''SEMIC map'' link redirects to the collection home)'
+- https://raw.githubusercontent.com/ckan/ckan-instances/gh-pages/config/instances.json
