@@ -1,4 +1,4 @@
-# OpenStreetMap (openstreetmap)
+# OpenStreetMap
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,124 +66,193 @@
 
 OpenStreetMap (OSM) is a collaborative project to create a free, editable map of the world. The OSM ecosystem exposes a family of public REST APIs: the main editing API (v0.6) for CRUD operations on map data, the Overpass API for complex read-only geospatial queries, and the Nominatim API for forward and reverse geocoding. Map data is licensed under the Open Database License (ODbL) 1.0 and tile imagery under CC BY-SA 2.0.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/apis.yml)
+**Areas:** Geospatial · Mapping · Open Data · Geocoding · Editing · OpenStreetMap
 
-## Scope
+## OpenStreetMap on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for OpenStreetMap is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/openstreetmap/](https://apis.io/providers/openstreetmap/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (11)
 
-- Geospatial
-- Mapping
-- Open Data
-- Geocoding
-- Editing
+- [OpenStreetMap Overpass API](https://apis.io/apis/openstreetmap/overpass-api/) — The Overpass API is a read-only database engine for complex geospatial queries against the OSM dataset. Accepts Overpass QL or XML queries and returns…
+- [OpenStreetMap Capabilities API](https://apis.io/apis/openstreetmap/openstreetmap-capabilities-api/) — API version and limits
+- [OpenStreetMap Changesets API](https://apis.io/apis/openstreetmap/openstreetmap-changesets-api/) — Changeset management for grouped edits
+- [OpenStreetMap Map Data API](https://apis.io/apis/openstreetmap/openstreetmap-map-data-api/) — Bulk map data retrieval by bounding box
+- [OpenStreetMap Nodes API](https://apis.io/apis/openstreetmap/openstreetmap-nodes-api/) — OSM node (point) operations
+- [OpenStreetMap Notes API](https://apis.io/apis/openstreetmap/openstreetmap-notes-api/) — Community map notes
+- [OpenStreetMap Relations API](https://apis.io/apis/openstreetmap/openstreetmap-relations-api/) — OSM relation operations
+- [OpenStreetMap Users API](https://apis.io/apis/openstreetmap/openstreetmap-users-api/) — User account information
+- [OpenStreetMap Ways API](https://apis.io/apis/openstreetmap/openstreetmap-ways-api/) — OSM way (line/polygon) operations
+- [OpenStreetMap Geocoding API](https://apis.io/apis/openstreetmap/openstreetmap-geocoding-api/) — Forward geocoding, reverse geocoding, and OSM object lookup
+- [OpenStreetMap Status API](https://apis.io/apis/openstreetmap/openstreetmap-status-api/) — Server status and version information
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-18
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### OpenStreetMap Main Editing API v0.6
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The OpenStreetMap main API v0.6 provides CRUD operations for map data editing including nodes, ways, relations, changesets, and notes. Requires OAuth 2.0 authentication for write operations. Maximum bounding box query area is 0.25 square degrees. Returns XML or JSON. Intended for editing, not high-volume read access.
+- [Openstreetmap Agentic Access](https://apis.io/agentic-access/openstreetmap/openstreetmap-agentic-access/)
 
-- **Human URL:** [https://wiki.openstreetmap.org/wiki/API_v0.6](https://wiki.openstreetmap.org/wiki/API_v0.6)
-- **Base URL:** `https://api.openstreetmap.org/api/0.6`
+#### JSON Schema (9)
 
-#### Tags
+The data models the API reads and writes.
 
-- Geospatial
-- Mapping
-- Open Data
-- REST
-- Editing
+- [Capabilities](https://apis.io/schemas/openstreetmap/openstreetmap-capabilities/)
+- [Changeset](https://apis.io/schemas/openstreetmap/openstreetmap-changeset/)
+- [OpenStreetMap Node](https://apis.io/schemas/openstreetmap/openstreetmap-node/)
+- [Note](https://apis.io/schemas/openstreetmap/openstreetmap-note/)
+- [NoteCollection](https://apis.io/schemas/openstreetmap/openstreetmap-notecollection/)
+- [OSMData](https://apis.io/schemas/openstreetmap/openstreetmap-osmdata/)
+- [Relation](https://apis.io/schemas/openstreetmap/openstreetmap-relation/)
+- [User](https://apis.io/schemas/openstreetmap/openstreetmap-user/)
+- [Way](https://apis.io/schemas/openstreetmap/openstreetmap-way/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://wiki.openstreetmap.org/wiki/API_v0.6)
-- [Rate Limits](https://operations.osmfoundation.org/policies/api/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/openapi/openstreetmap-main-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-schema/openstreetmap-node-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [J S O N L D Context](https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-ld/openstreetmap-context.jsonld)
-- [Postman Collection](collections/openstreetmap-main.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openstreetmap-main.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-### OpenStreetMap Overpass API
+- [Openstreetmap Structure](https://apis.io/json-structure/openstreetmap/openstreetmap-structure/)
 
-The Overpass API is a read-only database engine for complex geospatial queries against the OSM dataset. Accepts Overpass QL or XML queries and returns results in XML, JSON, GeoJSON, or CSV. Safe usage: under 10,000 queries/day and under 1 GB/day. Python SDKs include overpass, overpy, and OSMPythonTools; JavaScript SDKs include query-overpass and overpass-ts.
+#### JSON-LD (1)
 
-- **Human URL:** [https://wiki.openstreetmap.org/wiki/Overpass_API](https://wiki.openstreetmap.org/wiki/Overpass_API)
-- **Base URL:** `https://overpass-api.de/api`
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Openstreetmap Context](https://apis.io/jsonld/openstreetmap/openstreetmap-context/)
 
-- Geospatial
-- Mapping
-- Open Data
-- XML
-- Overpass
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://wiki.openstreetmap.org/wiki/Overpass_API)
-- [Reference](https://dev.overpass-api.de/overpass-doc/en/)
-- [Developer Tools](https://overpass-turbo.eu/)
-- [Postman Collection](collections/openstreetmap-main.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openstreetmap-main.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [OpenStreetMap Domain Vocabulary](https://apis.io/vocabularies/openstreetmap/openstreetmap-vocabulary/)
 
-### OpenStreetMap Nominatim Geocoding API
+#### Collections (19)
 
-Nominatim is the OpenStreetMap geocoding API providing search (forward geocoding), reverse geocoding, and address lookup for OSM objects. Rate limit is 1 request/second for the public instance. Requires valid User-Agent header. Open source under GNU GPL v3; self-hosted deployment available for higher volume needs.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://nominatim.org/release-docs/latest/api/Overview/](https://nominatim.org/release-docs/latest/api/Overview/)
-- **Base URL:** `https://nominatim.openstreetmap.org`
+- [OpenStreetMap API v0.6 Capabilities API](https://apis.io/collections/openstreetmap/open-openstreetmap-capabilities-api/)
+- [OpenStreetMap API v0.6 Capabilities Changesets API](https://apis.io/collections/openstreetmap/open-openstreetmap-changesets-api/)
+- [OpenStreetMap Nominatim Geocoding API](https://apis.io/collections/openstreetmap/open-openstreetmap-geocoding-api/)
+- [OpenStreetMap API v0.6](https://apis.io/collections/openstreetmap/open-openstreetmap-main/)
+- [OpenStreetMap API v0.6 Capabilities Map Data API](https://apis.io/collections/openstreetmap/open-openstreetmap-map-data-api/)
+- [OpenStreetMap API v0.6 Capabilities Nodes API](https://apis.io/collections/openstreetmap/open-openstreetmap-nodes-api/)
+- [OpenStreetMap API v0.6 Capabilities Notes API](https://apis.io/collections/openstreetmap/open-openstreetmap-notes-api/)
+- [OpenStreetMap API v0.6 Capabilities Relations API](https://apis.io/collections/openstreetmap/open-openstreetmap-relations-api/)
+- [OpenStreetMap Nominatim Geocoding Status API](https://apis.io/collections/openstreetmap/open-openstreetmap-status-api/)
+- [OpenStreetMap API v0.6 Capabilities Users API](https://apis.io/collections/openstreetmap/open-openstreetmap-users-api/)
+- [OpenStreetMap API v0.6 Capabilities Ways API](https://apis.io/collections/openstreetmap/open-openstreetmap-ways-api/)
+- [OpenStreetMap API v0.6 Capabilities API](https://apis.io/collections/openstreetmap/postman-openstreetmap-capabilities-api/)
+- [OpenStreetMap API v0.6 Capabilities Changesets API](https://apis.io/collections/openstreetmap/postman-openstreetmap-changesets-api/)
+- [OpenStreetMap API v0.6 Capabilities Map Data API](https://apis.io/collections/openstreetmap/postman-openstreetmap-map-data-api/)
+- [OpenStreetMap API v0.6 Capabilities Nodes API](https://apis.io/collections/openstreetmap/postman-openstreetmap-nodes-api/)
+- [OpenStreetMap API v0.6 Capabilities Notes API](https://apis.io/collections/openstreetmap/postman-openstreetmap-notes-api/)
+- [OpenStreetMap API v0.6 Capabilities Relations API](https://apis.io/collections/openstreetmap/postman-openstreetmap-relations-api/)
+- [OpenStreetMap API v0.6 Capabilities Users API](https://apis.io/collections/openstreetmap/postman-openstreetmap-users-api/)
+- [OpenStreetMap API v0.6 Capabilities Ways API](https://apis.io/collections/openstreetmap/postman-openstreetmap-ways-api/)
 
-#### Tags
+#### Governance rules (1)
 
-- Geospatial
-- Mapping
-- Geocoding
-- Open Data
+Spectral rulesets for the provider's contracts.
 
-#### Properties
+- [OpenStreetMap — jsonschema rules](https://apis.io/rules/openstreetmap/openstreetmap-jsonschema-spectral-rules/)
 
-- [Documentation](https://nominatim.org/release-docs/latest/api/Overview/)
-- [Rate Limits](https://operations.osmfoundation.org/policies/nominatim/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/openapi/openstreetmap-nominatim-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openstreetmap-main.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openstreetmap-main.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Security (3)
 
-## Common Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [LinkedIn](https://www.linkedin.com/company/openstreetmap-foundation)
+- [Openstreetmap Authentication](https://apis.io/security/openstreetmap/openstreetmap-authentication/)
+- [Openstreetmap Domain Security](https://apis.io/security/openstreetmap/openstreetmap-domain-security/)
+- [Openstreetmap Vulnerability Disclosure](https://apis.io/security/openstreetmap/openstreetmap-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Openstreetmap Scopes](https://apis.io/scopes/openstreetmap/openstreetmap-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Openstreetmap Plans Pricing](https://apis.io/plans/openstreetmap/openstreetmap-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Openstreetmap Rate Limits](https://apis.io/rate-limits/openstreetmap/openstreetmap-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Openstreetmap Finops](https://apis.io/finops/openstreetmap/openstreetmap-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.openstreetmap.org/)
-- [Portal](https://www.openstreetmap.org/)
 - [Documentation](https://wiki.openstreetmap.org/wiki/API)
-- [Reference](https://wiki.openstreetmap.org/wiki/API_v0.6)
-- [Rate Limits](https://operations.osmfoundation.org/policies/api/)
-- [Terms of Service](https://osmfoundation.org/wiki/Terms_of_Use)
-- [Privacy Policy](https://osmfoundation.org/wiki/Privacy_Policy)
-- [Blog](https://blog.openstreetmap.org/)
-- [GitHub Organization](https://github.com/openstreetmap)
-- [License](https://www.openstreetmap.org/copyright)
-- [License](https://opendatacommons.org/licenses/odbl/)
-- [Documentation](https://wiki.openstreetmap.org/wiki/Main_Page)
-- [Forum](https://community.openstreetmap.org/)
 - [Support](https://help.openstreetmap.org/)
-- [Authentication](https://www.openstreetmap.org/copyright)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/openapi/openstreetmap-main-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/openapi/openstreetmap-nominatim-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-schema/openstreetmap-node-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [J S O N L D Context](https://raw.githubusercontent.com/api-evangelist/openstreetmap/refs/heads/main/json-ld/openstreetmap-context.jsonld)
-- [Features](undefined)
+- [Blog](https://blog.openstreetmap.org/)
+- [Terms of service](https://osmfoundation.org/wiki/Terms_of_Use)
+- [Privacy policy](https://osmfoundation.org/wiki/Privacy_Policy)
+- [GitHub](https://github.com/openstreetmap)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 44.4** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 60.5 |
+| Contract governance | 9.8 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 46.4 |
+| Access clarity | 28.9 |
+
+**Agent readiness 28.8** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 40.2** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/openstreetmap/](https://apis.io/providers/openstreetmap/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for OpenStreetMap: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/openstreetmap/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
